@@ -494,10 +494,20 @@ html.js-anim .reveal.zoomimg.in{opacity:1;transform:none}
 <script>
 (function(){
   var h=document.documentElement; h.classList.add('js-anim');
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  function show(el){el.classList.add('in');}
+  function inView(el){var r=el.getBoundingClientRect();return r.top < (window.innerHeight*0.92) && r.bottom > 0;}
+  function checkAll(){for(var i=0;i<els.length;i++){if(!els[i].classList.contains('in')&&inView(els[i]))show(els[i]);}}
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.14,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  } else { document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');}); }
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+  // fallback por scroll — garante a revelação mesmo se o IntersectionObserver não disparar (aba em 2º plano, etc.)
+  checkAll();
+  window.addEventListener('scroll',checkAll,{passive:true});
+  window.addEventListener('resize',checkAll,{passive:true});
+  // rede de segurança: nunca deixar conteúdo preso invisível
+  setTimeout(function(){ if(!document.querySelector('.reveal.in')) els.forEach(show); },1400);
   var bar=document.getElementById('bar');
   function onScroll(){ if(window.scrollY>window.innerHeight*0.85){bar.classList.add('show');}else{bar.classList.remove('show');} }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
