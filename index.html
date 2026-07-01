@@ -205,7 +205,7 @@ html.js-anim .reveal[style*="--d"]{transition-delay:var(--d)}
 .combo-img{display:block;width:100%;max-width:720px;margin:6px auto 0}
 
 /* dock dos entregáveis — arrastar para o lado + magnificação por proximidade (macOS Dock) */
-.dock{width:100vw;margin-left:calc(50% - 50vw);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:58px 0 28px;cursor:grab;overscroll-behavior-x:contain}
+.dock{width:100vw;margin-left:calc(50% - 50vw);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:96px 0 30px;cursor:grab;overscroll-behavior-x:contain}
 .dock::-webkit-scrollbar{display:none}
 .dock.drag{cursor:grabbing}
 .dock.drag .dock-item{transition:none}
@@ -528,13 +528,13 @@ html.js-anim .reveal[style*="--d"]{transition-delay:var(--d)}
   var dock=document.getElementById('dock');
   if(dock){
     var items=[].slice.call(dock.querySelectorAll('.dock-item'));
-    var MAX=0.5, RANGE=200, dragging=false, moved=false;
+    var MAX=0.42, RANGE=430, dragging=false, moved=false;
     function magnify(cx){
       if(dragging)return;
       for(var i=0;i<items.length;i++){
         var r=items[i].getBoundingClientRect(), c=r.left+r.width/2;
-        var f=Math.max(0,1-Math.abs(cx-c)/RANGE);
-        items[i].style.transform='scale('+(1+MAX*f*f).toFixed(3)+') translateY('+(-16*f*f).toFixed(1)+'px)';
+        var f=Math.max(0,1-Math.abs(cx-c)/RANGE), g=f*f*(3-2*f);
+        items[i].style.transform='scale('+(1+MAX*g).toFixed(3)+') translateY('+(-13*g).toFixed(1)+'px)';
       }
     }
     function reset(){for(var i=0;i<items.length;i++)items[i].style.transform='';}
