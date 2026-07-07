@@ -209,24 +209,19 @@ section{position:relative;padding:118px 28px}
 @media(max-width:820px){.hero-cap{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal,.js .shard{opacity:1;transform:none;transition:none}.js .shard .seam path{stroke-dashoffset:0}.bowl-base{filter:saturate(1) brightness(1)}#reveal{display:none}.surf-gold{-webkit-mask-image:none;mask-image:none}.hero .hint .dot{animation:none}}
 
-/* FECHO · a peça inteira (o depois) — bookend do herói, um degrau mais claro */
-.finale{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center}
-.finale .finale-bg{position:absolute;inset:0;z-index:0;background:url('assets/bowl_reparada_v1.jpg') 20% center/cover no-repeat;filter:saturate(.8) brightness(.9) contrast(1.03)}
-.finale .finale-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,8,.3) 0%,rgba(11,10,8,.08) 24%,rgba(11,10,8,.68) 54%,var(--bg) 84%)}
-.finale .wrap{position:relative;z-index:2}
-.finale .close{text-align:left;margin:0 0 0 auto;max-width:46ch;padding-right:clamp(20px,3vw,40px)}
-.finale .close .label{justify-content:flex-start!important}
-.finale .close .cta-area{align-items:flex-start}
-.finale .recap{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);margin:16px 0 0;max-width:52ch}
-@media(max-width:760px){
- .finale{min-height:auto}
- .finale .finale-bg{background-position:center 20%;filter:saturate(.8) brightness(.78) contrast(1.04)}
- .finale .finale-veil{background:linear-gradient(180deg,rgba(11,10,8,.3) 0%,rgba(11,10,8,.55) 34%,rgba(11,10,8,.82) 62%,var(--bg) 90%)}
- .finale .close{text-align:center;margin:0 auto;max-width:none;padding:0}
- .finale .close .label{justify-content:center!important}
- .finale .close .cta-area{align-items:center}
- .finale .recap{margin-left:auto;margin-right:auto}
-}
+/* FECHO · a peça inteira (o depois) — SEGUNDO HERÓI: mesmo reveal, imagem+copy lado a lado */
+.finale2 .bowl-base{background:url('assets/bowl_reparada_v1.jpg') 30% center/cover no-repeat;filter:saturate(.3) brightness(.74) contrast(1.06)}
+#finaleReveal{position:absolute;inset:0;width:100%;height:100%}
+.finale2 .hveil{background:linear-gradient(90deg,rgba(11,10,8,0) 0%,rgba(11,10,8,0) 22%,rgba(11,10,8,.3) 38%,rgba(11,10,8,.66) 50%,rgba(11,10,8,.88) 64%,rgba(11,10,8,.96) 78%,var(--bg) 92%)}
+.finale2 .under{color:var(--ink-2)}
+.finale2 .hint{color:var(--ink-2)}
+.finale2 .foot{color:var(--ink-2);font-size:12.5px;margin-top:30px}
+.finale2 .fh{font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-.02em;color:#fbf5ea}
+.finale2 .fh em{font-style:italic;color:var(--gold-hi)}
+.finale2 .recap2{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);margin:16px 0 0;max-width:52ch}
+.finale2 .foot{pointer-events:auto;margin-top:22px;text-align:left;max-width:52ch}
+.finale2 .foot a{pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.finale2 .bowl-base{filter:saturate(.8) brightness(.92)}#finaleReveal{display:none}}
 </style>
 </head>
 <body>
@@ -431,17 +426,19 @@ section{position:relative;padding:118px 28px}
   </div>
 </section>
 
-<!-- FECHO · a peça inteira -->
-<section class="finale">
-  <div class="finale-bg"></div><div class="finale-veil"></div>
-  <div class="wrap close">
+<!-- FECHO · a peça inteira (o depois) — segundo herói -->
+<section class="hero finale2" id="finale">
+  <div class="stage" id="finaleStage"><div class="bowl-base"></div><canvas id="finaleReveal"></canvas></div>
+  <div class="hveil"></div>
+  <div class="hin"><div class="hc">
     <div class="label reveal">O depois</div>
-    <h2 class="reveal" style="--d:.06s">A peça inteira.<br>A margem de <em>volta</em>.</h2>
-    <p class="reveal" style="--d:.14s;margin:26px 0 0;max-width:50ch;color:var(--ink);font-size:19px">Você fecha os sete furos, um a um. No fim da semana, abre o mês e vê parado na conta o que antes vazava. A peça não volta a ser a de antes — volta inteira, e com ouro por onde rachou.</p>
-    <p class="reveal recap" style="--d:.18s">O Desafio, as 8 ferramentas e os 2 bônus por <strong>R$ 97 à vista</strong> · 7 dias para testar sem risco · acesso em 3 minutos.</p>
-    <div class="cta-area reveal" style="--d:.22s;margin-top:30px"><a class="btn" href="#" data-cta="checkout-final" data-checkout>Quero recuperar a minha margem · R$ 97</a><div class="under">valor total R$ 248 · você investe <b>R$ 97</b> hoje, no PIX</div></div>
-    <p class="foot">Conteúdo educativo de gestão financeira. Não constitui recomendação de investimento (CVM) nem consultoria jurídica. Resultados variam por agência. <a href="#">Termos</a> · <a href="#">Política de Privacidade</a> · © Escritório de Contratos</p>
-  </div>
+    <h2 class="fh reveal" style="--d:.06s">A peça inteira.<br>A margem de <em>volta</em>.</h2>
+    <p class="sub reveal" style="--d:.14s">Você fecha os sete furos, um a um. No fim da semana, abre o mês e vê parado na conta o que antes vazava. A peça não volta a ser a de antes — volta inteira, e com ouro por onde rachou.</p>
+    <p class="recap2 reveal" style="--d:.18s">O Desafio, as 8 ferramentas e os 2 bônus por <strong>R$ 97 à vista</strong> · 7 dias para testar sem risco · acesso em 3 minutos.</p>
+    <div class="cta-area reveal" style="--d:.22s"><a class="btn" href="#" data-cta="checkout-final" data-checkout>Quero recuperar a minha margem · R$ 97</a><div class="under">valor total R$ 248 · você investe <b>R$ 97</b> hoje, no PIX</div></div>
+    <div class="hint reveal" style="--d:.28s"><span class="dot"></span>passe o mouse e acenda a peça</div>
+    <p class="foot reveal" style="--d:.32s">Conteúdo educativo de gestão financeira. Não constitui recomendação de investimento (CVM) nem consultoria jurídica. Resultados variam por agência. <a href="#">Termos</a> · <a href="#">Política de Privacidade</a> · © Escritório de Contratos</p>
+  </div></div>
 </section>
 </main>
 
@@ -529,6 +526,26 @@ section{position:relative;padding:118px 28px}
     stage.addEventListener('touchmove',function(e){var r=stage.getBoundingClientRect(),t=e.touches[0];mv(t.clientX-r.left,t.clientY-r.top);},{passive:true});
     function sw(){var t=0,y=H*0.5;(function s(){if(t>1)return;pt(W*0.08+(W*0.34)*t,y+Math.sin(t*6)*H*0.06,0.85);t+=0.02;requestAnimationFrame(s);})();}
     (function rn(){mctx.globalCompositeOperation='destination-out';mctx.fillStyle='rgba(0,0,0,0.006)';mctx.fillRect(0,0,W,H);mctx.globalCompositeOperation='source-over';if(ready){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='source-over';ctx.drawImage(gold,cover.x,cover.y,cover.w,cover.h);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0,W,H);ctx.globalCompositeOperation='source-over';}requestAnimationFrame(rn);})();
+  }
+
+  /* FECHO tigela reveal — MESMA mecânica do herói */
+  var fst=document.getElementById('finaleStage'),fcv=document.getElementById('finaleReveal');
+  if(fst&&fcv&&!reduce){
+    var fx=fcv.getContext('2d'),fmk=document.createElement('canvas'),fmx=fmk.getContext('2d'),fvis=true,frun=true;
+    var fg=new Image();fg.src='assets/bowl_reparada_v1.jpg';
+    var FW=0,FH=0,fdp=Math.min(window.devicePixelRatio||1,2),fco={x:0,y:0,w:0,h:0},frd=false;
+    function fcr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.30,y:(ch-h)/2,w:w,h:h};}
+    function frs(){var r=fst.getBoundingClientRect();FW=r.width;FH=r.height;fcv.width=fmk.width=Math.round(FW*fdp);fcv.height=fmk.height=Math.round(FH*fdp);fx.setTransform(fdp,0,0,fdp,0,0);fmx.setTransform(fdp,0,0,fdp,0,0);if(fg.naturalWidth)fco=fcr(fg.naturalWidth,fg.naturalHeight,FW,FH);}
+    fg.onload=function(){frd=true;frs();fsw();};window.addEventListener('resize',frs,{passive:true});
+    function fpt(x,y,s){var R=Math.max(64,Math.min(FW,FH)*0.13),g=fmx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,'rgba(0,0,0,'+(0.9*s)+')');g.addColorStop(.6,'rgba(0,0,0,'+(0.5*s)+')');g.addColorStop(1,'rgba(0,0,0,0)');fmx.fillStyle=g;fmx.beginPath();fmx.arc(x,y,R,0,7);fmx.fill();}
+    var fl=null,fL=null;
+    function fmv(x,y){if(!frd)return;if(fl!==null){var d=Math.hypot(x-fl,y-fL),st=Math.max(1,Math.floor(d/14));for(var i=1;i<=st;i++)fpt(fl+(x-fl)*i/st,fL+(y-fL)*i/st,1);}else fpt(x,y,1);fl=x;fL=y;}
+    fst.addEventListener('mousemove',function(e){var r=fst.getBoundingClientRect();fmv(e.clientX-r.left,e.clientY-r.top);});
+    fst.addEventListener('mouseleave',function(){fl=fL=null;});
+    fst.addEventListener('touchmove',function(e){var r=fst.getBoundingClientRect(),t=e.touches[0];fmv(t.clientX-r.left,t.clientY-r.top);},{passive:true});
+    function fsw(){var t=0;(function s(){if(t>1)return;fpt(FW*0.06+(FW*0.42)*t,FH*(0.42+0.12*Math.sin(t*5)),0.95);t+=0.012;requestAnimationFrame(s);})();}
+    if('IntersectionObserver' in window){fvis=false;new IntersectionObserver(function(es){if(es[0].isIntersecting){fvis=true;if(!frun){frun=true;requestAnimationFrame(frn);}}else{fvis=false;}},{rootMargin:'200px'}).observe(fst);}
+    function frn(){if(!fvis){frun=false;return;}fmx.globalCompositeOperation='destination-out';fmx.fillStyle='rgba(0,0,0,0.006)';fmx.fillRect(0,0,FW,FH);fmx.globalCompositeOperation='source-over';if(frd){fx.clearRect(0,0,FW,FH);fx.globalCompositeOperation='source-over';fx.drawImage(fg,fco.x,fco.y,fco.w,fco.h);fx.globalCompositeOperation='destination-in';fx.drawImage(fmk,0,0,FW,FH);fx.globalCompositeOperation='source-over';}requestAnimationFrame(frn);}frn();
   }
 
   /* CALCULADORA */
