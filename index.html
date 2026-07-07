@@ -80,11 +80,21 @@ section{position:relative;padding:118px 28px}
 .tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);transition:opacity .65s var(--ease),transform .7s var(--spring),box-shadow .5s var(--ease)}
 .tool:hover{transform:translateY(-10px) scale(1.035);box-shadow:0 28px 60px rgba(0,0,0,.62),0 0 32px rgba(242,210,122,.32);z-index:3}
 .tool img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;background:#f3ece0}
-.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:24px 8px 10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-align:center;background:linear-gradient(to top,rgba(11,10,8,.95),rgba(11,10,8,.55) 55%,transparent);border-radius:0 0 2px 2px}
+.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:34px 11px 12px;text-align:center;background:linear-gradient(to top,rgba(9,8,6,.97),rgba(9,8,6,.82) 42%,rgba(9,8,6,.24) 80%,transparent);border-radius:0 0 2px 2px}
+.t-name{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.t-what{display:block;margin-top:6px;font-family:var(--sans);font-size:11px;line-height:1.34;letter-spacing:0;text-transform:none;color:#cabda4;transition:color .4s var(--ease)}
+.tool:hover .t-what{color:var(--gold-hi)}
 .js .tools-grid .tool{opacity:0;transform:translateY(38px) scale(.88) rotate(-3.5deg)}
 .js .tools-grid .tool:nth-child(even){transform:translateY(38px) scale(.88) rotate(3.5deg)}
 .js .tools-grid .tool.in{opacity:1;transform:none}
 @media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
+.whygold{max-width:56ch;margin:16px auto 0;text-align:center}
+.whygold summary{display:inline-block;cursor:pointer;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:3px;list-style:none;transition:color .3s var(--ease)}
+.whygold summary::-webkit-details-marker{display:none}
+.whygold summary::marker{content:''}
+.whygold summary:hover{color:var(--gold-hi)}
+.whygold[open] summary{margin-bottom:14px}
+.whygold p{font-size:15px;line-height:1.64;color:var(--ink-3);max-width:54ch;margin:0 auto}
 
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
@@ -276,15 +286,17 @@ section{position:relative;padding:118px 28px}
     <div class="rule reveal"></div>
     <p class="reveal" style="max-width:60ch">São as peças que remendam a sua operação: cada furo do diagnóstico vem com uma ferramenta pronta na mão. Você preenche com os seus dados e aplica no mesmo dia — nenhuma delas leva mais que 6 minutos.</p>
     <div class="tools-grid">
-      <figure class="tool"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption>Mapa dos 7 Furos</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption>Template de Escopo</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption>Pedido de Extra</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption>Acordo de Prazo · SLA</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption>Régua das 3 Ondas</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption>Roteiro de Negativação</figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption>Quadro Antes/Depois</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption><span class="t-name">Mapa dos 7 Furos</span><span class="t-what">Onde você vaza dinheiro, em reais. O seu número de partida.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption><span class="t-name">Template de Escopo</span><span class="t-what">O que está dentro e o que fica de fora, no papel. Fim do “só mais uma coisinha”.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption><span class="t-name">Pedido de Extra</span><span class="t-what">Cobra o extra que saía de graça, sem você bancar o vilão.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span></figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-what">O que você travou na semana, preto no branco.</span></figcaption></figure>
     </div>
-    <p class="note reveal" style="text-align:center;margin-top:30px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio — mais a Decisão de Adoção, a sua primeira micro-decisão em 2 minutos.</p>
+    <p class="reveal" style="text-align:center;margin:30px auto 0;max-width:46ch;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,25px);color:var(--gold-hi)">São o ouro em pó do desafio: cabem na palma da mão e fecham um rombo de dezenas de milhares por ano.</p>
+    <details class="whygold reveal"><summary>por que “ouro em pó”?</summary><p>Na Inconfidência, o ouro em pó valia mais que a barra: cabia escondido dentro das imagens de santo e passava por onde o ouro em barra não passava. Estas ferramentas são assim: pequenas o bastante para caber numa página, valiosas o bastante para fechar o rombo que a sua agência nem via.</p></details>
+    <p class="note reveal" style="text-align:center;margin-top:16px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio — mais a Decisão de Adoção, a sua primeira micro-decisão em 2 minutos.</p>
   </div>
 </section>
 
@@ -398,6 +410,39 @@ section{position:relative;padding:118px 28px}
     if(reduce||!('IntersectionObserver' in window)){ tools.forEach(fitTool); }
     else{ var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ tools.forEach(function(t,i){ setTimeout(function(){fitTool(t);}, i*95); }); tio.disconnect(); }});},{threshold:0.2});
       tio.observe(tg); setTimeout(function(){ if(tools[0]&&tools[0].style.opacity!=='1') tools.forEach(fitTool); },2400); }
+    /* ouro em pó: solta do caco no hover (o ouro escondido que se revela) */
+    var sec=tg.closest('section');
+    if(sec&&!reduce){
+      if(getComputedStyle(sec).position==='static') sec.style.position='relative';
+      var dust=document.createElement('canvas');
+      dust.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5';
+      sec.appendChild(dust);
+      var dctx=dust.getContext('2d'),ddpr=Math.min(window.devicePixelRatio||1,2),parts=[],DW=0,DH=0;
+      var cols=['#f2d27a','#e8c25f','#c69a3e','#fff0c4'];
+      function dresize(){var r=sec.getBoundingClientRect();DW=r.width;DH=r.height;dust.width=Math.round(DW*ddpr);dust.height=Math.round(DH*ddpr);dctx.setTransform(ddpr,0,0,ddpr,0,0);}
+      dresize(); window.addEventListener('resize',dresize,{passive:true});
+      function emit(x,y,n){for(var i=0;i<n&&parts.length<220;i++){parts.push({x:x+(Math.random()*30-15),y:y+(Math.random()*10-5),vx:Math.random()*1.2-0.6,vy:-(0.5+Math.random()*1.7),g:0.013+Math.random()*0.010,life:1,decay:0.005+Math.random()*0.006,sz:1.6+Math.random()*3.2,tw:Math.random()*6.28,tws:0.08+Math.random()*0.12,c:cols[(parts.length+i)%cols.length]});}}
+      tools.forEach(function(t){
+        t.addEventListener('mouseenter',function(e){var r=sec.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top,12);});
+        t.addEventListener('mousemove',function(e){if(Math.random()<0.5){var r=sec.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top,2);}});
+      });
+      (function drender(){
+        dctx.clearRect(0,0,DW,DH);
+        for(var i=parts.length-1;i>=0;i--){var p=parts[i];
+          p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=0.99;p.tw+=p.tws;p.life-=p.decay;
+          if(p.life<=0){parts.splice(i,1);continue;}
+          var tw=0.6+0.4*Math.sin(p.tw),a=Math.max(0,Math.min(1,p.life*1.3))*tw,R=p.sz*6;
+          var grd=dctx.createRadialGradient(p.x,p.y,0,p.x,p.y,R);
+          grd.addColorStop(0,'rgba(255,246,214,'+(0.95*a).toFixed(3)+')');
+          grd.addColorStop(0.35,'rgba(242,210,122,'+(0.55*a).toFixed(3)+')');
+          grd.addColorStop(1,'rgba(198,154,62,0)');
+          dctx.globalAlpha=1;dctx.fillStyle=grd;
+          dctx.beginPath();dctx.arc(p.x,p.y,R,0,7);dctx.fill();
+          dctx.globalAlpha=Math.min(1,a);dctx.fillStyle='#fffbe9';
+          dctx.beginPath();dctx.arc(p.x,p.y,Math.max(0.9,p.sz*0.55),0,7);dctx.fill();}
+        dctx.globalAlpha=1;requestAnimationFrame(drender);
+      })();
+    }
   }
 
   var bar=document.getElementById('bar');
