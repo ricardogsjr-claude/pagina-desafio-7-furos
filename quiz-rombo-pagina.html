@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quanto a sua agência vaza por ano? · Diagnóstico dos 7 Furos</title>
+<meta name="description" content="Em 2 minutos, descubra por onde a sua agência perde dinheiro depois da venda feita — e quanto.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ DS v3 kintsugi (mesmo da página de vendas) ============ */
+:root{
+  --bg:#0b0a08; --ink:#efe7d9; --ink-2:#c6bcaa; --ink-3:#8f8676;
+  --gold:#c69a3e; --gold-hi:#f2d27a; --gold-deep:#9c7723; --line:rgba(198,154,62,.22);
+  --serif:'Playfair Display',Georgia,serif; --sans:'Source Sans 3',-apple-system,sans-serif; --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.56,.64,1); --heal:0%;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17.5px;line-height:1.65;min-height:100vh;overflow-x:hidden}
+::selection{background:rgba(198,154,62,.3);color:#fff}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.06;letter-spacing:-.02em;color:#fbf5ea}
+em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
+/* superfície de porcelana que doura conforme o quiz avança */
+.surf,.surf-gold,.veil{position:fixed;inset:0;z-index:0;pointer-events:none}
+.surf{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
+.surf-gold{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.3) calc(var(--heal) + 26%),transparent calc(var(--heal) + 52%));mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.3) calc(var(--heal) + 26%),transparent calc(var(--heal) + 52%));transition:mask-image .8s var(--ease),-webkit-mask-image .8s var(--ease)}
+.veil{background:radial-gradient(130% 100% at 50% 34%,rgba(11,10,8,0) 30%,rgba(11,10,8,.6) 100%)}
+
+.wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:0 24px}
+/* topo: marca + barra de progresso (o reparo em ouro) */
+.top{padding:22px 0 0;display:flex;align-items:center;justify-content:space-between}
+.bm{font-family:var(--serif);font-style:italic;font-size:15px;color:#f3ecdd}.bm span{color:var(--gold-hi)}
+.pcount{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-3)}
+.pbar{position:relative;z-index:2;height:3px;border-radius:3px;background:rgba(198,154,62,.16);margin:14px 0 0;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi));box-shadow:0 0 12px rgba(242,210,122,.6);transition:width .6s var(--ease)}
+
+.stage{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0 60px}
+.screen{display:none;animation:fade .6s var(--ease)}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
+.kick::before{content:"";width:30px;height:1px;background:var(--gold)}
+.q h2{font-size:clamp(28px,5vw,44px)}
+.intro h1{font-size:clamp(36px,7vw,64px);line-height:1}
+.sub{font-size:18px;color:var(--ink-2);margin-top:20px;max-width:52ch}
+
+/* opções de resposta */
+.opts{list-style:none;margin:34px 0 0;display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1px solid var(--line);border-radius:6px;background:rgba(20,17,13,.5);cursor:pointer;transition:border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--spring)}
+.opt:hover{border-color:var(--gold);background:rgba(20,17,13,.8);transform:translateX(4px)}
+.opt .dot{flex:0 0 auto;width:12px;height:12px;border-radius:50%;border:1px solid var(--gold);transition:all .3s var(--ease)}
+.opt:hover .dot,.opt.sel .dot{background:var(--gold-hi);box-shadow:0 0 10px rgba(242,210,122,.7)}
+.opt span{font-size:17px;color:var(--ink)}
+
+/* botões */
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#17120a;background:linear-gradient(180deg,var(--gold-hi),var(--gold));text-decoration:none;padding:19px 40px;border-radius:2px;border:1px solid var(--gold);cursor:pointer;transition:transform .4s var(--spring),box-shadow .4s var(--ease);box-shadow:0 12px 30px rgba(198,154,62,.28)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(198,154,62,.4)}
+.btn.ghost{background:transparent;color:var(--gold-hi);border-color:var(--line);box-shadow:none}
+.btn.ghost:hover{background:rgba(198,154,62,.08)}
+.cta-area{margin-top:36px}
+.back{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);background:none;border:none;cursor:pointer}
+.back:hover{color:var(--gold)}
+
+/* captura de e-mail */
+.field{margin-top:30px}
+.field input{width:100%;padding:18px 20px;font-family:var(--sans);font-size:17px;color:var(--ink);background:rgba(20,17,13,.7);border:1px solid var(--line);border-radius:6px;outline:none;transition:border-color .3s}
+.field input:focus{border-color:var(--gold)}
+.field input::placeholder{color:var(--ink-3)}
+.fineprint{margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+
+/* calculadora */
+.calc-lead{font-size:17px;color:var(--ink-2);margin-top:18px;max-width:52ch}
+.prob{padding:18px 0;border-bottom:1px solid rgba(198,154,62,.12)}.prob:first-child{padding-top:6px}
+.prob .ph{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.prob .pt{font-family:var(--serif);font-style:italic;font-size:17px;color:#fbf5ea}
+.prob .pv{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--gold-hi);white-space:nowrap}
+.prob .pq{font-size:12.5px;color:var(--ink-3);margin:3px 0 12px}
+.prob input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;background:rgba(198,154,62,.2);outline:none;cursor:pointer}
+.prob input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d;box-shadow:0 2px 12px rgba(242,210,122,.55);cursor:grab;transition:transform .2s var(--spring)}
+.prob input[type=range]::-webkit-slider-thumb:active{transform:scale(1.18)}
+.prob input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d}
+
+/* resultado */
+.result .big{font-family:var(--serif);font-size:clamp(52px,11vw,88px);font-weight:600;color:var(--gold-hi);line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 44px rgba(242,210,122,.28)}
+.result .oe{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.result .rsub{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin-top:14px}.result .rsub b{color:var(--gold-hi);font-weight:500}
+.furos{list-style:none;margin:26px 0 0;border-top:1px solid var(--line)}
+.furos li{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid rgba(198,154,62,.1);font-size:14.5px}
+.furos .fn{position:relative;padding-left:20px;color:var(--ink-2)}
+.furos .fn::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 8px rgba(242,210,122,.6)}
+.furos .fx{font-family:var(--mono);font-size:12.5px;color:var(--gold);white-space:nowrap}
+.result .msg{margin-top:26px;font-size:16px;color:var(--ink);line-height:1.6}
+.result .msg strong{color:#fff}
+.foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
+@media(max-width:600px){.stage{padding:24px 0 40px}.opt{padding:16px 18px}}
+@media(prefers-reduced-motion:reduce){.screen{animation:none}.surf-gold{transition:none}}
+</style>
+</head>
+<body>
+<div class="surf"></div><div class="surf-gold" id="surfGold"></div><div class="veil"></div>
+<div class="wrap">
+  <div class="top"><span class="bm">Escritório <span>de Contratos</span></span><span class="pcount" id="pcount"></span></div>
+  <div class="pbar"><i id="pbar"></i></div>
+
+  <div class="stage">
+    <!-- INTRO -->
+    <section class="screen intro active" data-screen="intro">
+      <div class="kick">Diagnóstico dos 7 Furos</div>
+      <h1>Quanto a sua agência<br><em>vaza por ano</em>?</h1>
+      <p class="sub">Você fatura bem e sobra pouco — e não sabe por onde escapa. Em 2 minutos, 4 perguntas e uma conta com os seus números, você descobre o tamanho do rombo. Sem chute, sem "faturar mais".</p>
+      <div class="cta-area"><button class="btn" data-next>Começar o diagnóstico</button></div>
+    </section>
+
+    <!-- CONFIG: PERGUNTAS (o agente adapta o texto por dor) -->
+    <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Como você fecha a maioria dos seus clientes?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>No boca a boca / aperto de mão, sem nada assinado</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Uma proposta por e-mail que faz as vezes de combinado</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Um documento assinado, com escopo e regras claras</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Com que frequência você entrega "só mais uma coisinha" de graça?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Toda semana — virou parte do serviço</span></li><li class="opt" data-w="1"><span class="dot"></span><span>De vez em quando, quando o cliente aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Quase nunca — todo extra é orçado</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Você tem cliente atrasando pagamento agora?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Sim, e eu evito cobrar pra não parecer chato</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Sim, mas eu cobro (mesmo travando na hora)</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Não — tenho um processo de cobrança que roda sozinho</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Você sabe quanto custa, em horas, atender cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não faço ideia — é no sentimento</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Tenho uma noção grosseira</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, meço horas por cliente</span></li></ul></section>
+
+    <!-- CAPTURA -->
+    <section class="screen cap" data-screen="cap">
+      <div class="kick">Quase lá</div>
+      <h2>Pra onde eu mando o seu diagnóstico?</h2>
+      <p class="sub">Deixe o seu melhor e-mail. Você vê o número na tela agora, e recebe o resumo com o passo a passo pra fechar cada furo.</p>
+      <div class="field"><input type="email" id="email" placeholder="seu@email.com" autocomplete="email"></div>
+      <div class="cta-area"><button class="btn" id="capNext">Ver o meu rombo</button></div>
+      <p class="fineprint">Sem spam. Você pode sair quando quiser. Seus dados não vão para lugar nenhum sem o seu ok.</p>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section class="screen calc" data-screen="calc">
+      <div class="kick">Some o seu rombo</div>
+      <h2>Agora, os seus números.</h2>
+      <p class="calc-lead">Arraste cada furo para a <strong>sua</strong> realidade — só o que é verdade pra você. O total é o dinheiro que já sai da sua mão por ano.</p>
+      <!-- CONFIG: CALCULADORA (o agente troca os furos/faixas por dor) -->
+      <div id="probs" style="margin-top:22px">
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">Fechar no fio do bigode</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Cliente que sumiu devendo, sem nada assinado — quanto ficou na rua?</div><input type="range" min="0" max="60000" step="1000" value="18000"></div>
+        <div class="prob" data-annual="12"><div class="ph"><span class="pt">"Só mais uma coisinha"</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Extra de graça por mês.</div><input type="range" min="0" max="6000" step="200" value="1200"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O projeto que não acaba</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Quanto te custa a demora, por ano.</div><input type="range" min="0" max="40000" step="1000" value="9000"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">A cobrança que trava</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">O que está atrasado agora que você não cobra firme.</div><input type="range" min="0" max="50000" step="1000" value="12000"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O sumido devendo</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Calote do último ano que você deu por perdido.</div><input type="range" min="0" max="30000" step="1000" value="8000"></div>
+      </div>
+      <div class="cta-area"><button class="btn" id="calcNext">Ver o resultado</button></div>
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="screen result" data-screen="result">
+      <div class="oe">O seu vazamento estimado</div>
+      <div class="big" id="resTotal">R$ 0</div>
+      <div class="rsub" id="resSub"></div>
+      <ul class="furos" id="resFuros"></ul>
+      <!-- CONFIG: RESULTADO + CTA (versão B → PÁGINA) -->
+      <div class="msg">Cada furo desses tem <strong>nome, custo e conserto</strong>. O Desafio dos 7 Furos te mostra o seu número exato — com o Mapa dos 7 Furos, no primeiro dia — e entrega a ferramenta que fecha cada um. Por <strong>R$ 97</strong>.</div>
+      <div class="cta-area">
+        <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como o Desafio fecha esses furos</a>
+      </div>
+    </section>
+  </div>
+  <div class="foot">Diagnóstico ilustrativo · números do universo de agências R$ 5–150 mil/mês · © Escritório de Contratos</div>
+</div>
+
+<script>
+(function(){
+  var doc=document.documentElement, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var screens=[].slice.call(document.querySelectorAll('.screen'));
+  var order=['intro','q0','q1','q2','q3','cap','calc','result'];
+  var idx=0, answers={};
+  var pbar=document.getElementById('pbar'), pcount=document.getElementById('pcount');
+  function key(s){return s.dataset.screen==='q'?'q'+s.dataset.q:s.dataset.screen;}
+  function go(i){
+    idx=Math.max(0,Math.min(order.length-1,i));
+    var k=order[idx];
+    screens.forEach(function(s){ s.classList.toggle('active', key(s)===k); });
+    var frac=idx/(order.length-1);
+    pbar.style.width=(frac*100).toFixed(1)+'%';
+    doc.style.setProperty('--heal',(frac*100).toFixed(1)+'%');
+    pcount.textContent=(idx>0&&idx<order.length-1)?(idx+' / '+(order.length-2)):'';
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){go(idx+1);});});
+  // perguntas: clicar em opção seleciona e avança
+  document.querySelectorAll('.q .opt').forEach(function(o){o.addEventListener('click',function(){
+    var q=o.closest('.q').dataset.q; answers['q'+q]=+o.dataset.w;
+    o.parentNode.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel');}); o.classList.add('sel');
+    setTimeout(function(){go(idx+1);},260);
+  });});
+  // captura
+  document.getElementById('capNext').addEventListener('click',function(){
+    var em=document.getElementById('email').value.trim();
+    if(em && em.indexOf('@')<1){ document.getElementById('email').style.borderColor='#c05a44'; return; }
+    /* [IMPLANTAÇÃO] enviar {email, answers} ao CRM/e-mail via webhook (P-007) */
+    try{ if(window.fbq) fbq('track','Lead',{content_name:'quiz_rombo'}); }catch(e){}
+    go(idx+1);
+  });
+  // calculadora
+  var probs=[].slice.call(document.querySelectorAll('#probs .prob'));
+  function brl(n){return 'R$ '+Math.round(n).toLocaleString('pt-BR');}
+  function fillR(inp){var f=(inp.value-inp.min)/(inp.max-inp.min);inp.style.background='linear-gradient(90deg,var(--gold-hi) '+(f*100).toFixed(1)+'%,rgba(198,154,62,.2) '+(f*100).toFixed(1)+'%)';}
+  function calc(){var t=0;probs.forEach(function(p){var inp=p.querySelector('input'),v=(+inp.value)*(+p.dataset.annual);p.querySelector('[data-pv]').textContent=brl(v);fillR(inp);t+=v;});return Math.round(t/500)*500;}
+  probs.forEach(function(p){p.querySelector('input').addEventListener('input',calc);}); calc();
+  // resultado
+  document.getElementById('calcNext').addEventListener('click',function(){
+    var total=calc(), totalEl=document.getElementById('resTotal');
+    document.getElementById('resSub').innerHTML='cerca de <b>'+brl(Math.round(total/12/100)*100)+'</b> por mês · <b>'+brl(Math.round(total/252/10)*10)+'</b> a cada dia útil';
+    var fl=document.getElementById('resFuros'); fl.innerHTML='';
+    probs.forEach(function(p){var v=(+p.querySelector('input').value)*(+p.dataset.annual); if(v>0){var li=document.createElement('li');li.innerHTML='<span class="fn">'+p.querySelector('.pt').textContent+'</span><span class="fx">'+brl(Math.round(v/500)*500)+'</span>';fl.appendChild(li);}});
+    go(idx+1);
+    if(reduce){ totalEl.textContent=brl(total); return; }
+    var from=0,t0=null,dur=900;(function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(total-from)*e);if(k<1)requestAnimationFrame(step);})();setTimeout(function(){totalEl.textContent=brl(total);},1100);
+    try{ if(window.fbq) fbq('track','ViewContent',{content_name:'quiz_rombo_resultado'}); }catch(e){}
+  });
+  document.getElementById('ctaMain').addEventListener('click',function(){try{if(window.fbq)fbq('track','InitiateCheckout',{content_name:'quiz_rombo',value:97,currency:'BRL'});}catch(e){}});
+  go(0);
+})();
+</script>
+</body>
+</html>
