@@ -114,7 +114,7 @@ section{position:relative;padding:118px 28px}
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
 .hero .stage{position:absolute;inset:0;cursor:crosshair}
-.bowl-base{position:absolute;inset:0;background:url('assets/heroi_reparo_v1.jpg') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
+.bowl-base{position:absolute;inset:0;background:url('assets/heroi_reparo_v2.jpg') 22% center/cover no-repeat;filter:saturate(.7) brightness(.82) contrast(1.04)}
 #reveal{position:absolute;inset:0;width:100%;height:100%}
 .hero .hveil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,8,.4) 0%,rgba(11,10,8,.12) 30%,rgba(11,10,8,.55) 60%,var(--bg) 88%)}
 .hero .hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(28px,6vw,80px);pointer-events:none}
@@ -495,7 +495,7 @@ section{position:relative;padding:118px 28px}
   var stage=document.getElementById('stage'),cv=document.getElementById('reveal');
   if(stage&&cv&&!reduce){
     var ctx=cv.getContext('2d'),mask=document.createElement('canvas'),mctx=mask.getContext('2d');
-    var gold=new Image();gold.src='assets/heroi_reparo_v1.jpg';
+    var gold=new Image();gold.src='assets/heroi_reparo_v2.jpg';
     var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),cover={x:0,y:0,w:0,h:0},ready=false;
     function cr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
     function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=cr(gold.naturalWidth,gold.naturalHeight,W,H);}
