@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desafio dos 7 Furos · Onde a sua agência vaza dinheiro</title>
-<meta name="description" content="Sua agência fatura muito e sobra pouco. Descubra em reais por onde o dinheiro escapa depois da venda feita, e feche cada furo. 7 sessões, 8 ferramentas, R$ 97.">
+<meta name="description" content="Sua agência fatura muito e sobra pouco. Descubra em reais por onde o dinheiro escapa e feche cada furo. 7 sessões, 8 ferramentas, R$ 97.">
 <meta property="og:title" content="Sua agência fatura muito e sobra pouco.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,39 +12,31 @@
 <style>
 :root{
   --bg:#0b0a08; --ink:#efe7d9; --ink-2:#c6bcaa; --ink-3:#8f8676;
-  --gold:#c69a3e; --gold-hi:#f2d27a; --gold-deep:#9c7723;
-  --line:rgba(198,154,62,.22);
+  --gold:#c69a3e; --gold-hi:#f2d27a; --gold-deep:#9c7723; --line:rgba(198,154,62,.22);
   --serif:'Playfair Display',Georgia,serif; --sans:'Source Sans 3',-apple-system,sans-serif; --mono:'JetBrains Mono',monospace;
-  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.56,.64,1); --maxw:720px;
-  --heal:0%;
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.56,.64,1); --maxw:1120px; --heal:0%;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17.5px;line-height:1.72;letter-spacing:.004em;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17.5px;line-height:1.72;overflow-x:hidden}
 ::selection{background:rgba(198,154,62,.3);color:#fff}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.02em;color:#fbf5ea}
 em{font-style:italic;color:var(--gold-hi)}
 strong{color:#fff;font-weight:600}
 p{margin:0 0 1.15em}p:last-child{margin-bottom:0}
-.mono{font-family:var(--mono)}
 
-/* ===== superfície kintsugi que cicatriza em ouro no scroll ===== */
+/* ===== superfície de cerâmica: a página que se repara em ouro ===== */
 .surf,.surf-gold,.veil{position:fixed;inset:0;z-index:0;pointer-events:none}
-.surf{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(.16) brightness(.42) contrast(1.05)}
-.surf-gold{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(1.15) brightness(.92) contrast(1.08);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),transparent calc(var(--heal) + 15%));
-          mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),transparent calc(var(--heal) + 15%))}
-.veil{background:radial-gradient(120% 90% at 50% 40%,rgba(11,10,8,0) 30%,rgba(11,10,8,.55) 100%)}
-/* linha do reparo (horizonte de ouro que desce com o scroll) */
-.healline{position:fixed;left:0;right:0;top:var(--heal);height:2px;z-index:1;pointer-events:none;opacity:.0;transition:opacity .6s var(--ease);
-  background:linear-gradient(90deg,transparent,rgba(242,210,122,.0) 8%,rgba(242,210,122,.7) 50%,rgba(242,210,122,0) 92%,transparent);
-  box-shadow:0 0 22px 3px rgba(242,210,122,.35)}
-.healline.on{opacity:1}
+.surf{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
+.surf-gold{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%));
+          mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%))}
+.veil{background:radial-gradient(130% 100% at 50% 30%,rgba(11,10,8,0) 34%,rgba(11,10,8,.5) 100%)}
 main{position:relative;z-index:2}
 
-/* ===== layout base ===== */
-section{position:relative;padding:120px 28px}
-.wrap{max-width:var(--maxw);margin:0 auto;position:relative}
+section{position:relative;padding:118px 28px}
+.wrap{max-width:720px;margin:0 auto;position:relative}
+.wide{max-width:var(--maxw)}
 .label{font-family:var(--mono);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
 .label::before{content:"";width:34px;height:1px;background:var(--gold)}
 .rule{width:54px;height:1px;background:var(--gold);margin:30px 0}
@@ -53,22 +45,37 @@ section{position:relative;padding:120px 28px}
 .pull .hl{color:var(--gold-hi)}
 
 /* ===== header ===== */
-.bar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:15px 28px;
-  background:rgba(11,10,8,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transform:translateY(-100%);transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:15px 28px;background:rgba(11,10,8,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transform:translateY(-100%);transition:transform .5s var(--ease),border-color .5s var(--ease)}
 .bar.show{transform:translateY(0);border-color:var(--line)}
 .bar .bm{font-family:var(--serif);font-style:italic;font-size:16px;color:#f3ecdd}.bar .bm span{color:var(--gold-hi)}
 .bar .blink{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#f3ecdd;text-decoration:none;border:1px solid var(--line);padding:9px 18px;border-radius:2px;transition:all .35s var(--spring)}
-.bar .blink:hover{background:var(--gold);color:#17120a;border-color:var(--gold);transform:translateY(-1px)}
+.bar .blink:hover{background:var(--gold);color:#17120a;border-color:var(--gold)}
 
-/* ===== botões ===== */
-.btn{display:inline-block;position:relative;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#17120a;
-  background:linear-gradient(180deg,var(--gold-hi),var(--gold));text-decoration:none;padding:20px 42px;border-radius:2px;border:1px solid var(--gold);
-  transition:transform .4s var(--spring),box-shadow .4s var(--ease);box-shadow:0 12px 34px rgba(198,154,62,.28)}
+.btn{display:inline-block;position:relative;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#17120a;background:linear-gradient(180deg,var(--gold-hi),var(--gold));text-decoration:none;padding:20px 42px;border-radius:2px;border:1px solid var(--gold);transition:transform .4s var(--spring),box-shadow .4s var(--ease);box-shadow:0 12px 34px rgba(198,154,62,.28)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(198,154,62,.4)}
-.under{margin-top:15px;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-3)}
-.under b{color:var(--gold-hi);font-weight:500}
+.under{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}.under b{color:var(--gold-hi);font-weight:500}
 
-/* ===== HERO com a tigela que se repara sob o cursor ===== */
+/* ===== CACO-FOTO com borda de ouro (a peça que remenda a tigela) ===== */
+.shard{position:relative;isolation:isolate}
+.shard img{width:100%;display:block;object-fit:cover;background:#14110d}
+.shard .seam{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.shard .seam path{fill:none;stroke:url(#goldSeam);stroke-width:4;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 5px rgba(242,210,122,.55))}
+.js .shard{opacity:0;transform:scale(.93) translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--spring)}
+.js .shard.in{opacity:1;transform:none}
+.js .shard .seam path{stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1.3s var(--ease) .25s}
+.js .shard.in .seam path{stroke-dashoffset:0}
+.shard .cap{position:absolute;left:16px;bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-shadow:0 2px 12px #000;z-index:2}
+/* formas de caco (clip + a mesma no path SVG) */
+.shard.s1 img{-webkit-clip-path:polygon(5% 0,100% 7%,95% 100%,0 90%);clip-path:polygon(5% 0,100% 7%,95% 100%,0 90%);aspect-ratio:4/5}
+.shard.s2 img{-webkit-clip-path:polygon(0 6%,90% 0,100% 84%,10% 100%);clip-path:polygon(0 6%,90% 0,100% 84%,10% 100%);aspect-ratio:1/1}
+.shard.s3 img{-webkit-clip-path:polygon(8% 2%,100% 0,92% 96%,0 100%);clip-path:polygon(8% 2%,100% 0,92% 96%,0 100%);aspect-ratio:4/5}
+.shard.s4 img{-webkit-clip-path:polygon(4% 0,96% 5%,100% 100%,0 95%);clip-path:polygon(4% 0,96% 5%,100% 100%,0 95%);aspect-ratio:3/4}
+
+/* bloco texto+caco */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.duo.rev{direction:rtl}.duo.rev>*{direction:ltr}
+
+/* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
 .hero .stage{position:absolute;inset:0;cursor:crosshair}
 .bowl-base{position:absolute;inset:0;background:url('assets/bowl_chawan_v3.png') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
@@ -77,159 +84,102 @@ section{position:relative;padding:120px 28px}
 .hero .hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(28px,6vw,80px);pointer-events:none}
 .hero .hc{margin-left:auto;max-width:600px}
 .hero h1{font-size:clamp(48px,7.2vw,92px);line-height:.98;letter-spacing:-.03em;color:#fbf5ea}
-.hero h1 em{color:var(--gold-hi)}
 .hero .sub{font-size:clamp(17px,1.5vw,20px);color:var(--ink);line-height:1.6;max-width:46ch;margin-top:26px}
-.hbul{list-style:none;margin:26px 0 0;display:flex;flex-direction:column;gap:12px}
+.hbul{list-style:none;margin:24px 0 0;display:flex;flex-direction:column;gap:11px}
 .hbul li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.5;color:var(--ink-2);max-width:50ch}
 .hbul li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 9px rgba(242,210,122,.7)}
-.hbul li b{color:#f3ecdd;font-weight:600}
-.hero .cta-area{margin-top:32px;pointer-events:auto}
-.hero .hint{margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);display:inline-flex;align-items:center;gap:10px}
-.hero .hint .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(198,154,62,.6);animation:pulse 2.2s var(--ease) infinite}
+.hero .cta-area{margin-top:30px;pointer-events:auto}
+.hero .hint{margin-top:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);display:inline-flex;align-items:center;gap:10px}
+.hero .hint .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2.2s var(--ease) infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(198,154,62,.5)}70%{box-shadow:0 0 0 11px rgba(198,154,62,0)}100%{box-shadow:0 0 0 0 rgba(198,154,62,0)}}
 
-/* ===== reveal on scroll ===== */
+/* reveal */
 .reveal{opacity:1;transform:none}
 .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.js .reveal.in{opacity:1;transform:none}
-.js .reveal[style*="--d"]{transition-delay:var(--d)}
+.js .reveal.in{opacity:1;transform:none}.js .reveal[style*="--d"]{transition-delay:var(--d)}
 
-/* ===== CALCULADORA (somadora de problemas reais) ===== */
+/* ===== calculadora ===== */
 .calc{max-width:1000px;margin:0 auto}
-.calc-head{text-align:center;max-width:640px;margin:0 auto 48px}
-.calc-head h2{font-size:clamp(34px,5.4vw,58px)}
-.calc-head p{color:var(--ink-2);margin-top:18px}
+.calc-head{text-align:center;max-width:640px;margin:0 auto 44px}
+.calc-head h2{font-size:clamp(34px,5.4vw,58px)}.calc-head p{color:var(--ink-2);margin-top:16px}
 .calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
-.panel{background:rgba(20,17,13,.66);border:1px solid var(--line);border-radius:7px;padding:32px 30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.prob{padding:20px 0;border-bottom:1px solid rgba(198,154,62,.12)}
-.prob:first-child{padding-top:0}.prob:last-child{border-bottom:none;padding-bottom:0}
+.panel{background:rgba(20,17,13,.7);border:1px solid var(--line);border-radius:7px;padding:30px 28px;backdrop-filter:blur(6px)}
+.prob{padding:20px 0;border-bottom:1px solid rgba(198,154,62,.12)}.prob:first-child{padding-top:0}.prob:last-child{border-bottom:none;padding-bottom:0}
 .prob .ph{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
-.prob .pt{font-family:var(--serif);font-size:19px;color:#fbf5ea;font-style:italic}
-.prob .pv{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--gold-hi);white-space:nowrap}
-.prob .pq{font-size:13.5px;color:var(--ink-3);margin:4px 0 14px;max-width:48ch}
+.prob .pt{font-family:var(--serif);font-size:18px;color:#fbf5ea;font-style:italic}
+.prob .pv{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-hi);white-space:nowrap}
+.prob .pq{font-size:13px;color:var(--ink-3);margin:4px 0 13px;max-width:48ch}
 .prob input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;background:rgba(198,154,62,.2);outline:none;cursor:pointer}
 .prob input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d;box-shadow:0 2px 12px rgba(242,210,122,.55);cursor:grab;transition:transform .2s var(--spring)}
-.prob input[type=range]::-webkit-slider-thumb:active{transform:scale(1.18);cursor:grabbing}
-.prob input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d;cursor:grab}
-.prob .fix{margin-top:11px;font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--gold-deep);display:none}
-.prob.on .fix{display:block;color:var(--gold)}
-.prob.on .pt{color:var(--gold-hi)}
-.calc-out{position:sticky;top:90px;text-align:left}
+.prob input[type=range]::-webkit-slider-thumb:active{transform:scale(1.18)}
+.prob input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d}
+.prob .fix{margin-top:11px;font-family:var(--mono);font-size:11px;color:var(--gold-deep);display:none}
+.prob.on .fix{display:block;color:var(--gold)}.prob.on .pt{color:var(--gold-hi)}
+.calc-out{position:sticky;top:90px}
 .calc-out .oe{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
-.calc-big{font-family:var(--serif);font-size:clamp(48px,7vw,74px);font-weight:600;color:var(--gold-hi);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-shadow:0 0 40px rgba(242,210,122,.25)}
-.calc-sub{margin-top:14px;font-family:var(--mono);font-size:13px;color:var(--ink-2);line-height:1.6}
-.calc-sub b{color:var(--gold-hi);font-weight:500}
-.calc-bar{margin:22px 0;height:8px;border-radius:8px;background:rgba(198,154,62,.14);overflow:hidden}
+.calc-big{font-family:var(--serif);font-size:clamp(48px,7vw,72px);font-weight:600;color:var(--gold-hi);line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 40px rgba(242,210,122,.25)}
+.calc-sub{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}.calc-sub b{color:var(--gold-hi);font-weight:500}
+.calc-bar{margin:20px 0;height:8px;border-radius:8px;background:rgba(198,154,62,.14);overflow:hidden}
 .calc-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi));transition:width .5s var(--ease);box-shadow:0 0 16px rgba(242,210,122,.5)}
-.calc-out .msg{margin-top:20px;font-size:15px;color:var(--ink);line-height:1.6}
-.calc-out .btn{margin-top:22px;width:100%;text-align:center}
-.calc-note{max-width:760px;margin:34px auto 0;text-align:center;font-size:13px;color:var(--ink-3);font-style:italic;line-height:1.6}
+.calc-out .msg{margin-top:18px;font-size:15px;color:var(--ink);line-height:1.6}
+.calc-out .btn{margin-top:20px;width:100%;text-align:center}
+.calc-note{max-width:760px;margin:32px auto 0;text-align:center;font-size:13px;color:var(--ink-3);font-style:italic}
 
-/* ===== método D.T.M. ===== */
+/* método / casos / listas / oferta / faq (compactos) */
 .dtm{list-style:none;counter-reset:s;margin:36px 0 0}
-.dtm li{position:relative;padding:26px 0 26px 84px;border-top:1px solid var(--line)}
-.dtm li:first-child{border-top:none}
-.dtm li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:24px;font-family:var(--serif);font-size:38px;font-style:italic;color:var(--gold-hi);line-height:1}
-.dtm h3{font-size:22px;font-weight:600;margin-bottom:6px}.dtm h3 .w{color:var(--gold-hi)}
-.dtm p{font-size:16.5px;margin:0}
-
-/* ===== casos ===== */
-.case{display:grid;grid-template-columns:210px 1fr;gap:38px;align-items:start;padding:36px 0;border-top:1px solid var(--line)}
-.case:first-of-type{border-top:none}
-.case .n{font-family:var(--serif);font-size:clamp(36px,5vw,48px);font-weight:600;color:var(--gold-hi);line-height:1;display:block;font-style:italic}
-.case .l{display:block;margin-top:10px;font-size:13px;color:var(--ink-3);line-height:1.4}
-.case .nm{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#f3ecdd;display:block;margin-bottom:10px}
-.case .bd p{font-size:16px;color:var(--ink-2);margin:0}
-.note{font-size:14px;color:var(--ink-3);font-style:italic;margin-top:28px}
-
-/* ===== listas ===== */
+.dtm li{position:relative;padding:24px 0 24px 82px;border-top:1px solid var(--line)}.dtm li:first-child{border-top:none}
+.dtm li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:22px;font-family:var(--serif);font-size:36px;font-style:italic;color:var(--gold-hi)}
+.dtm h3{font-size:21px;font-weight:600;margin-bottom:5px}.dtm h3 .w{color:var(--gold-hi)}.dtm p{font-size:16px;margin:0}
+.case{padding:30px 0;border-top:1px solid var(--line)}.case:first-of-type{border-top:none}
+.case .n{font-family:var(--serif);font-size:clamp(30px,4vw,40px);font-weight:600;color:var(--gold-hi);font-style:italic;display:inline-block;margin-right:14px}
+.case .nm{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#f3ecdd}
+.case p{font-size:16px;color:var(--ink-2);margin:10px 0 0}
+.note{font-size:14px;color:var(--ink-3);font-style:italic;margin-top:24px}
 .deliv{list-style:none;margin:4px 0 0}
-.deliv li{position:relative;padding:16px 0 16px 30px;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2)}
-.deliv li:last-child{border-bottom:none}
-.deliv li::before{content:"";position:absolute;left:2px;top:23px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.deliv li{position:relative;padding:15px 0 15px 30px;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2)}
+.deliv li:last-child{border-bottom:none}.deliv li::before{content:"";position:absolute;left:2px;top:22px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
 .deliv li b{color:#fbf5ea}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-.cols ul{list-style:none}
-.cols li{position:relative;padding:11px 0 11px 26px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}.cols ul{list-style:none}
+.cols li{position:relative;padding:11px 0 11px 26px;font-size:16px;color:var(--ink-2)}
 .cols .yes li::before{content:"";position:absolute;left:0;top:.92em;width:12px;height:1px;background:var(--gold-hi)}
 .cols .no li::before{content:"";position:absolute;left:0;top:.92em;width:12px;height:1px;background:#a15a4a}
 .cols h3{font-size:14px;font-weight:700;font-family:var(--sans);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
 .cols .yes h3{color:var(--gold-hi)}.cols .no h3{color:var(--ink-3)}
-.bonus{list-style:none;margin:6px 0 0;display:flex;flex-direction:column;gap:18px}
-.bonus li{padding:24px 26px;background:rgba(20,17,13,.5);border:1px solid var(--line);border-radius:5px}
-.bonus b{color:#fbf5ea}.bonus .v{display:block;margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--gold)}
-
-/* ===== stack / oferta ===== */
-.offer{background:rgba(20,17,13,.6);border:1px solid var(--line);border-radius:8px;padding:44px 42px}
+.offer{background:rgba(20,17,13,.66);border:1px solid var(--line);border-radius:8px;padding:42px 40px}
 .stack{width:100%;border-collapse:collapse;font-size:16px}
-.stack td{padding:15px 4px;border-bottom:1px solid var(--line);color:var(--ink-2)}
-.stack td.v{text-align:right;font-family:var(--mono);font-size:14px;color:var(--ink-3);white-space:nowrap}
-.stack tr.tot td{border-top:1px solid var(--gold);border-bottom:none;padding-top:20px;color:#fbf5ea;font-weight:600}
-.stack tr.tot td.v{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--line)}
-.stack tr.price td{border-bottom:none;padding-top:12px}
-.stack tr.price .lab{font-family:var(--serif);font-size:21px;color:#fbf5ea}
-.stack tr.price .v{font-family:var(--serif);font-size:46px;color:var(--gold-hi);text-decoration:none;font-weight:600}
-
-/* ===== autoridade ===== */
-.auth{display:grid;grid-template-columns:320px 1fr;gap:52px;align-items:start}
-.auth .ph img{width:100%;border-radius:4px;display:block;box-shadow:0 24px 64px rgba(0,0,0,.6);aspect-ratio:4/5;object-fit:cover;background:#14110d}
-.auth .nm{font-family:var(--serif);font-size:27px;font-weight:600;color:#fff;display:block;margin-bottom:4px}
-.auth .rl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);font-weight:700;margin-bottom:24px;display:block}
-.auth .aph{margin:24px 0;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold-hi)}
-.auth .bfa{display:flex;align-items:baseline;gap:16px;padding-top:24px;border-top:1px solid var(--line)}
-.auth .bfa .n{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold-hi);font-weight:600;white-space:nowrap}
-.auth .bfa .l{font-size:13px;color:var(--ink-2);line-height:1.35;max-width:26ch}
-
-/* ===== garantia / faq ===== */
-.guar{border:1px solid var(--gold);border-radius:6px;padding:44px 42px;background:rgba(20,17,13,.5)}
-.guar .gt{font-family:var(--serif);font-size:24px;color:#fbf5ea;font-weight:600;margin-bottom:14px;font-style:italic}
+.stack td{padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink-2)}.stack td.v{text-align:right;font-family:var(--mono);font-size:14px;color:var(--ink-3);white-space:nowrap}
+.stack tr.tot td{border-top:1px solid var(--gold);border-bottom:none;padding-top:20px;color:#fbf5ea;font-weight:600}.stack tr.tot td.v{color:var(--ink-3);text-decoration:line-through}
+.stack tr.price td{border-bottom:none;padding-top:12px}.stack tr.price .lab{font-family:var(--serif);font-size:21px;color:#fbf5ea}.stack tr.price .v{font-family:var(--serif);font-size:46px;color:var(--gold-hi);font-weight:600}
+.guar{border:1px solid var(--gold);border-radius:6px;padding:40px 38px;background:rgba(20,17,13,.5)}
+.guar .gt{font-family:var(--serif);font-size:23px;color:#fbf5ea;font-weight:600;margin-bottom:12px;font-style:italic}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;position:relative;font-family:var(--serif);font-size:19.5px;color:#fbf5ea;font-weight:500;transition:color .3s var(--ease)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;font-family:var(--serif);font-size:19px;color:#fbf5ea;font-weight:500}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";position:absolute;right:4px;top:33px;width:12px;height:1px;background:var(--gold)}
-.faq summary::before{content:"";position:absolute;right:9px;top:28px;width:1px;height:12px;background:var(--gold);transition:transform .35s var(--ease)}
-.faq details[open] summary::before{transform:scaleY(0)}.faq summary:hover{color:var(--gold-hi)}
-.faq .ans{padding:0 0 26px;font-size:16px;color:var(--ink-2);max-width:62ch}
-
-/* ===== fecho ===== */
-.close{text-align:center}
-.close h2{font-size:clamp(44px,6.6vw,74px);line-height:1}
-.foot{margin-top:80px;padding-top:40px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);line-height:1.7;text-align:center;max-width:66ch;margin-left:auto;margin-right:auto}
-.foot a{color:inherit;text-decoration:underline;text-decoration-color:var(--line)}
+.faq summary::after{content:"";position:absolute;right:4px;top:31px;width:12px;height:1px;background:var(--gold)}
+.faq summary::before{content:"";position:absolute;right:9px;top:26px;width:1px;height:12px;background:var(--gold);transition:transform .35s var(--ease)}
+.faq details[open] summary::before{transform:scaleY(0)}
+.faq .ans{padding:0 0 24px;font-size:16px;color:var(--ink-2);max-width:62ch}
+.close{text-align:center}.close h2{font-size:clamp(44px,6.6vw,74px);line-height:1}
+.foot{margin-top:70px;padding-top:36px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);text-align:center;max-width:66ch;margin-left:auto;margin-right:auto}
+.foot a{color:inherit;text-decoration:underline}
 
 @media(max-width:900px){
   .calc-grid{grid-template-columns:1fr;gap:20px}.calc-out{position:static}
-  .auth{grid-template-columns:1fr;gap:28px}.auth .ph{max-width:300px}
-  .case{grid-template-columns:1fr;gap:12px}.cols{grid-template-columns:1fr;gap:28px}
+  .duo{grid-template-columns:1fr;gap:34px}.duo.rev{direction:ltr}
+  .cols{grid-template-columns:1fr;gap:28px}
 }
-@media(max-width:720px){
-  section{padding:82px 22px}
-  .hero{min-height:94vh}.bowl-base{background-position:center 34%}
-  .hero .hveil{background:linear-gradient(180deg,rgba(11,10,8,.1),rgba(11,10,8,.6) 60%,var(--bg))}
-  .hero .hc{margin:0}.dtm li{padding-left:64px}.btn{padding:18px 30px;font-size:13px}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .bowl-base{filter:saturate(1) brightness(1)}#reveal{display:none}
-  .surf-gold{-webkit-mask-image:none;mask-image:none}.healline{display:none}
-  .hero .hint .dot{animation:none}
-}
+@media(max-width:720px){section{padding:80px 22px}.hero{min-height:94vh}.bowl-base{background-position:center 34%}.hero .hveil{background:linear-gradient(180deg,rgba(11,10,8,.1),rgba(11,10,8,.6) 60%,var(--bg))}.hero .hc{margin:0}.dtm li{padding-left:62px}.btn{padding:18px 30px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal,.js .shard{opacity:1;transform:none;transition:none}.js .shard .seam path{stroke-dashoffset:0}.bowl-base{filter:saturate(1) brightness(1)}#reveal{display:none}.surf-gold{-webkit-mask-image:none;mask-image:none}.hero .hint .dot{animation:none}}
 </style>
 </head>
 <body>
-<div class="surf"></div>
-<div class="surf-gold" id="surfGold"></div>
-<div class="veil"></div>
-<div class="healline" id="healline"></div>
+<div class="surf"></div><div class="surf-gold" id="surfGold"></div><div class="veil"></div>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="goldSeam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9c7723"/><stop offset=".5" stop-color="#f2d27a"/><stop offset="1" stop-color="#c69a3e"/></linearGradient></defs></svg>
 
-<header class="bar" id="bar">
-  <span class="bm">Escritório <span>de Contratos</span></span>
-  <a class="blink" href="#oferta" data-cta="bar">Ver a oferta</a>
-</header>
+<header class="bar" id="bar"><span class="bm">Escritório <span>de Contratos</span></span><a class="blink" href="#oferta" data-cta="bar">Ver a oferta</a></header>
 
 <main>
-<!-- ===================== HERO ===================== -->
+<!-- HERO -->
 <section class="hero" id="topo">
   <div class="stage" id="stage"><div class="bowl-base"></div><canvas id="reveal"></canvas></div>
   <div class="hveil"></div>
@@ -242,74 +192,48 @@ section{position:relative;padding:120px 28px}
       <li>O cliente que sumiu devendo, e você desistiu de cobrar na segunda mensagem.</li>
       <li>O mês que fechou forte e, no fim, sobrou menos que o seu pró-labore.</li>
     </ul>
-    <div class="cta-area reveal" style="--d:.28s">
-      <a class="btn" href="#calculadora" data-cta="hero">Quero ver quanto vaza</a>
-      <div class="under">por <b>R$ 97</b> · 7 dias para testar sem risco</div>
-    </div>
-    <div class="hint reveal" style="--d:.34s"><span class="dot"></span>passe o mouse sobre a peça · e role para reparar a página</div>
+    <div class="cta-area reveal" style="--d:.28s"><a class="btn" href="#calculadora" data-cta="hero">Quero ver quanto vaza</a><div class="under">por <b>R$ 97</b> · 7 dias para testar sem risco</div></div>
+    <div class="hint reveal" style="--d:.34s"><span class="dot"></span>passe o mouse na peça · e role para remendar a página</div>
   </div></div>
 </section>
 
-<!-- ===================== DOR ===================== -->
+<!-- DOR + caco 1 (o problema) -->
 <section>
-  <div class="wrap">
-    <div class="label reveal">De onde o dinheiro sai</div>
-    <h2 class="reveal" style="--d:.05s;font-size:clamp(32px,5vw,54px)">O faturamento entra.<br>O lucro escapa pelo caminho.</h2>
-    <div class="rule reveal"></div>
-    <p class="lead reveal">O mês fecha faturando bem. Uns R$ 26 mil, um mês forte. Aí você olha o que sobrou, e sumiu.</p>
-    <p class="reveal">O dinheiro não some na sua planilha nem no imposto. Ele some antes, na relação com o cliente, no espaço entre o que foi combinado e o que foi cumprido. O cliente pede o que quer, atrasa quando dá, some quando aperta, porque nunca ficou claro, por escrito, o que estava combinado e o que acontece se ele não cumprir.</p>
-    <p class="pull reveal">Você sabe que está perdendo dinheiro. <span class="hl">Só não sabe onde.</span></p>
-    <p class="reveal">O combinado no boca a boca funciona enquanto todo mundo está de bom humor. No primeiro atrito, ele deixa de funcionar, e a conta fica com você. Enquanto o furo fica aberto, o próximo ano repete o mesmo "faturei bem e sobrou pouco" que te trouxe até aqui.</p>
+  <div class="duo">
+    <div class="reveal">
+      <div class="label">De onde o dinheiro sai</div>
+      <h2 style="font-size:clamp(30px,4.4vw,48px)">O faturamento entra. O lucro escapa pelo caminho.</h2>
+      <div class="rule"></div>
+      <p class="lead">O mês fecha faturando bem. Aí você olha o que sobrou, e sumiu.</p>
+      <p>O dinheiro não some na sua planilha nem no imposto. Some antes, na relação com o cliente, no espaço entre o que foi combinado e o que foi cumprido. O combinado no boca a boca funciona enquanto todo mundo está de bom humor. No primeiro atrito, a conta fica com você.</p>
+      <p class="pull">Você sabe que perde dinheiro. <span class="hl">Só não sabe onde.</span></p>
+    </div>
+    <figure class="shard s1"><img src="assets/caco_vazamento_v1.png" alt="O dinheiro vazando"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 0 L100 7 L95 100 L0 90 Z"/></svg><span class="cap">O vazamento</span></figure>
   </div>
 </section>
 
-<!-- ===================== CALCULADORA ===================== -->
+<!-- CALCULADORA -->
 <section id="calculadora">
   <div class="calc">
     <div class="calc-head">
-      <div class="label reveal" style="justify-content:center">Some o seu rombo</div>
+      <div class="label" style="justify-content:center">Some o seu rombo</div>
       <h2 class="reveal" style="--d:.05s">Quanto a sua agência<br>perde por ano?</h2>
       <p class="reveal" style="--d:.1s">Nada de chute por faturamento. Arraste cada problema para a <strong>sua</strong> realidade — só os que são verdade pra você. O total é o dinheiro que já sai da sua mão, e ao lado aparece o furo que o Desafio fecha.</p>
     </div>
     <div class="calc-grid">
       <div class="panel reveal" id="probs">
-        <div class="prob" data-max="60000" data-annual="1">
-          <div class="ph"><span class="pt">Fechei no fio do bigode e o cara sumiu devendo</span><span class="pv" data-pv>R$ 0</span></div>
-          <div class="pq">Cliente fechado só na palavra, sem nada assinado. Quanto ficou na rua?</div>
-          <input type="range" min="0" max="60000" step="1000" value="18000">
-          <div class="fix">O Desafio fecha com o combinado por escrito (o Escopo pronto, em 6 min)</div>
-        </div>
-        <div class="prob" data-max="6000" data-annual="12">
-          <div class="ph"><span class="pt">"Só mais uma coisinha" de graça</span><span class="pv" data-pv>R$ 0</span></div>
-          <div class="pq">Extra, revisão, post a mais que você entrega e não cobra. Quanto por mês?</div>
-          <input type="range" min="0" max="6000" step="200" value="1200">
-          <div class="fix">O Desafio fecha com o Pedido de Extra (troca favor por valor)</div>
-        </div>
-        <div class="prob" data-max="40000" data-annual="1">
-          <div class="ph"><span class="pt">O projeto de 30 dias que virou 90</span><span class="pv" data-pv>R$ 0</span></div>
-          <div class="pq">A aprovação que não chega e arrasta o projeto. Quanto te custa a demora por ano?</div>
-          <input type="range" min="0" max="40000" step="1000" value="9000">
-          <div class="fix">O Desafio fecha com o Acordo de Prazo (SLA de 1 página)</div>
-        </div>
-        <div class="prob" data-max="50000" data-annual="1">
-          <div class="ph"><span class="pt">A cobrança que trava na sua garganta</span><span class="pv" data-pv>R$ 0</span></div>
-          <div class="pq">O que está atrasado agora que você não cobra firme por medo de parecer chato?</div>
-          <input type="range" min="0" max="50000" step="1000" value="12000">
-          <div class="fix">O Desafio fecha com a Régua das 3 Ondas (cobra por você, no dia certo)</div>
-        </div>
-        <div class="prob" data-max="30000" data-annual="1">
-          <div class="ph"><span class="pt">O sumido devendo que você já engoliu</span><span class="pv" data-pv>R$ 0</span></div>
-          <div class="pq">Calote crônico do último ano que você deu por perdido. Quanto foi?</div>
-          <input type="range" min="0" max="30000" step="1000" value="8000">
-          <div class="fix">O Desafio fecha com o Roteiro de Negativação (clareza, sem drama)</div>
-        </div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">Fechei no fio do bigode e o cara sumiu devendo</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Cliente fechado só na palavra, sem nada assinado. Quanto ficou na rua?</div><input type="range" min="0" max="60000" step="1000" value="18000"><div class="fix">Fecha com o combinado por escrito (o Escopo pronto, em 6 min)</div></div>
+        <div class="prob" data-annual="12"><div class="ph"><span class="pt">"Só mais uma coisinha" de graça</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Extra, revisão, post a mais que você entrega e não cobra. Quanto por mês?</div><input type="range" min="0" max="6000" step="200" value="1200"><div class="fix">Fecha com o Pedido de Extra (troca favor por valor)</div></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O projeto de 30 dias que virou 90</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">A aprovação que não chega e arrasta o projeto. Quanto te custa a demora por ano?</div><input type="range" min="0" max="40000" step="1000" value="9000"><div class="fix">Fecha com o Acordo de Prazo (SLA de 1 página)</div></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">A cobrança que trava na sua garganta</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">O que está atrasado agora que você não cobra firme por medo de parecer chato?</div><input type="range" min="0" max="50000" step="1000" value="12000"><div class="fix">Fecha com a Régua das 3 Ondas (cobra por você, no dia certo)</div></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O sumido devendo que você já engoliu</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Calote crônico do último ano que você deu por perdido. Quanto foi?</div><input type="range" min="0" max="30000" step="1000" value="8000"><div class="fix">Fecha com o Roteiro de Negativação (clareza, sem drama)</div></div>
       </div>
       <div class="calc-out reveal" style="--d:.08s">
         <div class="oe">Sai da sua mão por ano</div>
         <div class="calc-big" id="calcTotal">R$ 0</div>
         <div class="calc-sub" id="calcSub">arraste os problemas ao lado</div>
         <div class="calc-bar"><i id="calcBar"></i></div>
-        <div class="msg">Por <strong>R$ 97</strong>, o Desafio te mostra o número exato — com o Mapa dos 7 Furos, no primeiro dia — e te entrega a ferramenta que fecha cada um desses furos.</div>
+        <div class="msg">Por <strong>R$ 97</strong>, o Desafio te mostra o número exato — com o Mapa dos 7 Furos, no primeiro dia — e entrega a ferramenta que fecha cada furo.</div>
         <a class="btn" href="#oferta" data-cta="calculadora">Quero fechar esses furos · R$ 97</a>
       </div>
     </div>
@@ -317,195 +241,130 @@ section{position:relative;padding:120px 28px}
   </div>
 </section>
 
-<!-- ===================== PROVA 1 ===================== -->
-<section>
-  <div class="wrap">
-    <div class="label reveal">Você não é o primeiro a olhar para isso</div>
-    <div class="case reveal">
-      <div><span class="n">91%</span><span class="l">recuperado em 45 dias</span></div>
-      <div class="bd"><span class="nm">Camila · agência de lançamentos</span><p>R$ 47 mil parados na inadimplência, clientes atrasando 30, 60, 90 dias. Montou o processo de cobrança em 3 ondas e recuperou 91% em 45 dias, sem queimar relação com ninguém.</p></div>
-    </div>
-    <div class="case reveal" style="--d:.07s">
-      <div><span class="n">R$ 1.000</span><span class="l">de volta já no mês seguinte</span></div>
-      <div class="bd"><span class="nm">Thiago · agência de performance</span><p>Entrou desconfiado do que R$ 97 entregariam. Fechou um furo na primeira semana e recuperou R$ 1.000 já no mês seguinte.</p></div>
-    </div>
-    <p class="note reveal">Casos ilustrativos do método. Nomes fictícios.</p>
-  </div>
-</section>
-
-<!-- ===================== MÉTODO ===================== -->
+<!-- MÉTODO -->
 <section>
   <div class="wrap">
     <div class="label reveal">O método</div>
-    <h2 class="reveal" style="--d:.05s;font-size:clamp(32px,5vw,54px)">Você enxerga onde perde.<br>Depois recebe a peça que fecha.</h2>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Você enxerga onde perde. Depois recebe a peça que fecha.</h2>
     <div class="rule reveal"></div>
-    <p class="reveal">O <strong>Desafio dos 7 Furos</strong> são 7 sessões curtas, feitas para uma por dia, com acesso integral desde a compra. Cada sessão aponta um furo, mostra em reais quanto ele custa e entrega uma ferramenta pronta para fechá-lo. O caminho é sempre o mesmo, porque ninguém trava o que ainda não enxergou:</p>
+    <p class="reveal">O <strong>Desafio dos 7 Furos</strong> são 7 sessões curtas, uma por dia, com acesso integral desde a compra. Cada sessão aponta um furo, mostra em reais quanto ele custa e entrega uma ferramenta pronta para fechá-lo.</p>
     <ol class="dtm reveal">
-      <li><h3><span class="w">Diagnosticar.</span></h3><p>A sensação de "sobra pouco" vira número. O Mapa dos 7 Furos mostra, em reais, por onde a sua agência vaza hoje.</p></li>
-      <li><h3><span class="w">Travar.</span></h3><p>Um furo por dia, uma ferramenta por furo, uma decisão que você toma e registra. Do escopo aberto à cobrança que não sai.</p></li>
-      <li><h3><span class="w">Elevar.</span></h3><p>Com os seis primeiros furos fechados, você mexe no sétimo, o que decide o tamanho da sua margem o ano inteiro.</p></li>
+      <li><h3><span class="w">Diagnosticar.</span></h3><p>A sensação de "sobra pouco" vira número. O Mapa mostra, em reais, por onde a sua agência vaza hoje.</p></li>
+      <li><h3><span class="w">Travar.</span></h3><p>Um furo por dia, uma ferramenta por furo, uma decisão que você toma e registra.</p></li>
+      <li><h3><span class="w">Elevar.</span></h3><p>Com os seis primeiros fechados, você mexe no sétimo, o que decide a sua margem o ano inteiro.</p></li>
     </ol>
-    <p class="reveal" style="margin-top:38px">Curso de gestão não resolve isto. Todo curso para agência vende a mesma coisa: como faturar mais. Nenhum olha o dinheiro que você já perde depois que a venda foi feita. <strong>Faturar mais com os furos abertos só aumenta o vazamento.</strong></p>
+    <p class="reveal" style="margin-top:34px">Curso de gestão não resolve isto: todo curso vende como faturar mais. <strong>Faturar mais com os furos abertos só aumenta o vazamento.</strong></p>
   </div>
 </section>
 
-<!-- ===================== PARA QUEM ===================== -->
+<!-- ENTREGÁVEIS + cacos das ferramentas -->
+<section>
+  <div class="duo rev">
+    <div class="reveal">
+      <div class="label">O que você recebe</div>
+      <h2 style="font-size:clamp(30px,4.4vw,48px)">Sete furos, sete ferramentas. Mais o mapa do seu número.</h2>
+      <div class="rule"></div>
+      <ul class="deliv">
+        <li><b>Mapa dos 7 Furos.</b> O seu vazamento em reais na tela, em 30 minutos.</li>
+        <li><b>Template de Escopo (SOW).</b> O escopo fecha em 6 minutos.</li>
+        <li><b>Pedido de Extra.</b> Todo "só mais uma coisinha" vira orçamento aprovado.</li>
+        <li><b>Acordo de Prazo (SLA).</b> A aprovação que arrastava 90 dias volta ao combinado.</li>
+        <li><b>Régua das 3 Ondas.</b> A cobrança sai da sua cabeça e vira rotina.</li>
+        <li><b>Roteiro de Negativação</b> + <b>Decisão de Adoção</b> + <b>Quadro Antes/Depois.</b></li>
+      </ul>
+      <p class="note">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio.</p>
+    </div>
+    <figure class="shard s2"><img src="assets/caco_ferramentas_v1.png" alt="As ferramentas prontas"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 6 L90 0 L100 84 L10 100 Z"/></svg><span class="cap">As 8 ferramentas</span></figure>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
 <section>
   <div class="wrap">
     <div class="label reveal">Para quem é, e para quem não é</div>
     <div class="cols reveal" style="margin-top:16px">
-      <div class="yes"><h3>É para você se</h3><ul>
-        <li>Você é dono ou sócio de agência com 2 a 15 pessoas e fatura entre R$ 5 mil e R$ 150 mil por mês.</li>
-        <li>Já perdeu dinheiro com cliente que atrasou, extra de graça ou cancelamento sem aviso.</li>
-        <li>Sente que trabalha muito e sobra pouco, e não sabe apontar por quê.</li>
-        <li>Quer corrigir com a ferramenta na mão, não delegar para outro resolver.</li>
-      </ul></div>
-      <div class="no"><h3>Não é para você se</h3><ul>
-        <li>Você é freelancer solo sem clientes recorrentes: o atrito ainda não justifica.</li>
-        <li>Procura alguém para resolver tudo por você. Aqui quem aplica é você.</li>
-        <li>Estuda sem aplicar. Cada sessão tem uma decisão para tomar.</li>
-        <li>Quer um método para faturar mais. Este é para proteger o que você já fatura.</li>
-      </ul></div>
+      <div class="yes"><h3>É para você se</h3><ul><li>É dono de agência de 2 a 15 pessoas, faturando R$ 5 a 150 mil/mês.</li><li>Já perdeu dinheiro com atraso, extra de graça ou cancelamento.</li><li>Trabalha muito e sobra pouco, sem saber por quê.</li><li>Quer corrigir com a ferramenta na mão.</li></ul></div>
+      <div class="no"><h3>Não é para você se</h3><ul><li>É freelancer solo sem recorrência.</li><li>Quer que outro resolva por você.</li><li>Estuda e não aplica.</li><li>Quer faturar mais — isto protege o que você já fatura.</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== ENTREGÁVEIS ===================== -->
+<!-- PROVA + caco resultado -->
 <section>
-  <div class="wrap">
-    <div class="label reveal">O que você recebe</div>
-    <h2 class="reveal" style="--d:.05s;font-size:clamp(32px,5vw,54px)">Sete furos, sete ferramentas.<br>Mais o mapa do seu número.</h2>
-    <div class="rule reveal"></div>
-    <ul class="deliv reveal">
-      <li><b>Mapa dos 7 Furos.</b> O diagnóstico da sua agência. Em 30 minutos, o seu vazamento em reais na tela. A sua primeira vitória, ainda no primeiro dia.</li>
-      <li><b>Decisão de Adoção.</b> A sua primeira micro-decisão, registrada em 2 minutos.</li>
-      <li><b>Template de Escopo (o SOW pronto).</b> O escopo fecha em 6 minutos, com o que está incluído e o que não está.</li>
-      <li><b>Pedido de Extra (o Change Order).</b> Todo "só mais uma coisinha" vira orçamento aprovado, em vez de favor.</li>
-      <li><b>Acordo de Prazo (o SLA de 1 página).</b> A aprovação que arrastava 90 dias volta ao prazo combinado.</li>
-      <li><b>Régua das 3 Ondas (ferramenta interativa).</b> Quando mandar, por qual canal, com que tom. A cobrança sai da sua cabeça e vira rotina.</li>
-      <li><b>Roteiro de Negativação.</b> O passo final da cobrança, com clareza para os dois lados, sem drama.</li>
-      <li><b>Quadro Antes/Depois.</b> A síntese do que mudou entre o primeiro e o último dia.</li>
-    </ul>
-    <p class="note reveal">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio.</p>
+  <div class="duo">
+    <figure class="shard s3"><img src="assets/caco_reparo_v1.png" alt="A margem de volta"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M8 2 L100 0 L92 96 L0 100 Z"/></svg><span class="cap">O reparo</span></figure>
+    <div class="reveal">
+      <div class="label">Quem fechou os furos</div>
+      <div class="case"><span class="n">R$ 82 mil</span><span class="nm">Rodrigo · tráfego</span><p>Fechou de boca R$ 8.500/mês. Em janeiro, R$ 51 mil não pagos + R$ 31 mil de mídia adiantada. Sem nada assinado, quase nada voltou. Hoje ele opera de outro jeito.</p></div>
+      <div class="case"><span class="n">R$ 156 mil</span><span class="nm">Jonas · serviços</span><p>Um calote de R$ 19.500 que sumiu por 60 dias. Ele seguiu o roteiro de negativação. Em 48 horas o cliente pagou com juros e ficou mais dois anos na carteira.</p></div>
+      <p class="note">Casos ilustrativos do método. Nomes fictícios.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===================== BÔNUS ===================== -->
-<section>
-  <div class="wrap">
-    <div class="label reveal">Dois bônus, inclusos</div>
-    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,48px)">Cada um cobre um pedaço<br>que ninguém costuma olhar.</h2>
-    <div class="rule reveal"></div>
-    <ul class="bonus reveal">
-      <li><p style="margin:0"><b>O Painel da Semana (aula).</b> Os 5 números que dizem, toda semana, se vai sobrar dinheiro no mês. O contador fecha o balanço e o imposto; ele não acompanha o seu caixa cliente a cliente.</p><span class="v">Avaliado em R$ 47</span></li>
-      <li><p style="margin:0"><b>O cliente que te dá prejuízo (diagnóstico).</b> Em 20 minutos, aponta com nome quem come a sua margem sem aparecer em relatório nenhum.</p><span class="v">Avaliado em R$ 37</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===================== OFERTA ===================== -->
+<!-- OFERTA -->
 <section id="oferta">
   <div class="wrap">
     <div class="label reveal">A oferta</div>
-    <h2 class="reveal" style="--d:.05s;font-size:clamp(32px,5vw,54px)">Tudo o que entra, e o que vale.</h2>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Tudo o que entra, e o que vale.</h2>
     <div class="rule reveal"></div>
     <div class="offer reveal">
       <table class="stack"><tbody>
         <tr><td>Desafio dos 7 Furos <span style="color:var(--ink-3)">· 7 sessões · 110 min</span></td><td class="v">R$ 97</td></tr>
         <tr><td>8 ferramentas prontas <span style="color:var(--ink-3)">· o Mapa + uma por furo</span></td><td class="v">R$ 67</td></tr>
-        <tr><td>Bônus · O Painel da Semana <span style="color:var(--ink-3)">· aula</span></td><td class="v">R$ 47</td></tr>
-        <tr><td>Bônus · O cliente que te dá prejuízo <span style="color:var(--ink-3)">· diagnóstico</span></td><td class="v">R$ 37</td></tr>
+        <tr><td>Bônus · O Painel da Semana</td><td class="v">R$ 47</td></tr>
+        <tr><td>Bônus · O cliente que te dá prejuízo</td><td class="v">R$ 37</td></tr>
       </tbody><tfoot>
         <tr class="tot"><td>Valor total</td><td class="v">R$ 248</td></tr>
         <tr class="price"><td class="lab">Você investe hoje</td><td class="v">R$ 97</td></tr>
       </tfoot></table>
-      <div class="cta-area" style="margin-top:28px">
-        <a class="btn" href="#" data-cta="checkout" data-checkout style="width:100%;text-align:center">Garantir meu acesso · R$ 97</a>
-        <div class="under" style="text-align:center">à vista, no PIX · acesso imediato — o e-mail chega em até <b>3 minutos</b></div>
-      </div>
+      <div class="cta-area" style="margin-top:26px"><a class="btn" href="#" data-cta="checkout" data-checkout style="width:100%;text-align:center">Garantir meu acesso · R$ 97</a><div class="under" style="text-align:center">à vista, no PIX · acesso em até <b>3 minutos</b></div></div>
     </div>
-    <p class="reveal" style="margin-top:34px;color:var(--ink-2);max-width:60ch"><strong>R$ 97 por um problema desse tamanho tem um porquê.</strong> O desafio é a porta de entrada, não o destino. Por R$ 97 você descobre onde a sua agência perde dezenas de milhares por ano, e sai com as 7 travas instaladas.</p>
-  </div>
-</section>
-
-<!-- ===================== PROVA 2 ===================== -->
-<section>
-  <div class="wrap">
-    <div class="label reveal">Quem fechou os furos</div>
-    <div class="case reveal">
-      <div><span class="n">R$ 82 mil</span><span class="l">perdidos num cliente só, sem nada assinado</span></div>
-      <div class="bd"><span class="nm">Rodrigo · agência de tráfego</span><p>Fechou de boca R$ 8.500/mês com um e-commerce. Em janeiro as vendas caíram: R$ 51 mil em serviço não pago e R$ 31 mil em mídia adiantada que nunca voltou. Sem nada assinado, a chance de receber era mínima. Hoje ele opera de outro jeito.</p></div>
-    </div>
-    <div class="case reveal" style="--d:.07s">
-      <div><span class="n">R$ 156 mil</span><span class="l">em renovações depois de um calote de R$ 19.500</span></div>
-      <div class="bd"><span class="nm">Jonas · agência de serviços</span><p>Um cliente devia R$ 19.500 e sumiu por 60 dias. Jonas seguiu o roteiro de negativação, no passo certo. Em 48 horas o cliente pagou com juros, pediu desculpas e ficou na carteira por mais dois anos.</p></div>
-    </div>
-    <div class="case reveal" style="--d:.14s">
-      <div><span class="n">R$ 144 mil</span><span class="l">por ano em extras que antes saíam de graça</span></div>
-      <div class="bd"><span class="nm">Bruno · agência de social media</span><p>Um pacote de R$ 3.500/mês que entregava 20 horas de trabalho não cobrado por mês. Com o Pedido de Extra, 70% dos extras passaram a ser aprovados e pagos. Com 15 clientes, mais de R$ 144 mil por ano.</p></div>
-    </div>
-    <p class="note reveal">Casos ilustrativos do método. Nomes fictícios.</p>
-    <p class="pull reveal" style="text-align:center;margin-left:auto;margin-right:auto;font-size:clamp(20px,3vw,26px)">De cada 100 agências abertas no Brasil, menos de uma segue de pé depois de 8 anos. O que mata quase nunca é a qualidade do serviço. <span class="hl">É a conta que não fecha.</span></p>
-  </div>
-</section>
-
-<!-- ===================== GARANTIA ===================== -->
-<section>
-  <div class="wrap">
-    <div class="guar reveal">
+    <div class="guar reveal" style="margin-top:34px">
       <div class="label" style="margin-bottom:12px">Garantia primeiro furo</div>
       <div class="gt">7 dias para testar sem risco.</div>
-      <p style="color:var(--ink-2);margin:0">Você acessa, aplica o primeiro furo e enxerga o vazamento na sua operação. Se não fizer sentido para a sua agência, devolvemos o seu dinheiro. O risco é todo nosso. O acesso é liberado em até 3 minutos depois da compra.</p>
+      <p style="color:var(--ink-2);margin:0">Você acessa, aplica o primeiro furo e enxerga o vazamento. Se não fizer sentido, devolvemos o seu dinheiro. O risco é todo nosso.</p>
     </div>
-    <p class="reveal" style="color:var(--ink-2);max-width:62ch;margin:30px auto 0;text-align:center;font-size:15px">Suporte por e-mail, com resposta em até 1 dia útil — para você não travar na hora de aplicar.</p>
   </div>
 </section>
 
-<!-- ===================== AUTORIDADE ===================== -->
+<!-- AUTORIDADE + caco do expert -->
 <section>
-  <div class="wrap" style="max-width:920px">
-    <div class="label reveal">Quem está por trás</div>
-    <div class="auth reveal" style="margin-top:14px">
-      
-      <div class="ph"><img src="assets/ricardo.jpg" alt="Ricardo Gonçalves" loading="lazy" width="320" height="400"></div>
-      <div>
-        <span class="nm">Ricardo Gonçalves</span>
-        <span class="rl">Copywriter de contratos</span>
-        <p>O Ricardo começou escrevendo contratos para o mercado digital. Os problemas que ele via eram sempre os mesmos sete que você leu aqui, e quase sempre terminavam em calote, rescisão, prejuízo. O documento protegia na teoria e falhava na prática.</p>
-        <p>A virada veio de fora do direito. Uma vez, em vez de ameaçar um devedor de R$ 5 mil com a linguagem de sempre, ele escreveu a cobrança com técnica de copywriting. O devedor respondeu em 20 minutos dizendo que ia pagar. Foi a primeira vez que ele viu a mesma peça funcionar na prática, e não só no papel.</p>
-        <p>A leitura dele é a base do desafio: a maioria das agências não tem um problema jurídico. Tem um problema de margem, escondido no único lugar onde ninguém pensa em olhar.</p>
-        <p class="aph">A caneta que conserta é a mesma que assina.</p>
-        <div class="bfa"><span class="n">25–30% → 3–5%</span><span class="l">a inadimplência nas agências que ele blindou com esse método</span></div>
-      </div>
+  <div class="duo rev">
+    <div class="reveal">
+      <div class="label">Quem está por trás</div>
+      <h2 style="font-size:clamp(26px,3.6vw,40px)">Ricardo Gonçalves</h2>
+      <p style="color:var(--gold-hi);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:8px 0 20px">Copywriter de contratos</p>
+      <p>Ele começou escrevendo contratos para o mercado digital. Os problemas eram sempre os mesmos sete que você leu aqui, terminando em calote, rescisão, prejuízo. O documento protegia na teoria e falhava na prática.</p>
+      <p>A virada veio de fora do direito: uma cobrança escrita com técnica de copywriting fez um devedor responder em 20 minutos dizendo que ia pagar. A leitura dele é a base do desafio: a maioria das agências não tem um problema jurídico, tem um problema de margem, escondido onde ninguém olha.</p>
+      <p style="font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold-hi);margin-top:20px">A caneta que conserta é a mesma que assina.</p>
+      <p style="margin-top:16px;color:var(--ink-2)"><span style="font-family:var(--serif);font-style:italic;font-size:24px;color:var(--gold-hi)">25–30% → 3–5%</span> · a inadimplência nas agências que ele blindou.</p>
     </div>
+    
+    <figure class="shard s4"><img src="assets/ricardo.jpg" alt="Ricardo Gonçalves"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 0 L96 5 L100 100 L0 95 Z"/></svg></figure>
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
+<!-- FAQ -->
 <section>
   <div class="wrap">
     <div class="label reveal">Perguntas</div>
     <div class="faq reveal" style="margin-top:16px">
-      <details><summary>Já vi conteúdo sobre gestão de agência. Isto é mais do mesmo?</summary><div class="ans">Conteúdo genérico ensina a faturar mais. Este desafio mostra, em reais, por onde você já perde hoje, e entrega uma ferramenta pronta por furo.</div></details>
-      <details><summary>Não tenho tempo, e compro coisa que não aplico.</summary><div class="ans">São 7 sessões de até 14 minutos, com uma ferramenta que se preenche na hora. A primeira vitória chega em meia hora: o Mapa preenchido com o seu número.</div></details>
-      <details><summary>A minha agência é diferente.</summary><div class="ans">Os 7 furos são de relação comercial, não de nicho. Tráfego, social, branding ou lançamento cobram, entregam escopo e tomam calote do mesmo jeito. O diagnóstico é montado a partir das suas respostas.</div></details>
-      <details><summary>Já tenho contador.</summary><div class="ans">O contador cuida de imposto e obrigação. Os furos aqui são de operação e de cobrança, e acontecem antes de chegar na contabilidade. É o pedaço que o contador não olha.</div></details>
-      <details><summary>R$ 97 num produto que eu não conheço.</summary><div class="ans">O risco de R$ 97 é conhecido e limitado. O risco de manter os furos abertos fica entre R$ 38 mil e R$ 94 mil por ano na faixa da maioria. Em 30 minutos você já sabe se valeu. E tem 7 dias para testar sem risco.</div></details>
-      <details><summary>Isto é consultoria jurídica?</summary><div class="ans">Não. É educação financeira para donos de agência. As ferramentas protegem a sua margem; quem cuida do jurídico da sua empresa continua sendo o seu advogado.</div></details>
+      <details><summary>Isto é mais do mesmo?</summary><div class="ans">Conteúdo genérico ensina a faturar mais. Este mostra, em reais, por onde você já perde, e entrega a ferramenta por furo.</div></details>
+      <details><summary>Não tenho tempo.</summary><div class="ans">7 sessões de até 14 minutos, com ferramenta que se preenche na hora. A primeira vitória chega em meia hora.</div></details>
+      <details><summary>Já tenho contador.</summary><div class="ans">O contador cuida de imposto. Os furos aqui são de operação e cobrança, antes da contabilidade — o pedaço que ele não olha.</div></details>
+      <details><summary>R$ 97 num produto que eu não conheço?</summary><div class="ans">O risco de R$ 97 é conhecido. O de manter os furos abertos fica entre R$ 38 mil e R$ 94 mil por ano. E você tem 7 dias para testar sem risco.</div></details>
     </div>
   </div>
 </section>
 
-<!-- ===================== FECHO ===================== -->
+<!-- FECHO -->
 <section>
   <div class="wrap close">
     <div class="label reveal" style="justify-content:center">O depois</div>
     <h2 class="reveal" style="--d:.06s">A peça inteira.<br>A margem de <em>volta</em>.</h2>
-    <p class="reveal" style="--d:.14s;margin:26px auto 0;max-width:48ch;color:var(--ink);font-size:19px">Os sete furos fechados, e o lucro parando de vazar. Por <strong>R$ 97 à vista</strong>: o Desafio, as 8 ferramentas, os 2 bônus, e 7 dias para testar sem risco, com acesso em até 3 minutos.</p>
-    <div class="cta-area reveal" style="--d:.22s;margin-top:36px">
-      <a class="btn" href="#" data-cta="checkout-final" data-checkout>Quero recuperar a minha margem · R$ 97</a>
-      <div class="under">valor total R$ 248 · você investe <b>R$ 97</b> hoje, no PIX</div>
-    </div>
+    <p class="reveal" style="--d:.14s;margin:26px auto 0;max-width:48ch;color:var(--ink);font-size:19px">Os sete furos fechados. Por <strong>R$ 97 à vista</strong>: o Desafio, as 8 ferramentas, os 2 bônus, e 7 dias para testar sem risco, com acesso em até 3 minutos.</p>
+    <div class="cta-area reveal" style="--d:.22s;margin-top:34px"><a class="btn" href="#" data-cta="checkout-final" data-checkout>Quero recuperar a minha margem · R$ 97</a><div class="under">valor total R$ 248 · você investe <b>R$ 97</b> hoje, no PIX</div></div>
     <p class="foot">Conteúdo educativo de gestão financeira. Não constitui recomendação de investimento (CVM) nem consultoria jurídica. Resultados variam por agência. <a href="#">Termos</a> · <a href="#">Política de Privacidade</a> · © Escritório de Contratos</p>
   </div>
 </section>
@@ -515,90 +374,53 @@ section{position:relative;padding:120px 28px}
 (function(){
   var doc=document.documentElement; doc.classList.add('js');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-  /* ---- reveal on scroll ---- */
-  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  var els=[].slice.call(document.querySelectorAll('.reveal,.shard'));
   function show(el){el.classList.add('in');}
   if(reduce){els.forEach(show);}
   else if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(el){io.observe(el);}); setTimeout(function(){if(!document.querySelector('.reveal.in'))els.forEach(show);},1500);
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:0.16,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);}); setTimeout(function(){if(!document.querySelector('.reveal.in'))els.forEach(show);},1600);
   } else els.forEach(show);
 
-  /* ---- header + a página cicatrizando em ouro no scroll ---- */
-  var bar=document.getElementById('bar'), healline=document.getElementById('healline');
-  function onScroll(){
-    var y=window.pageYOffset||0, h=document.body.scrollHeight-window.innerHeight, p=h>0?Math.min(1,Math.max(0,y/h)):0;
-    if(y>window.innerHeight*0.8){bar.classList.add('show');}else{bar.classList.remove('show');}
-    if(!reduce){
-      doc.style.setProperty('--heal',(6+p*94).toFixed(1)+'%');
-      if(y>window.innerHeight*0.4 && p<0.98){healline.classList.add('on');}else{healline.classList.remove('on');}
-    }
-  }
-  window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll,{passive:true}); onScroll();
+  var bar=document.getElementById('bar');
+  function onScroll(){var y=window.pageYOffset||0,h=document.body.scrollHeight-window.innerHeight,p=h>0?Math.min(1,Math.max(0,y/h)):0;if(y>window.innerHeight*0.8)bar.classList.add('show');else bar.classList.remove('show');if(!reduce)doc.style.setProperty('--heal',(p*100).toFixed(1)+'%');}
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll,{passive:true});onScroll();
 
-  /* ---- pixel stubs ---- */
   function fb(ev,p){try{if(window.fbq)fbq('track',ev,p||{});}catch(e){}}
   var of=document.getElementById('oferta');
   if(of&&'IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fb('ViewContent',{content_name:'oferta_7furos'});vo.disconnect();}});},{threshold:0.3});vo.observe(of);}
   document.querySelectorAll('[data-cta]').forEach(function(a){a.addEventListener('click',function(){if(a.hasAttribute('data-checkout'))fb('InitiateCheckout',{content_name:'desafio_7furos',value:97,currency:'BRL'});else fb('Lead',{content_name:'cta_'+a.getAttribute('data-cta')});});});
 
-  /* ---- HERO: a tigela que se repara em ouro sob o cursor ---- */
-  var stage=document.getElementById('stage'), cv=document.getElementById('reveal');
+  /* HERO tigela reveal */
+  var stage=document.getElementById('stage'),cv=document.getElementById('reveal');
   if(stage&&cv&&!reduce){
-    var ctx=cv.getContext('2d'), mask=document.createElement('canvas'), mctx=mask.getContext('2d');
-    var gold=new Image(); gold.src='assets/bowl_chawan_v3.png';
+    var ctx=cv.getContext('2d'),mask=document.createElement('canvas'),mctx=mask.getContext('2d');
+    var gold=new Image();gold.src='assets/bowl_chawan_v3.png';
     var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),cover={x:0,y:0,w:0,h:0},ready=false;
-    function coverRect(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return {x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
-    function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=coverRect(gold.naturalWidth,gold.naturalHeight,W,H);}
-    gold.onload=function(){ready=true;rs();sweep();};
-    window.addEventListener('resize',rs,{passive:true});
-    function paint(x,y,s){var R=Math.max(64,Math.min(W,H)*0.13),g=mctx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,'rgba(0,0,0,'+(0.9*s)+')');g.addColorStop(.6,'rgba(0,0,0,'+(0.5*s)+')');g.addColorStop(1,'rgba(0,0,0,0)');mctx.fillStyle=g;mctx.beginPath();mctx.arc(x,y,R,0,7);mctx.fill();}
+    function cr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
+    function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=cr(gold.naturalWidth,gold.naturalHeight,W,H);}
+    gold.onload=function(){ready=true;rs();sw();};window.addEventListener('resize',rs,{passive:true});
+    function pt(x,y,s){var R=Math.max(64,Math.min(W,H)*0.13),g=mctx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,'rgba(0,0,0,'+(0.9*s)+')');g.addColorStop(.6,'rgba(0,0,0,'+(0.5*s)+')');g.addColorStop(1,'rgba(0,0,0,0)');mctx.fillStyle=g;mctx.beginPath();mctx.arc(x,y,R,0,7);mctx.fill();}
     var lx=null,ly=null;
-    function move(x,y){if(!ready)return;if(lx!==null){var d=Math.hypot(x-lx,y-ly),st=Math.max(1,Math.floor(d/14));for(var i=1;i<=st;i++)paint(lx+(x-lx)*i/st,ly+(y-ly)*i/st,1);}else paint(x,y,1);lx=x;ly=y;}
-    stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();move(e.clientX-r.left,e.clientY-r.top);});
+    function mv(x,y){if(!ready)return;if(lx!==null){var d=Math.hypot(x-lx,y-ly),st=Math.max(1,Math.floor(d/14));for(var i=1;i<=st;i++)pt(lx+(x-lx)*i/st,ly+(y-ly)*i/st,1);}else pt(x,y,1);lx=x;ly=y;}
+    stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();mv(e.clientX-r.left,e.clientY-r.top);});
     stage.addEventListener('mouseleave',function(){lx=ly=null;});
-    stage.addEventListener('touchmove',function(e){var r=stage.getBoundingClientRect(),t=e.touches[0];move(t.clientX-r.left,t.clientY-r.top);},{passive:true});
-    function sweep(){var t=0,y=H*0.5;(function s(){if(t>1)return;paint(W*0.08+(W*0.34)*t,y+Math.sin(t*6)*H*0.06,0.85);t+=0.02;requestAnimationFrame(s);})();}
-    (function render(){mctx.globalCompositeOperation='destination-out';mctx.fillStyle='rgba(0,0,0,0.006)';mctx.fillRect(0,0,W,H);mctx.globalCompositeOperation='source-over';if(ready){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='source-over';ctx.drawImage(gold,cover.x,cover.y,cover.w,cover.h);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0,W,H);ctx.globalCompositeOperation='source-over';}requestAnimationFrame(render);})();
+    stage.addEventListener('touchmove',function(e){var r=stage.getBoundingClientRect(),t=e.touches[0];mv(t.clientX-r.left,t.clientY-r.top);},{passive:true});
+    function sw(){var t=0,y=H*0.5;(function s(){if(t>1)return;pt(W*0.08+(W*0.34)*t,y+Math.sin(t*6)*H*0.06,0.85);t+=0.02;requestAnimationFrame(s);})();}
+    (function rn(){mctx.globalCompositeOperation='destination-out';mctx.fillStyle='rgba(0,0,0,0.006)';mctx.fillRect(0,0,W,H);mctx.globalCompositeOperation='source-over';if(ready){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='source-over';ctx.drawImage(gold,cover.x,cover.y,cover.w,cover.h);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0,W,H);ctx.globalCompositeOperation='source-over';}requestAnimationFrame(rn);})();
   }
 
-  /* ---- CALCULADORA somadora de problemas reais ---- */
+  /* CALCULADORA */
   var probs=[].slice.call(document.querySelectorAll('#probs .prob'));
-  var totalEl=document.getElementById('calcTotal'), subEl=document.getElementById('calcSub'), barEl=document.getElementById('calcBar');
+  var totalEl=document.getElementById('calcTotal'),subEl=document.getElementById('calcSub'),barEl=document.getElementById('calcBar');
   function brl(n){return 'R$ '+Math.round(n).toLocaleString('pt-BR');}
-  var MAXTOTAL=0; probs.forEach(function(p){MAXTOTAL+=(+p.dataset.max)*(+p.dataset.annual);});
-  var animId=null,animTimer=null;
-  function animateTotal(to){
-    if(reduce){totalEl.textContent=brl(to);return;}
-    var from=parseInt((totalEl.textContent||'0').replace(/\D/g,''))||0,t0=null,dur=600;
-    if(animId)cancelAnimationFrame(animId); if(animTimer)clearTimeout(animTimer);
-    function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(to-from)*e);if(k<1)animId=requestAnimationFrame(step);}
-    animId=requestAnimationFrame(step); animTimer=setTimeout(function(){totalEl.textContent=brl(to);},dur+150);
-  }
-  function fillRange(inp){var f=(inp.value-inp.min)/(inp.max-inp.min);inp.style.background='linear-gradient(90deg,var(--gold-hi) '+(f*100).toFixed(1)+'%,rgba(198,154,62,.2) '+(f*100).toFixed(1)+'%)';}
-  function calc(anim){
-    var total=0, active=0;
-    probs.forEach(function(p){
-      var inp=p.querySelector('input'), annual=+p.dataset.annual, val=(+inp.value)*annual;
-      p.querySelector('[data-pv]').textContent=brl(val);
-      fillRange(inp);
-      if(+inp.value>0){p.classList.add('on');active++;}else{p.classList.remove('on');}
-      total+=val;
-    });
-    total=Math.round(total/500)*500;
-    if(anim)animateTotal(total); else totalEl.textContent=brl(total);
-    barEl.style.width=Math.min(100,(total/MAXTOTAL)*100).toFixed(1)+'%';
-    if(total<=0){subEl.textContent='arraste os problemas ao lado';}
-    else{subEl.innerHTML='de <b>'+active+'</b> furo(s) · cerca de <b>'+brl(Math.round(total/12/100)*100)+'</b> por mês';}
-  }
-  if(probs.length){
-    probs.forEach(function(p){p.querySelector('input').addEventListener('input',function(){calc(true);});});
-    calc(false);
-    if('IntersectionObserver' in window && !reduce){
-      var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=0;probs.forEach(function(p){var inp=p.querySelector('input');t+=(+inp.value)*(+p.dataset.annual);});animateTotal(Math.round(t/500)*500);co.disconnect();}});},{threshold:0.4});
-      co.observe(document.getElementById('calculadora'));
-    }
+  var MAX=0;probs.forEach(function(p){var inp=p.querySelector('input');MAX+=(+inp.max)*(+p.dataset.annual);});
+  var aId=null,aT=null;
+  function anim(to){if(reduce){totalEl.textContent=brl(to);return;}var from=parseInt((totalEl.textContent||'0').replace(/\D/g,''))||0,t0=null,d=600;if(aId)cancelAnimationFrame(aId);if(aT)clearTimeout(aT);function st(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/d),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(to-from)*e);if(k<1)aId=requestAnimationFrame(st);}aId=requestAnimationFrame(st);aT=setTimeout(function(){totalEl.textContent=brl(to);},d+150);}
+  function fillR(inp){var f=(inp.value-inp.min)/(inp.max-inp.min);inp.style.background='linear-gradient(90deg,var(--gold-hi) '+(f*100).toFixed(1)+'%,rgba(198,154,62,.2) '+(f*100).toFixed(1)+'%)';}
+  function calc(a){var total=0,act=0;probs.forEach(function(p){var inp=p.querySelector('input'),v=(+inp.value)*(+p.dataset.annual);p.querySelector('[data-pv]').textContent=brl(v);fillR(inp);if(+inp.value>0){p.classList.add('on');act++;}else p.classList.remove('on');total+=v;});total=Math.round(total/500)*500;if(a)anim(total);else totalEl.textContent=brl(total);barEl.style.width=Math.min(100,(total/MAX)*100).toFixed(1)+'%';subEl.innerHTML=total<=0?'arraste os problemas ao lado':'de <b>'+act+'</b> furo(s) · cerca de <b>'+brl(Math.round(total/12/100)*100)+'</b> por mês';}
+  if(probs.length){probs.forEach(function(p){p.querySelector('input').addEventListener('input',function(){calc(true);});});calc(false);
+    if('IntersectionObserver' in window&&!reduce){var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=0;probs.forEach(function(p){t+=(+p.querySelector('input').value)*(+p.dataset.annual);});anim(Math.round(t/500)*500);co.disconnect();}});},{threshold:0.4});co.observe(document.getElementById('calculadora'));}
   }
 })();
 </script>
