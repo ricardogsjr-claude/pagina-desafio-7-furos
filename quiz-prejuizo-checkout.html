@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qual cliente te custa dinheiro? · Diagnóstico dos 7 Furos</title>
-<meta name="description" content="Em 2 minutos, descubra qual cliente da sua agência dá prejuízo todo mês — e quanto ele te custa por ano.">
+<meta name="description" content="Em 2 minutos, descubra qual cliente da sua agência dá prejuízo todo mês, e quanto ele te custa por ano.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -94,6 +94,43 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 .result .msg{margin-top:26px;font-size:16px;color:var(--ink);line-height:1.6}
 .result .msg strong{color:#fff}
 .foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
+/* ---- relatório v2 (10 blocos · POP 48) ---- */
+.result .rkick{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px;display:inline-flex;align-items:center;gap:12px}
+.result .rkick::before{content:"";width:26px;height:1px;background:var(--gold)}
+.result h2.rname{font-size:clamp(26px,4.6vw,38px);margin:0 0 6px}
+.result .rlead{font-size:17px;color:var(--ink-2);margin:10px 0 26px;max-width:56ch}
+.rblock{margin-top:30px}
+.rlabel{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.rcard{border:1px solid var(--line);border-radius:8px;padding:20px 22px;background:rgba(20,17,13,.5)}
+.rblock p{font-size:16px;color:var(--ink-2);line-height:1.62;margin-top:8px}
+.rblock p:first-child{margin-top:0}
+.rblock p b,.rblock p strong{color:#fff}
+.tese .t-inimigo b{color:var(--gold-hi)}
+.prova-item{border-left:3px solid var(--line);padding:6px 0 6px 18px}
+.prova-item.ph{border-left-color:var(--gold-deep);background:rgba(198,154,62,.06);border-radius:0 8px 8px 0;padding:14px 16px}
+.prova-item .quote{font-style:italic;color:var(--ink);font-size:15.5px;line-height:1.55}
+.prova-item.ph .quote{font-style:normal;color:var(--gold);font-family:var(--mono);font-size:12px;line-height:1.55}
+.prova-item .autor{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px;letter-spacing:.05em}
+.obj-card .o-q{font-family:var(--serif);font-size:19px;color:#fbf5ea;margin-bottom:8px}
+.entreg ul{list-style:none;margin:2px 0 0}
+.entreg li{position:relative;padding:9px 0 9px 22px;font-size:15.5px;color:var(--ink-2);line-height:1.5;border-bottom:1px solid rgba(198,154,62,.1)}
+.entreg li::before{content:"";position:absolute;left:0;top:1.05em;width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 8px rgba(242,210,122,.6)}
+.entreg .anchor{margin-top:14px;font-size:14.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:12px;line-height:1.55}
+.qw{border-left:3px solid var(--gold);padding:14px 18px;background:rgba(198,154,62,.06);border-radius:0 8px 8px 0}
+.qw p{font-size:15.5px;color:var(--ink);line-height:1.55;margin-top:6px}
+.result .cta-area{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.result .cta-area .btn{text-align:center}
+.compliance{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--ink-3)}
+@media print{
+  .surf,.surf-gold,.veil,.top,.pbar,.foot,.noprint,.cta-area{display:none!important}
+  body{background:#fff;color:#111}
+  .wrap{max-width:100%;padding:0}
+  .screen{animation:none}
+  h1,h2,h3,.result .big,.result h2.rname{color:#111!important;text-shadow:none!important}
+  .rlabel,.oe,.rsub,.compliance,.furos .fn,.rblock p,.entreg li,.qw p,.prova-item .quote{color:#222!important}
+  .rkick{color:#000!important}.rkick::before{background:#000!important}
+  .rcard,.obj-card,.prova-item.ph,.qw{border-color:#ccc!important;background:#fff!important}
+}
 @media(max-width:600px){.stage{padding:24px 0 40px}.opt{padding:16px 18px}}
 @media(prefers-reduced-motion:reduce){.screen{animation:none}.surf-gold{transition:none}}
 </style>
@@ -114,10 +151,10 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     </section>
 
     <!-- CONFIG: PERGUNTAS (adaptadas para a dor: margem por cliente) -->
-    <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Você sabe quanto custa, em horas, atender cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não faço ideia — é no sentimento</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Tenho uma noção grosseira</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, meço as horas por cliente</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Tem cliente que consome muito e paga pouco?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Com certeza — tenho um na cabeça agora</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Talvez — nunca parei pra medir</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Não — os fees estão calibrados</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Você mede a margem que sobra por cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Nunca — olho só o faturamento total</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Às vezes, quando o mês aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sempre — cliente a cliente</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Já quis "demitir" um cliente e não teve coragem?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Várias vezes — mas nunca fui</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Uma vez — depois passou</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Nunca precisei</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Você sabe quanto custa, em horas, atender cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não faço ideia, é no sentimento</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Tenho uma noção grosseira</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, meço as horas por cliente</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Tem cliente que consome muito e paga pouco?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Com certeza, tenho um na cabeça agora</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Talvez, nunca parei pra medir</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Não, os fees estão calibrados</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Você mede a margem que sobra por cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Nunca, olho só o faturamento total</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Às vezes, quando o mês aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sempre, cliente a cliente</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Já quis "demitir" um cliente e não teve coragem?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Várias vezes, mas nunca fui</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Uma vez, depois passou</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Nunca precisei</span></li></ul></section>
 
     <!-- CAPTURA -->
     <section class="screen cap" data-screen="cap">
@@ -145,26 +182,97 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 
     <!-- RESULTADO -->
     <section class="screen result" data-screen="result">
+      <!-- ============ RELATÓRIO v2 · 10 blocos (POP 48 · esqueleto v2) ============ -->
+      <!-- Bloco 1 · DIAGNÓSTICO (herda Bloco 08 bônus "O cliente que te dá prejuízo" + Bloco 02 da página) -->
+      <div class="rkick">Seu diagnóstico</div>
+      <h2 class="rname">O cliente que te dá prejuízo</h2>
+      <p class="rlead">Tem cliente que come a sua margem sem aparecer em relatório nenhum. Ele não é o que atrasa nem o que reclama. Costuma te pagar bem e, mesmo assim, sair no vermelho quando você põe as horas na conta. A conta abaixo é a dele.</p>
+
+      <!-- Bloco 2 · NÚMERO (calculadora de margem por cliente — a conta feita na tela anterior) -->
       <div class="oe" id="resLabel">A conta real desse cliente</div>
       <div class="big" id="resTotal">R$ 0</div>
       <div class="rsub" id="resSub"></div>
       <ul class="furos" id="resFuros"></ul>
-      <!-- CONFIG: RESULTADO + CTA (versão A → CHECKOUT) -->
-      <div class="msg">Essa conta é de um cliente, no chute. O bônus <strong>O cliente que te dá prejuízo</strong> aponta em 20 minutos, com nome, quem come a sua margem sem aparecer em relatório. E o Template de Escopo te mostra onde renegociar o combinado, no lugar certo. Os dois vêm no Desafio dos 7 Furos, por <strong>R$ 97</strong>.</div>
+
+      <!-- Blocos 3 a 9 · moduláveis por banda (reordenados ao vivo, nunca removidos) -->
+      <div id="rblocks">
+        <!-- Bloco 3 · TESE DA RAIZ (herda Bloco 08/02) -->
+        <div class="rblock tese" data-block="tese">
+          <div class="rlabel">A raiz por trás da conta</div>
+          <div class="rcard">
+            <p class="t-crenca">Você olha para o fee e decide rápido: cliente que paga bem é cliente bom.</p>
+            <p class="t-causa">A margem não some no imposto. Ela some cliente a cliente, na relação, antes de chegar na contabilidade. Por isso o pior cliente costuma ser o mais invisível: paga em dia, não reclama, e mesmo assim consome mais do que deixa.</p>
+            <p class="t-inimigo">O inimigo é o achismo de que <b>fee alto quer dizer cliente bom</b>. É ele que esconde quem drena a sua margem.</p>
+          </div>
+        </div>
+        <!-- Bloco 4 · FURADEIRA (herda Bloco 08 diagnóstico + Bloco 07 Template de Escopo) -->
+        <div class="rblock" data-block="furadeira">
+          <div class="rlabel">Por que este caminho resolve</div>
+          <div class="rcard">
+            <p>O diagnóstico <b>O cliente que te dá prejuízo</b> faz a conta que você acabou de ver, cliente a cliente, e em 20 minutos aponta com nome quem come a sua margem. Com o número na mão, o <b>Template de Escopo</b> renegocia o combinado no lugar certo, onde a margem estava vazando. Ele ataca a causa, a margem por cliente que ninguém olhava, e não o sintoma.</p>
+          </div>
+        </div>
+        <!-- Bloco 5 · PROVA CASADA (D3: placeholder rastreável — NUNCA inventar depoimento) -->
+        <div class="rblock" data-block="prova">
+          <div class="rlabel">Quem estava onde você está</div>
+          <div class="prova-item ph">
+            <div class="quote">[DEPOIMENTO REAL — dono de agência que rodou o diagnóstico e descobriu qual cliente comia a margem. Preencher com prova consentida (POP 36 / MAPA_MESTRE_HISTORIAS); registrar pendência em _pendencias/. Não inventar.]</div>
+            <div class="autor">[Nome · agência · resultado]</div>
+          </div>
+        </div>
+        <!-- Bloco 6 · RECOMENDAÇÃO honesta (modula banda × disposição, via modularResultado) -->
+        <div class="rblock" data-block="rec">
+          <div class="rlabel">A recomendação honesta</div>
+          <div class="rcard"><p id="recTxt">Decisão sobre cliente feita no sentimento custa caro dos dois lados. Antes de renegociar ou de deixar ir, tenha a margem por cliente em reais. O diagnóstico aponta com nome quem drena, e o Template de Escopo mostra onde renegociar.</p></div>
+        </div>
+        <!-- Bloco 7 · OBJEÇÃO dominante (herda FAQ "já tenho contador" + Bloco 08 Painel da Semana) -->
+        <div class="rblock" data-block="objecao">
+          <div class="rlabel">Antes que você pense nisso</div>
+          <div class="obj-card rcard">
+            <div class="o-q">Isso o meu contador já cuida.</div>
+            <p>O contador fecha o balanço e o imposto. Ele não acompanha o seu caixa cliente a cliente: a rentabilidade por cliente não aparece em balanço nenhum, porque acontece na relação, antes da contabilidade. O bônus <b>O Painel da Semana</b> te dá os 5 números que dizem, toda semana, se vai sobrar. E o diagnóstico aponta, com nome, o cliente que come a margem. É o pedaço que o contador não olha.</p>
+          </div>
+        </div>
+        <!-- Bloco 8 · ENTREGÁVEL + ancoragem (herda Blocos 07/08/09) -->
+        <div class="rblock entreg" data-block="entreg">
+          <div class="rlabel">O que você leva pra resolver isso</div>
+          <div class="rcard">
+            <ul>
+              <li>O diagnóstico <b>O cliente que te dá prejuízo</b>, que aponta com nome quem drena a margem, em 20 minutos.</li>
+              <li>O <b>Painel da Semana</b>, os 5 números que mostram, toda semana, se o mês vai fechar com sobra.</li>
+              <li>O <b>Template de Escopo</b>, pra renegociar o combinado onde a margem vazava.</li>
+              <li>E o <b>Mapa dos 7 Furos</b>, que põe em reais por onde a agência inteira perde.</li>
+            </ul>
+            <div class="anchor">Tudo isso está no Desafio dos 7 Furos. Valor total de R$ 248, com as 7 travas instaladas. Você investe R$ 97, à vista, no PIX, e tem 7 dias para testar sem risco.</div>
+          </div>
+        </div>
+        <!-- Bloco 9 · QUICK-WIN (comece hoje) -->
+        <div class="rblock" data-block="quick">
+          <div class="qw"><div class="rlabel" style="color:var(--gold)">Comece hoje</div><p>Pega o cliente que mais consome a sua equipe e roda esta mesma conta com os números reais dele: o fee que ele paga, as horas que ele toma, o seu custo por hora. Só isso já tira do achismo o cliente que você mais evita olhar.</p></div>
+        </div>
+      </div>
+
+      <!-- Bloco 10 · CTA ÚNICO + PDF + compliance (versão A → CHECKOUT · InitiateCheckout no clique) -->
+      <div class="msg">Esse número é de um cliente, no chute. No Desafio dos 7 Furos você faz a conta com nome, cliente a cliente, e sai sabendo quem renegociar e quem deixar ir.</div>
       <div class="cta-area">
         <a class="btn" id="ctaMain" href="#" data-checkout>Garantir meu acesso · R$ 97</a>
+        <button class="btn ghost noprint" id="savePdf" type="button">Salvar meu diagnóstico em PDF</button>
       </div>
+      <p class="compliance">Este diagnóstico é um espelho da sua percepção, não um laudo. Conteúdo educativo de gestão financeira, não constitui recomendação de investimento nem consultoria jurídica. Os números são estimados a partir do que você arrastou.</p>
     </section>
   </div>
   <div class="foot">Diagnóstico ilustrativo · números do universo de agências R$ 5–150 mil/mês · © Escritório de Contratos</div>
 </div>
 
 <script>
+const WEBHOOK_URL="COLE_AQUI"; // [IMPLANTAÇÃO] cole a URL do webhook do CRM (Make/Zapier) — P-007
 (function(){
   var doc=document.documentElement, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var order=['intro','q0','q1','q2','q3','cap','calc','result'];
   var idx=0, answers={};
+  var ORIGEM="Quiz Prejuízo", DOR="prejuizo"; // origem = nome exato do quiz · dor = tema
+  function leadScore(){var s=0,n=0;for(var k in answers){s+=answers[k];n++;}var max=(n||1)*2;return Math.max(1,Math.min(5,Math.round(1+(s/max)*4)));}
   var pbar=document.getElementById('pbar'), pcount=document.getElementById('pcount');
   function key(s){return s.dataset.screen==='q'?'q'+s.dataset.q:s.dataset.screen;}
   function go(i){
@@ -186,9 +294,11 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
   });});
   // captura
   document.getElementById('capNext').addEventListener('click',function(){
-    var em=document.getElementById('email').value.trim();
+    var em=document.getElementById('email').value.trim().toLowerCase();
     if(em && em.indexOf('@')<1){ document.getElementById('email').style.borderColor='#c05a44'; return; }
-    /* [IMPLANTAÇÃO] enviar {email, answers} ao CRM/e-mail via webhook (P-007) */
+    /* [IMPLANTAÇÃO] POST padronizado ao CRM via webhook (P-007) — preencha WEBHOOK_URL no topo */
+    var _payload={ nome:"", email:em, origem:ORIGEM, score:leadScore(), dor:DOR };
+    try{ if(WEBHOOK_URL && WEBHOOK_URL!=="COLE_AQUI"){ fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(_payload),keepalive:true}).catch(function(){}); } }catch(e){}
     try{ if(window.fbq) fbq('track','Lead',{content_name:'quiz_prejuizo'}); }catch(e){}
     go(idx+1);
   });
@@ -228,10 +338,35 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     row('O que ele te custa por ano', custoAno, false);
     row('Sobra (ou falta) no fim', margem, true);
     go(idx+1);
+    modularResultado(leadScore(), margem); // reordena blocos 3-9 + modula a recomendação pela banda
     if(reduce){ totalEl.textContent=brl(abs); return; }
     var from=0,t0=null,dur=900;(function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(abs-from)*e);if(k<1)requestAnimationFrame(step);})();setTimeout(function(){totalEl.textContent=brl(abs);},1100);
     try{ if(window.fbq) fbq('track','ViewContent',{content_name:'quiz_prejuizo_resultado'}); }catch(e){}
   });
+  // MODULAÇÃO do relatório v2: reordena os blocos 3-9 por banda (encurta/reordena, nunca remove) e ajusta a recomendação honesta.
+  function modularResultado(score, margem){
+    var band = score>=4 ? 'quente' : score<=2 ? 'frio' : 'alerta';
+    if(margem<0 && band==='alerta') band='quente'; // margem negativa é o aha que esquenta o lead
+    var orders={
+      frio:   ['tese','furadeira','objecao','prova','rec','entreg','quick'],
+      alerta: ['tese','furadeira','prova','rec','objecao','entreg','quick'],
+      quente: ['prova','rec','furadeira','objecao','entreg','tese','quick']
+    };
+    var cont=document.getElementById('rblocks'); if(!cont) return;
+    (orders[band]||orders.alerta).forEach(function(name){
+      var el=cont.querySelector('[data-block="'+name+'"]');
+      if(el) cont.appendChild(el); // move na ordem desejada (só reordena, não remove)
+    });
+    var rec=document.getElementById('recTxt');
+    if(rec){
+      rec.innerHTML = band==='frio'
+        ? 'Você está no começo de olhar pra isso, então o próximo passo é medir, não decidir. Antes de mexer em qualquer cliente, rode a conta neste mesmo e nos outros dois que mais consomem. Decisão sobre cliente feita no sentimento custa caro dos dois lados.'
+        : band==='quente'
+        ? 'Você já tem um cliente-prejuízo na cabeça agora. Tire ele do achismo antes de renegociar ou de deixar ir: com o número e o nome na mão, a conversa deixa de ser briga e vira decisão. O diagnóstico faz exatamente isso.'
+        : 'Decisão sobre cliente feita no sentimento custa caro dos dois lados. Antes de renegociar ou de deixar ir, tenha a margem por cliente em reais. O diagnóstico aponta com nome quem drena, e o Template de Escopo mostra onde renegociar.';
+    }
+  }
+  var _pdf=document.getElementById('savePdf'); if(_pdf) _pdf.addEventListener('click',function(){window.print();});
   document.getElementById('ctaMain').addEventListener('click',function(){try{if(window.fbq)fbq('track','InitiateCheckout',{content_name:'quiz_prejuizo',value:97,currency:'BRL'});}catch(e){}});
   go(0);
 })();

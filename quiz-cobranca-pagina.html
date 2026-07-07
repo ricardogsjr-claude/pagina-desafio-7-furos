@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quanto do seu dinheiro está parado na rua? · Diagnóstico dos 7 Furos</title>
-<meta name="description" content="Em 2 minutos, descubra quanto você tem parado na rua com cliente devendo — e quanto dá pra recuperar sem queimar a relação.">
+<meta name="description" content="Em 2 minutos, descubra quanto você tem parado na rua com cliente devendo, e quanto dá pra recuperar sem queimar a relação.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -93,9 +93,41 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 .furos .fx{font-family:var(--mono);font-size:12.5px;color:var(--gold);white-space:nowrap}
 .result .msg{margin-top:26px;font-size:16px;color:var(--ink);line-height:1.6}
 .result .msg strong{color:#fff}
+/* relatório v2 — 10 blocos */
+.rdiag-h{font-family:var(--serif);font-size:clamp(24px,4.4vw,34px);color:#fbf5ea;margin:4px 0 0;line-height:1.12}
+.rdiag-intro{font-size:16px;color:var(--ink-2);margin-top:14px;line-height:1.62}
+.rblk{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.rblk>p{font-size:16px;color:var(--ink);line-height:1.62}
+.rblk--num{border-top:none;padding-top:6px}
+.rlabel{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.rblk strong,.robj strong,.rstack-anchor strong{color:#fff}
+.rprova-quote{font-family:var(--serif);font-style:italic;font-size:17px;color:#fbf5ea;line-height:1.55}
+.rprova-tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3);margin-top:8px}
+.rprova-ph{margin-top:12px;font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--gold-deep);background:rgba(198,154,62,.07);border:1px dashed var(--line);border-radius:6px;padding:10px 12px}
+.robj{margin-top:26px;padding:20px 22px;border:1px solid var(--line);border-radius:8px;background:rgba(20,17,13,.5)}
+.robj-q{font-family:var(--serif);font-size:18px;color:#fbf5ea;margin-bottom:10px;line-height:1.25}
+.robj p{font-size:15.5px;color:var(--ink-2);line-height:1.6}
+.rstack-list{list-style:none;margin:14px 0 0;padding:0}
+.rstack-list li{position:relative;padding-left:22px;margin-bottom:9px;font-size:15.5px;color:var(--ink-2);line-height:1.5}
+.rstack-list li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 8px rgba(242,210,122,.6)}
+.rstack-anchor{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.rquick{margin-top:26px;border-left:3px solid var(--gold);background:rgba(198,154,62,.06);padding:16px 18px;border-radius:0 8px 8px 0}
+.rquick p{font-size:15.5px;color:var(--ink);line-height:1.6}
+.rcta{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.rcta-lead{font-size:16.5px;color:var(--ink);line-height:1.62}
+.pdfbtn{margin-top:14px;font-size:12px;padding:14px 26px}
+.rfoot{margin-top:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;line-height:1.65;color:var(--ink-3)}
 .foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
 @media(max-width:600px){.stage{padding:24px 0 40px}.opt{padding:16px 18px}}
 @media(prefers-reduced-motion:reduce){.screen{animation:none}.surf-gold{transition:none}}
+@media print{
+  .surf,.surf-gold,.veil,.top,.pbar,.cta-area,.pdfbtn,.rprova-ph,.back{display:none!important}
+  body{background:#fff;color:#1a1a1a}
+  .wrap{max-width:100%}
+  h1,h2,h3,.rdiag-h,.rlabel,.oe,.rprova-quote,.robj-q{color:#1a1a1a!important}
+  .result .big{color:#1a1a1a!important;text-shadow:none}
+  .rblk,.robj,.rquick,.rcta{border-color:#ccc!important;background:#fff!important}
+}
 </style>
 </head>
 <body>
@@ -145,26 +177,93 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 
     <!-- RESULTADO -->
     <section class="screen result" data-screen="result">
-      <div class="oe">O seu dinheiro na rua, estimado</div>
-      <div class="big" id="resTotal">R$ 0</div>
-      <div class="rsub" id="resSub"></div>
-      <ul class="furos" id="resFuros"></ul>
-      <!-- CONFIG: RESULTADO + CTA (versão B → PÁGINA) -->
-      <div class="msg">Cada real desses tem um caminho de volta. A <strong>Régua das 3 Ondas</strong> transforma a cobrança em rotina: ela acontece no dia certo, sem você ensaiar a frase nem parecer chato. E o <strong>Roteiro de Negativação</strong> é o passo final, com clareza para os dois lados. É isso que o Desafio dos 7 Furos coloca na sua mão, por <strong>R$ 97</strong>.</div>
-      <div class="cta-area">
-        <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como recuperar esse dinheiro</a>
+      <!-- RELATÓRIO v2 · 10 blocos (herda a copy da página · POP 48 · relatorio-que-vende.md) -->
+      <!-- 1 · DIAGNÓSTICO -->
+      <div class="kick">Seu diagnóstico</div>
+      <h2 class="rdiag-h">A cobrança que fica na sua cabeça e trava na segunda tentativa.</h2>
+      <p class="rdiag-intro" id="resBandIntro"></p>
+
+      <!-- 2 · NÚMERO (saída da calculadora) -->
+      <div class="rblk rblk--num">
+        <div class="oe">O seu dinheiro na rua, estimado</div>
+        <div class="big" id="resTotal">R$ 0</div>
+        <div class="rsub" id="resSub"></div>
+        <ul class="furos" id="resFuros"></ul>
       </div>
+
+      <!-- 3 · TESE DA RAIZ -->
+      <div class="rblk">
+        <div class="rlabel">A raiz por trás do sintoma</div>
+        <p>O dinheiro está na rua por um motivo simples: a sua cobrança depende da sua coragem, e não de um processo. Ela trava na segunda mensagem porque cobrar dá um aperto e você não quer parecer chato. O inimigo é a cobrança que mora na sua cabeça, em vez de rodar sozinha no dia certo.</p>
+      </div>
+
+      <!-- 4 · FURADEIRA -->
+      <div class="rblk">
+        <div class="rlabel">Por que este caminho resolve</div>
+        <p>A <strong>Régua das 3 Ondas</strong> tira a cobrança da sua cabeça e a vira rotina: quando mandar, por qual canal e com que tom, em cada onda. O <strong>Roteiro de Negativação</strong> é o passo final, com clareza para os dois lados, sem culpa e sem drama. O que ela ataca é a causa, a cobrança sem processo, e não a sua timidez.</p>
+      </div>
+
+      <!-- 5 · PROVA CASADA (ilustrativa marcada + placeholder rastreável D3) -->
+      <div class="rblk rprova">
+        <div class="rlabel">Quem estava onde você está</div>
+        <p class="rprova-quote">Camila, agência de lançamentos, tinha R$ 47 mil em inadimplência, com clientes atrasando 30, 60 e 90 dias. Aplicou a régua de cobrança em 3 ondas e, em 45 dias, recuperou 91% do que estava na rua.</p>
+        <p class="rprova-tag">Caso ilustrativo do método, nome fictício.</p>
+        <p class="rprova-ph">[DEPOIMENTO-COBRANCA: colher prova real consentida. Pendência aberta em _pendencias/, não inventar número nem caso.]</p>
+      </div>
+
+      <!-- 6 · RECOMENDAÇÃO honesta (modula por banda) -->
+      <div class="rblk">
+        <div class="rlabel" id="resRecLabel">A minha recomendação pra você</div>
+        <p id="resRec"></p>
+      </div>
+
+      <!-- 7 · OBJEÇÃO dominante (relacional) -->
+      <div class="robj">
+        <div class="robj-q">Se eu cobrar firme, vou queimar a relação com o cliente.</div>
+        <p>Quem queima a relação é a cobrança feita no impulso, quando você já está irritado. A Régua das 3 Ondas faz o contrário: cada mensagem sai no dia certo, pelo canal certo e no tom certo, antes de a irritação chegar. Foi assim que a Camila recuperou 91% do que estava na rua sem perder o cliente. Cobrar com processo é cumprir o combinado, não brigar.</p>
+      </div>
+
+      <!-- 8 · ENTREGÁVEL + ancoragem -->
+      <div class="rblk rstack">
+        <div class="rlabel">O que você leva pra resolver isso</div>
+        <p><strong>A Régua das 3 Ondas e o Roteiro de Negativação</strong>, dentro do Desafio dos 7 Furos.</p>
+        <ul class="rstack-list">
+          <li>a Régua das 3 Ondas: o processo que cobra por você, com timing, canal e tom</li>
+          <li>o Roteiro de Negativação: o passo final, com clareza para os dois lados</li>
+          <li>o Mapa dos 7 Furos e as outras ferramentas, uma pronta para cada furo</li>
+        </ul>
+        <div class="rstack-anchor">O Mapa dos 7 Furos, avulso na consultoria, custa R$ 597. Aqui ele vem junto do Desafio inteiro, por R$ 97.</div>
+      </div>
+
+      <!-- 9 · QUICK-WIN -->
+      <div class="rquick">
+        <div class="rlabel">Comece hoje</div>
+        <p>Escolha o cliente que está te devendo há mais tempo e mande hoje a primeira onda: uma mensagem curta, sem cobrança de culpa, só lembrando o combinado e a data. É a primeira onda da régua, e ela já destrava boa parte do que está parado.</p>
+      </div>
+
+      <!-- 10 · CTA ÚNICO (versão B → PÁGINA · ViewContent, sem InitiateCheckout) + PDF + compliance -->
+      <div class="rcta">
+        <p class="rcta-lead" id="resCtaLead">Cada real desses tem um caminho de volta, e ele começa por tirar a cobrança da sua cabeça. É isso que o Desafio dos 7 Furos coloca na sua mão, por R$ 97.</p>
+        <div class="cta-area">
+          <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como recuperar esse dinheiro</a>
+        </div>
+        <button class="btn ghost pdfbtn" id="savePdf" type="button">Salvar meu diagnóstico em PDF</button>
+      </div>
+      <p class="rfoot">Este diagnóstico é um espelho da sua percepção, não um laudo. Os números são estimativas a partir do que você arrastou, e os casos com nome são ilustrativos do método. Conteúdo educativo de gestão financeira, não constitui consultoria jurídica.</p>
     </section>
   </div>
   <div class="foot">Diagnóstico ilustrativo · números do universo de agências R$ 5–150 mil/mês · © Escritório de Contratos</div>
 </div>
 
 <script>
+const WEBHOOK_URL="COLE_AQUI"; // [IMPLANTAÇÃO] cole a URL do webhook do CRM (Make/Zapier) — P-007
 (function(){
   var doc=document.documentElement, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var order=['intro','q0','q1','q2','q3','cap','calc','result'];
   var idx=0, answers={};
+  var ORIGEM="Quiz Cobrança", DOR="cobranca"; // origem = nome exato do quiz · dor = tema
+  function leadScore(){var s=0,n=0;for(var k in answers){s+=answers[k];n++;}var max=(n||1)*2;return Math.max(1,Math.min(5,Math.round(1+(s/max)*4)));}
   var pbar=document.getElementById('pbar'), pcount=document.getElementById('pcount');
   function key(s){return s.dataset.screen==='q'?'q'+s.dataset.q:s.dataset.screen;}
   function go(i){
@@ -186,9 +285,11 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
   });});
   // captura
   document.getElementById('capNext').addEventListener('click',function(){
-    var em=document.getElementById('email').value.trim();
+    var em=document.getElementById('email').value.trim().toLowerCase();
     if(em && em.indexOf('@')<1){ document.getElementById('email').style.borderColor='#c05a44'; return; }
-    /* [IMPLANTAÇÃO] enviar {email, answers} ao CRM/e-mail via webhook (P-007) */
+    /* [IMPLANTAÇÃO] POST padronizado ao CRM via webhook (P-007) — preencha WEBHOOK_URL no topo */
+    var _payload={ nome:"", email:em, origem:ORIGEM, score:leadScore(), dor:DOR };
+    try{ if(WEBHOOK_URL && WEBHOOK_URL!=="COLE_AQUI"){ fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(_payload),keepalive:true}).catch(function(){}); } }catch(e){}
     try{ if(window.fbq) fbq('track','Lead',{content_name:'quiz_cobranca'}); }catch(e){}
     go(idx+1);
   });
@@ -198,10 +299,29 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
   function fillR(inp){var f=(inp.value-inp.min)/(inp.max-inp.min);inp.style.background='linear-gradient(90deg,var(--gold-hi) '+(f*100).toFixed(1)+'%,rgba(198,154,62,.2) '+(f*100).toFixed(1)+'%)';}
   function calc(){var t=0;probs.forEach(function(p){var inp=p.querySelector('input'),v=(+inp.value)*(+p.dataset.annual);p.querySelector('[data-pv]').textContent=brl(v);fillR(inp);t+=v;});return Math.round(t/500)*500;}
   probs.forEach(function(p){p.querySelector('input').addEventListener('input',calc);}); calc();
+  // relatório v2 · modulação por banda (o quiz já coletou o score no leadScore — encurta/reordena o texto, nunca remove bloco)
+  var BINTRO={
+    quente:"Pela sua resposta, o dinheiro na rua já virou rotina. Você tem mais de um cliente devendo e evita cobrar para não parecer chato. A cobrança está dependendo da sua coragem, e não de um processo que roda sozinho.",
+    alerta:"Pela sua resposta, o alerta acendeu. A cobrança já trava na segunda mensagem de vez em quando, e um calote você preferiu engolir. O dinheiro fica na rua enquanto a cobrança mora na sua cabeça, em vez de rodar sozinha no dia certo.",
+    frio:"Pela sua resposta, a sua cobrança ainda está sob controle. Essa é a melhor hora de deixar o processo montado, para nunca depender da sua coragem no dia em que o primeiro cliente sumir devendo."
+  };
+  var BRECLBL={quente:"A minha recomendação pra você",alerta:"A minha recomendação pra você",frio:"Talvez ainda não seja urgente pra você"};
+  var BREC={
+    quente:"Você tem dinheiro na rua agora e a conta cresce a cada semana. Mais um conteúdo sobre cobrança não muda o seu mês. O que muda é instalar o processo que cobra por você. Comece pelo furo da cobrança e recupere o que está parado.",
+    alerta:"A cobrança já trava de vez em quando, e um calote você já engoliu. Vale montar a régua agora, enquanto o valor ainda está recuperável e antes de a inadimplência virar rotina.",
+    frio:"A sua cobrança está em dia, então guarde este diagnóstico. No dia em que o primeiro cliente sumir devendo, você vai querer a régua pronta em vez de improvisar a mensagem no aperto. Se preferir deixar o processo montado antes disso, o caminho está aqui embaixo."
+  };
+  function fillReport(){
+    var band=leadScore(), bkey=band>=4?'quente':(band===3?'alerta':'frio');
+    var iEl=document.getElementById('resBandIntro'); if(iEl) iEl.textContent=BINTRO[bkey];
+    var rEl=document.getElementById('resRec'); if(rEl) rEl.textContent=BREC[bkey];
+    var lEl=document.getElementById('resRecLabel'); if(lEl) lEl.textContent=BRECLBL[bkey];
+  }
   // resultado
   document.getElementById('calcNext').addEventListener('click',function(){
     var total=calc(), totalEl=document.getElementById('resTotal');
     document.getElementById('resSub').innerHTML='cerca de <b>'+brl(Math.round(total/12/100)*100)+'</b> por mês · <b>'+brl(Math.round(total/252/10)*10)+'</b> a cada dia útil';
+    fillReport();
     var fl=document.getElementById('resFuros'); fl.innerHTML='';
     probs.forEach(function(p){var v=(+p.querySelector('input').value)*(+p.dataset.annual); if(v>0){var li=document.createElement('li');li.innerHTML='<span class="fn">'+p.querySelector('.pt').textContent+'</span><span class="fx">'+brl(Math.round(v/500)*500)+'</span>';fl.appendChild(li);}});
     go(idx+1);
@@ -209,7 +329,8 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     var from=0,t0=null,dur=900;(function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(total-from)*e);if(k<1)requestAnimationFrame(step);})();setTimeout(function(){totalEl.textContent=brl(total);},1100);
     try{ if(window.fbq) fbq('track','ViewContent',{content_name:'quiz_cobranca_resultado'}); }catch(e){}
   });
-  document.getElementById('ctaMain').addEventListener('click',function(){try{if(window.fbq)fbq('track','InitiateCheckout',{content_name:'quiz_cobranca',value:97,currency:'BRL'});}catch(e){}});
+  /* versão B → página de vendas: a isca só navega para a página com Pixel; o InitiateCheckout é da PÁGINA (remarketing), não da isca. "O quiz nunca é a página." */
+  var _pdf=document.getElementById('savePdf'); if(_pdf) _pdf.addEventListener('click',function(){window.print();});
   go(0);
 })();
 </script>

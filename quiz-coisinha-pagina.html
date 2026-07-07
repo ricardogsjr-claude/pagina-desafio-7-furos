@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quanto trabalho de graça você entrega por ano? · Diagnóstico dos 7 Furos</title>
-<meta name="description" content="Em 2 minutos, descubra quanto de trabalho grátis o 'só mais uma coisinha' dos seus clientes te custa por ano — e como parar.">
+<meta name="description" content="Em 2 minutos, descubra quanto de trabalho grátis o 'só mais uma coisinha' dos seus clientes te custa por ano, e como parar.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -94,6 +94,29 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 .result .msg{margin-top:26px;font-size:16px;color:var(--ink);line-height:1.6}
 .result .msg strong{color:#fff}
 .foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
+/* ===== relatório v2 (10 blocos) ===== */
+.result .rname{font-size:clamp(26px,5.4vw,40px);margin:14px 0 12px}
+.result .diag{font-size:16.5px;color:var(--ink);line-height:1.62;margin:0 0 30px;max-width:54ch}
+.repMid{display:flex;flex-direction:column;margin-top:30px}
+.blk{padding:24px 0;border-top:1px solid rgba(198,154,62,.14)}
+.blk .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px}
+.blk p{font-size:16px;color:var(--ink-2);line-height:1.62;margin:0}
+.blk p+p{margin-top:11px}
+.blk p b,.blk p strong{color:#fff;font-weight:600}
+.blk .inimigo b{color:var(--gold-hi)}
+.prova-card{border-left:2px solid var(--line);padding-left:18px}
+.prova-card .tagil{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+.obj-q{font-family:var(--serif);font-style:italic;font-size:17px;color:#fbf5ea;margin-bottom:10px}
+.stk{list-style:none;margin:14px 0 0;padding:0}
+.stk li{position:relative;padding-left:20px;margin:9px 0;font-size:15px;color:var(--ink-2);line-height:1.5}
+.stk li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 8px rgba(242,210,122,.6)}
+.stk-anchor{margin-top:16px;padding-top:13px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink)}
+.blk[data-k="rec"] .lbl{color:var(--gold-hi)}
+.qw{border-left:2px solid var(--gold);background:rgba(198,154,62,.06);padding:16px 18px;border-radius:0 8px 8px 0}
+.qw .lbl{color:var(--gold-hi)}
+.btn.ghost.pdf{margin-top:14px}
+.compliance{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;line-height:1.7;letter-spacing:.01em;color:var(--ink-3)}
+@media print{.top,.pbar,.cta-area,.btn,.back,.foot,.surf,.surf-gold,.veil{display:none!important}body{background:#fff;color:#1a1a1a}.result .diag,.blk p,.stk li,.stk-anchor{color:#222}.result .big,.result .rname,.obj-q,.blk .lbl{color:#111}}
 @media(max-width:600px){.stage{padding:24px 0 40px}.opt{padding:16px 18px}}
 @media(prefers-reduced-motion:reduce){.screen{animation:none}.surf-gold{transition:none}}
 </style>
@@ -109,15 +132,15 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     <section class="screen intro active" data-screen="intro">
       <div class="kick">Diagnóstico dos 7 Furos</div>
       <h1>Você virou<br><em>funcionário</em><br>dos seus clientes?</h1>
-      <p class="sub">Aquele "só mais um carrossel" de sexta que come o seu sábado — de graça. Em 2 minutos, 4 perguntas e uma conta com os seus números, você descobre quanto de trabalho grátis você entrega por ano. Sem chute, sem culpa.</p>
+      <p class="sub">Aquele "só mais um carrossel" de sexta que come o seu sábado. De graça. Em 2 minutos, 4 perguntas e uma conta com os seus números, você descobre quanto de trabalho grátis você entrega por ano. Sem chute, sem culpa.</p>
       <div class="cta-area"><button class="btn" data-next>Começar o diagnóstico</button></div>
     </section>
 
     <!-- CONFIG: PERGUNTAS (o agente adapta o texto por dor) -->
-    <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Quantos extras fora do combinado você entrega por semana?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Três ou mais — perdi a conta</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Um ou dois, quando o cliente aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Quase nenhum — o que sai a mais é combinado antes</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Quantos extras fora do combinado você entrega por semana?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Três ou mais, perdi a conta</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Um ou dois, quando o cliente aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Quase nenhum, o que sai a mais é combinado antes</span></li></ul></section>
     <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Quando o cliente pede a mais, você...</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Faço de graça pra não criar atrito</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Às vezes cobro, às vezes deixo passar</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sempre orço antes de começar</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Está por escrito o que entra — e o que não entra — em cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não, a gente combina por mensagem</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Mais ou menos, tem uma proposta mas é vaga</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, o que inclui e o que não inclui é claro</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Nos últimos 3 meses, quantos fins de semana você virou de graça?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Vários — já nem lembro do último livre</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Um ou dois, quando apertou</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Nenhum — meu fim de semana é meu</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Está por escrito o que entra (e o que não entra) em cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não, a gente combina por mensagem</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Mais ou menos, tem uma proposta mas é vaga</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, o que inclui e o que não inclui é claro</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Nos últimos 3 meses, quantos fins de semana você virou de graça?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Vários, já nem lembro do último livre</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Um ou dois, quando apertou</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Nenhum, meu fim de semana é meu</span></li></ul></section>
 
     <!-- CAPTURA -->
     <section class="screen cap" data-screen="cap">
@@ -133,7 +156,7 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     <section class="screen calc" data-screen="calc">
       <div class="kick">Some o seu trabalho de graça</div>
       <h2>Agora, os seus números.</h2>
-      <p class="calc-lead">Arraste cada extra para a <strong>sua</strong> realidade — só o que é verdade por mês. O total é o trabalho de graça que você entrega por ano.</p>
+      <p class="calc-lead">Arraste cada extra para a <strong>sua</strong> realidade: só o que é verdade por mês. O total é o trabalho de graça que você entrega por ano.</p>
       <!-- CONFIG: CALCULADORA (o agente troca os furos/faixas por dor) -->
       <div id="probs" style="margin-top:22px">
         <div class="prob" data-annual="12"><div class="ph"><span class="pt">O carrossel/post extra de graça</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Por mês, o que você produz fora do combinado e não cobra.</div><input type="range" min="0" max="3000" step="100" value="900"></div>
@@ -146,26 +169,84 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 
     <!-- RESULTADO -->
     <section class="screen result" data-screen="result">
+      <!-- 1 · DIAGNÓSTICO (herda Hero + Bloco 02) -->
+      <span class="kick">Seu diagnóstico</span>
+      <h2 class="rname">Você virou funcionário dos seus clientes</h2>
+      <p class="diag">Toda semana entra um "só mais uma coisinha". Você entrega, chama de relacionamento, e no fim do mês esse trabalho a mais some da sua margem sem aparecer em lugar nenhum. Somando um ano inteiro, dá o número abaixo.</p>
+
+      <!-- 2 · NÚMERO (a calculadora, revelada aqui) -->
       <div class="oe">O seu trabalho de graça, por ano</div>
       <div class="big" id="resTotal">R$ 0</div>
       <div class="rsub" id="resSub"></div>
       <ul class="furos" id="resFuros"></ul>
-      <!-- CONFIG: RESULTADO + CTA (versão B → PÁGINA) -->
-      <div class="msg">Cada "só mais uma coisinha" desses tem <strong>preço</strong> — e dá pra cobrar sem criar atrito. O Desafio dos 7 Furos te entrega o <strong>Pedido de Extra</strong>: todo pedido a mais vira um orçamento aprovado, em vez de favor. Por <strong>R$ 97</strong>.</div>
+
+      <!-- 3 a 9 · blocos modulados por banda (applyBand ordena ao vivo, nunca remove) -->
+      <div class="repMid" id="repMid">
+        <div class="blk" data-k="tese">
+          <span class="lbl">A raiz por trás do pedido</span>
+          <p>Esse pedido a mais tem um nome comercial: escopo aberto. Cada extra que sai de graça é um furo com preço, e ele volta toda semana porque o combinado ficou no boca a boca, e o boca a boca só funciona enquanto todo mundo está de bom humor. No dia em que aperta, quem entrega a mais é você.</p>
+          <p class="inimigo">O inimigo é o combinado que nunca virou papel, e o mercado que só fala em <b>faturar mais</b> enquanto ignora a margem que você já entrega de graça.</p>
+        </div>
+        <div class="blk" data-k="furadeira">
+          <span class="lbl">Por que o Pedido de Extra resolve</span>
+          <p>O Desafio dos 7 Furos ataca a causa, que é o escopo sem fronteira, com uma ferramenta chamada <b>Pedido de Extra</b>, o Change Order. Cada "só mais uma coisinha" passa a sair com documento, preço e prazo, e o cliente aprova antes de você produzir. Você para de trabalhar de graça sem precisar aprender a entregar mais rápido, e o fim de semana volta a ser seu.</p>
+        </div>
+        <div class="blk" data-k="prova">
+          <span class="lbl">Quem estava onde você está</span>
+          <!-- [PROVA-COISINHA · D3] caso ilustrativo herdado da página (Bloco 10), números canônicos. Substituir por depoimento real consentido quando houver; abrir pendência em _pendencias/. Não inventar. -->
+          <div class="prova-card">
+            <span class="tagil">Exemplo ilustrativo do método · nome fictício</span>
+            <p style="margin-top:8px">Bruno, agência de social media. Um pacote de <b>R$ 2.000 por mês</b> que, na prática, consumia 30 horas em vez das 20 combinadas. Isso dava R$ 1.000 de prejuízo por cliente, por mês. Com 10 clientes, <b>R$ 120 mil por ano</b> de trabalho de graça que não aparecia em planilha. Com o escopo fechado, as horas faturadas subiram de 65% para 88%.</p>
+          </div>
+        </div>
+        <div class="blk" data-k="rec">
+          <span class="lbl">A minha recomendação</span>
+          <p>Se quase todo extra na sua agência já sai combinado e cobrado antes de você produzir, esse furo você fechou, e talvez o desafio não seja a sua prioridade agora. Se o "só mais uma coisinha" entra toda semana e o seu fim de semana virou refém dele, o próximo passo é fechar o escopo antes do próximo mês começar.</p>
+        </div>
+        <div class="blk" data-k="obj">
+          <span class="lbl">Antes que você pense nisso</span>
+          <p class="obj-q">"Não tenho tempo, e ainda acabo comprando coisa que não aplico."</p>
+          <p>Justo, e é por isso que o desafio é curto e prático. São 8 sessões curtas, a primeira já aponta um furo que devolve horas todo mês, e o Pedido de Extra sai pronto para preencher na hora. Você termina com a peça que fecha o escopo do próximo cliente, com ela na mão.</p>
+        </div>
+        <div class="blk" data-k="entreg">
+          <span class="lbl">O que você leva pra resolver isso</span>
+          <p><b>O Pedido de Extra pronto, dentro do Desafio dos 7 Furos.</b></p>
+          <ul class="stk">
+            <li>o Template de Change Order: cada extra já vem com documento, preço e prazo</li>
+            <li>o Template de Escopo (SOW): você cola os dados da agência e o escopo fecha em minutos</li>
+            <li>o Mapa dos 7 Furos: onde a sua margem vaza, em 3 minutos</li>
+            <li>7 dias para testar sem risco</li>
+          </ul>
+          <div class="stk-anchor">São R$ 538 em ferramentas e sessões. O seu acesso ao desafio custa uma fração disso.</div>
+        </div>
+        <div class="blk" data-k="quick">
+          <div class="qw">
+            <span class="lbl">Comece hoje, de graça</span>
+            <p>Liste no papel os extras que você entregou sem cobrar na última semana. Ao lado de cada um, escreva quanto ele custaria se fosse orçado. Só de ver a soma, você já decide qual não vai mais sair de graça.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 · CTA (versão B → PÁGINA de vendas com Pixel · sem InitiateCheckout aqui) -->
       <div class="cta-area">
         <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como parar de trabalhar de graça</a>
       </div>
+      <button class="btn ghost pdf" onclick="window.print()">Salvar meu diagnóstico em PDF</button>
+      <p class="compliance">Este diagnóstico é um espelho da sua percepção, não um laudo. Conteúdo educativo de gestão financeira, sem consultoria jurídica. Os números são estimados a partir do que você arrastou, e variam por agência.</p>
     </section>
   </div>
   <div class="foot">Diagnóstico ilustrativo · números do universo de agências R$ 5–150 mil/mês · © Escritório de Contratos</div>
 </div>
 
 <script>
+const WEBHOOK_URL="COLE_AQUI"; // [IMPLANTAÇÃO] cole a URL do webhook do CRM (Make/Zapier) — P-007
 (function(){
   var doc=document.documentElement, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var order=['intro','q0','q1','q2','q3','cap','calc','result'];
   var idx=0, answers={};
+  var ORIGEM="Quiz Coisinha", DOR="coisinha"; // origem = nome exato do quiz · dor = tema
+  function leadScore(){var s=0,n=0;for(var k in answers){s+=answers[k];n++;}var max=(n||1)*2;return Math.max(1,Math.min(5,Math.round(1+(s/max)*4)));}
   var pbar=document.getElementById('pbar'), pcount=document.getElementById('pcount');
   function key(s){return s.dataset.screen==='q'?'q'+s.dataset.q:s.dataset.screen;}
   function go(i){
@@ -187,9 +268,11 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
   });});
   // captura
   document.getElementById('capNext').addEventListener('click',function(){
-    var em=document.getElementById('email').value.trim();
+    var em=document.getElementById('email').value.trim().toLowerCase();
     if(em && em.indexOf('@')<1){ document.getElementById('email').style.borderColor='#c05a44'; return; }
-    /* [IMPLANTAÇÃO] enviar {email, answers} ao CRM/e-mail via webhook (P-007) */
+    /* [IMPLANTAÇÃO] POST padronizado ao CRM via webhook (P-007) — preencha WEBHOOK_URL no topo */
+    var _payload={ nome:"", email:em, origem:ORIGEM, score:leadScore(), dor:DOR };
+    try{ if(WEBHOOK_URL && WEBHOOK_URL!=="COLE_AQUI"){ fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(_payload),keepalive:true}).catch(function(){}); } }catch(e){}
     try{ if(window.fbq) fbq('track','Lead',{content_name:'quiz_coisinha'}); }catch(e){}
     go(idx+1);
   });
@@ -206,11 +289,20 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     var fl=document.getElementById('resFuros'); fl.innerHTML='';
     probs.forEach(function(p){var v=(+p.querySelector('input').value)*(+p.dataset.annual); if(v>0){var li=document.createElement('li');li.innerHTML='<span class="fn">'+p.querySelector('.pt').textContent+'</span><span class="fx">'+brl(Math.round(v/500)*500)+'</span>';fl.appendChild(li);}});
     go(idx+1);
+    applyBand();
     if(reduce){ totalEl.textContent=brl(total); return; }
     var from=0,t0=null,dur=900;(function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(total-from)*e);if(k<1)requestAnimationFrame(step);})();setTimeout(function(){totalEl.textContent=brl(total);},1100);
     try{ if(window.fbq) fbq('track','ViewContent',{content_name:'quiz_coisinha_resultado'}); }catch(e){}
   });
-  document.getElementById('ctaMain').addEventListener('click',function(){try{if(window.fbq)fbq('track','InitiateCheckout',{content_name:'quiz_coisinha',value:97,currency:'BRL'});}catch(e){}});
+  /* versão B → PÁGINA de vendas (ativo de remarketing com Pixel próprio). ViewContent já disparou no reveal; o clique no CTA só navega até a página, sem InitiateCheckout aqui (o quiz nunca é a página). */
+  // modulação por banda: reordena os blocos 3-9 do relatório pelo score (encurta/reordena, nunca remove)
+  function applyBand(){
+    var el=document.getElementById('repMid'); if(!el) return;
+    var sc=leadScore(), band=sc<=2?'frio':sc>=4?'quente':'alerta';
+    var orders={frio:['tese','furadeira','obj','prova','rec','entreg','quick'],alerta:['tese','furadeira','prova','rec','obj','entreg','quick'],quente:['prova','rec','furadeira','obj','entreg','tese','quick']};
+    (orders[band]||orders.alerta).forEach(function(k,i){var b=el.querySelector('[data-k="'+k+'"]');if(b)b.style.order=i;});
+    el.setAttribute('data-band',band);
+  }
   go(0);
 })();
 </script>

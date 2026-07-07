@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quanto a sua agência vaza por ano? · Diagnóstico dos 7 Furos</title>
-<meta name="description" content="Em 2 minutos, descubra por onde a sua agência perde dinheiro depois da venda feita — e quanto.">
+<meta name="description" content="Em 2 minutos, descubra por onde a sua agência perde dinheiro depois da venda feita, e quanto.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -93,8 +93,47 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
 .furos .fx{font-family:var(--mono);font-size:12.5px;color:var(--gold);white-space:nowrap}
 .result .msg{margin-top:26px;font-size:16px;color:var(--ink);line-height:1.6}
 .result .msg strong{color:#fff}
-.foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
+.foot{padding:26px 0 30px;text-align:center;font-family:var(--mono);font-size:10.5px;line-height:1.7;letter-spacing:.06em;color:var(--ink-3);max-width:60ch;margin:0 auto}
+/* relatório v2 · 10 blocos (POP 48) */
+.rblock{margin-top:40px;padding-top:34px;border-top:1px solid var(--line)}
+.rblock:first-child{margin-top:0;padding-top:0;border-top:none}
+.rlabel{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.rlabel::before{content:"";width:22px;height:1px;background:var(--gold)}
+.rblock h3{font-family:var(--serif);font-weight:600;font-size:23px;color:#fbf5ea;margin-bottom:12px;line-height:1.14}
+.rblock p{font-size:16px;color:var(--ink-2);margin:0 0 13px}.rblock p:last-child{margin-bottom:0}
+.rblock p strong{color:#fff}
+.dtm-mini{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:13px}
+.dtm-mini li{position:relative;padding-left:18px;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.dtm-mini li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 8px rgba(242,210,122,.5)}
+.dtm-mini b{color:var(--gold-hi);font-weight:600}
+.prova-case{border-left:2px solid rgba(198,154,62,.4);padding:4px 0 4px 18px;margin:16px 0}
+.prova-case .n{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold-hi);line-height:1.05}
+.prova-case .nm{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-left:10px}
+.prova-case p{font-size:15px;margin:8px 0 0}
+.prova-note{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-3);margin-top:14px}
+.obj-q{font-family:var(--serif);font-style:italic;font-size:19px;color:#fbf5ea;margin-bottom:10px}
+.stack-mini{list-style:none;margin:6px 0 0;display:flex;flex-direction:column;gap:9px}
+.stack-mini li{position:relative;padding-left:18px;font-size:15px;color:var(--ink-2);line-height:1.5}
+.stack-mini li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;background:var(--gold);border-radius:50%}
+.stack-mini b{color:var(--gold-hi);font-weight:600}
+.anchor{margin-top:18px;padding-top:15px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--ink-2)}
+.anchor b{color:var(--gold-hi);font-weight:500}
+.qwin{border-left:3px solid var(--gold);background:rgba(20,17,13,.42);padding:15px 18px;border-radius:0 8px 8px 0}
+.qwin p{margin:0;color:var(--ink)}
+.pdf-btn{margin-top:12px;width:100%;text-align:center}
 @media(max-width:600px){.stage{padding:24px 0 40px}.opt{padding:16px 18px}}
+@media print{
+  .surf,.surf-gold,.veil,.top,.pbar,.back,.cta-area,.hint{display:none!important}
+  body{background:#fff;color:#1a1a1a}
+  .wrap{max-width:100%;padding:0 8px}
+  .screen{display:none!important}.screen.result{display:block!important}
+  h1,h2,h3,.rblock h3,.obj-q{color:#141414!important}
+  .rlabel{color:#7a5b12!important}.rlabel::before{background:#7a5b12!important}
+  .rblock p,.dtm-mini li,.stack-mini li,.anchor,.qwin p,.rsub{color:#242424!important}
+  .big{color:#7a5b12!important;text-shadow:none!important}
+  .rblock{border-color:#ccc!important}.qwin,.prova-case p{background:transparent!important}
+  .foot{color:#555!important}
+}
 @media(prefers-reduced-motion:reduce){.screen{animation:none}.surf-gold{transition:none}}
 </style>
 </head>
@@ -109,15 +148,15 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     <section class="screen intro active" data-screen="intro">
       <div class="kick">Diagnóstico dos 7 Furos</div>
       <h1>Quanto a sua agência<br><em>vaza por ano</em>?</h1>
-      <p class="sub">Você fatura bem e sobra pouco — e não sabe por onde escapa. Em 2 minutos, 4 perguntas e uma conta com os seus números, você descobre o tamanho do rombo. Sem chute, sem "faturar mais".</p>
+      <p class="sub">Você fatura bem e sobra pouco, e não sabe por onde o dinheiro escapa. Em 2 minutos, 4 perguntas e uma conta com os seus números, você descobre o tamanho do rombo. Sem chute e sem faturar mais.</p>
       <div class="cta-area"><button class="btn" data-next>Começar o diagnóstico</button></div>
     </section>
 
     <!-- CONFIG: PERGUNTAS (o agente adapta o texto por dor) -->
     <section class="screen q" data-screen="q" data-q="0"><div class="kick">Pergunta 1 de 4</div><h2>Como você fecha a maioria dos seus clientes?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>No boca a boca / aperto de mão, sem nada assinado</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Uma proposta por e-mail que faz as vezes de combinado</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Um documento assinado, com escopo e regras claras</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Com que frequência você entrega "só mais uma coisinha" de graça?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Toda semana — virou parte do serviço</span></li><li class="opt" data-w="1"><span class="dot"></span><span>De vez em quando, quando o cliente aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Quase nunca — todo extra é orçado</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Você tem cliente atrasando pagamento agora?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Sim, e eu evito cobrar pra não parecer chato</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Sim, mas eu cobro (mesmo travando na hora)</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Não — tenho um processo de cobrança que roda sozinho</span></li></ul></section>
-    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Você sabe quanto custa, em horas, atender cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não faço ideia — é no sentimento</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Tenho uma noção grosseira</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, meço horas por cliente</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="1"><div class="kick">Pergunta 2 de 4</div><h2>Com que frequência você entrega "só mais uma coisinha" de graça?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Toda semana, virou parte do serviço</span></li><li class="opt" data-w="1"><span class="dot"></span><span>De vez em quando, quando o cliente aperta</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Quase nunca, todo extra é orçado</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="2"><div class="kick">Pergunta 3 de 4</div><h2>Você tem cliente atrasando pagamento agora?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Sim, e eu evito cobrar pra não parecer chato</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Sim, mas eu cobro (mesmo travando na hora)</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Não, tenho um processo de cobrança que roda sozinho</span></li></ul></section>
+    <section class="screen q" data-screen="q" data-q="3"><div class="kick">Pergunta 4 de 4</div><h2>Você sabe quanto custa, em horas, atender cada cliente?</h2><ul class="opts"><li class="opt" data-w="2"><span class="dot"></span><span>Não faço ideia, é no sentimento</span></li><li class="opt" data-w="1"><span class="dot"></span><span>Tenho uma noção grosseira</span></li><li class="opt" data-w="0"><span class="dot"></span><span>Sim, meço horas por cliente</span></li></ul></section>
 
     <!-- CAPTURA -->
     <section class="screen cap" data-screen="cap">
@@ -133,40 +172,129 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     <section class="screen calc" data-screen="calc">
       <div class="kick">Some o seu rombo</div>
       <h2>Agora, os seus números.</h2>
-      <p class="calc-lead">Arraste cada furo para a <strong>sua</strong> realidade — só o que é verdade pra você. O total é o dinheiro que já sai da sua mão por ano.</p>
-      <!-- CONFIG: CALCULADORA (o agente troca os furos/faixas por dor) -->
+      <p class="calc-lead">Arraste cada furo para a <strong>sua</strong> realidade, só o que é verdade pra você. O total é o dinheiro que já sai da sua mão por ano.</p>
+      <!-- CONFIG: CALCULADORA · a somadora dos 5 furos da página (engine calc()/brl()/fillR() herdada; ranges intactos) -->
       <div id="probs" style="margin-top:22px">
-        <div class="prob" data-annual="1"><div class="ph"><span class="pt">Fechar no fio do bigode</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Cliente que sumiu devendo, sem nada assinado — quanto ficou na rua?</div><input type="range" min="0" max="60000" step="1000" value="18000"></div>
-        <div class="prob" data-annual="12"><div class="ph"><span class="pt">"Só mais uma coisinha"</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Extra de graça por mês.</div><input type="range" min="0" max="6000" step="200" value="1200"></div>
-        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O projeto que não acaba</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Quanto te custa a demora, por ano.</div><input type="range" min="0" max="40000" step="1000" value="9000"></div>
-        <div class="prob" data-annual="1"><div class="ph"><span class="pt">A cobrança que trava</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">O que está atrasado agora que você não cobra firme.</div><input type="range" min="0" max="50000" step="1000" value="12000"></div>
-        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O sumido devendo</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Calote do último ano que você deu por perdido.</div><input type="range" min="0" max="30000" step="1000" value="8000"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">Fechei no fio do bigode</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">O cliente que fechou de boca e sumiu devendo. Quanto ficou na rua?</div><input type="range" min="0" max="60000" step="1000" value="18000"></div>
+        <div class="prob" data-annual="12"><div class="ph"><span class="pt">Só mais uma coisinha, de graça</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Extra que você entrega sem cobrar. Quanto por mês?</div><input type="range" min="0" max="6000" step="200" value="1200"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O projeto de 30 dias que virou 90</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">A aprovação que não chega e arrasta o projeto. Quanto te custa a demora por ano?</div><input type="range" min="0" max="40000" step="1000" value="9000"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">A cobrança que trava na sua garganta</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">O que está atrasado agora que você não cobra firme por medo de parecer chato?</div><input type="range" min="0" max="50000" step="1000" value="12000"></div>
+        <div class="prob" data-annual="1"><div class="ph"><span class="pt">O sumido devendo que você já engoliu</span><span class="pv" data-pv>R$ 0</span></div><div class="pq">Calote do último ano que você deu por perdido. Quanto foi?</div><input type="range" min="0" max="30000" step="1000" value="8000"></div>
       </div>
       <div class="cta-area"><button class="btn" id="calcNext">Ver o resultado</button></div>
     </section>
 
-    <!-- RESULTADO -->
+    <!-- RESULTADO · relatório v2 (10 blocos · POP 48 · herda a copy da página de vendas) -->
     <section class="screen result" data-screen="result">
-      <div class="oe">O seu vazamento estimado</div>
-      <div class="big" id="resTotal">R$ 0</div>
-      <div class="rsub" id="resSub"></div>
-      <ul class="furos" id="resFuros"></ul>
-      <!-- CONFIG: RESULTADO + CTA (versão B → PÁGINA) -->
-      <div class="msg">Cada furo desses tem <strong>nome, custo e conserto</strong>. O Desafio dos 7 Furos te mostra o seu número exato — com o Mapa dos 7 Furos, no primeiro dia — e entrega a ferramenta que fecha cada um. Por <strong>R$ 97</strong>.</div>
-      <div class="cta-area">
-        <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como o Desafio fecha esses furos</a>
+
+      <!-- BLOCO 1 · DIAGNÓSTICO (nome do problema) ← Hero + Bloco 02 -->
+      <div class="rblock">
+        <span class="rlabel">O seu diagnóstico</span>
+        <h3>O seu problema tem nome: vazamento.</h3>
+        <p>É dinheiro que sai depois da venda feita, furo a furo, sem passar pela planilha. Você já sente no fim do mês. Agora você vê exatamente onde, e quanto.</p>
       </div>
+
+      <!-- BLOCO 2 · O NÚMERO (saída da calculadora dos 5 furos) -->
+      <div class="rblock">
+        <div class="oe">O seu vazamento estimado por ano</div>
+        <div class="big" id="resTotal">R$ 0</div>
+        <div class="rsub" id="resSub"></div>
+        <ul class="furos" id="resFuros"></ul>
+      </div>
+
+      <!-- BLOCO 3 · TESE DA RAIZ ← Bloco 02 + Bloco 05 da página -->
+      <div class="rblock">
+        <span class="rlabel">Por que isso acontece</span>
+        <p>O rombo não vem de desorganização sua nem de falta de pulso. O dinheiro não some na planilha nem no imposto. Ele some antes, na relação com o cliente, no espaço entre o que foi combinado e o que foi de fato cumprido.</p>
+        <p>Cada furo tem <strong>nome, custo e conserto</strong>. O que sangra a sua margem é o combinado solto, e o mercado que só fala em faturar mais ignora o que você já perde. <strong>Faturar mais com os furos abertos só aumenta o vazamento.</strong></p>
+      </div>
+
+      <!-- BLOCO 4 · FURADEIRA (D.T.M.) ← Bloco 05 da página -->
+      <div class="rblock">
+        <span class="rlabel">Como se fecha</span>
+        <h3>Você enxerga onde perde. Depois recebe a peça que fecha.</h3>
+        <p>O Desafio ataca a causa, não o sintoma. São três movimentos:</p>
+        <ul class="dtm-mini">
+          <li><b>Diagnosticar.</b> A sensação de sobra pouco vira número, com o Mapa dos 7 Furos.</li>
+          <li><b>Travar.</b> Um furo por dia, uma ferramenta pronta por furo, uma decisão que você toma e registra.</li>
+          <li><b>Elevar.</b> Com os seis primeiros fechados, você mexe no sétimo, o que decide a sua margem o ano inteiro.</li>
+        </ul>
+        <p>Curso de gestão ensina a faturar mais, e o contador cuida do imposto. Nenhum dos dois olha a relação com o cliente, que é onde o dinheiro escapa.</p>
+      </div>
+
+      <!-- BLOCO 5 · PROVA CASADA ← Blocos 03/10 (casos ilustrativos canônicos da página) -->
+      <!-- [PROVA-ROMBO · D3] Placeholder rastreável: substituir por depoimento REAL e consentido quando houver (POP 36 / MAPA_MESTRE_HISTORIAS). Pendência aberta em R01/_pendencias/. Casos abaixo são os ilustrativos canônicos da página (nomes fictícios, marcados). NÃO inventar novo número nem case. -->
+      <div class="rblock">
+        <span class="rlabel">Quem fechou os furos</span>
+        <div class="prova-case">
+          <span class="n">R$ 82 mil</span><span class="nm">Rodrigo · tráfego</span>
+          <p>Fechou de boca um cliente de R$ 8.500 por mês. Veio a ressaca: R$ 51 mil não pagos e R$ 31 mil de mídia adiantada. Sem nada assinado, quase nada voltou. Hoje ele opera de outro jeito.</p>
+        </div>
+        <div class="prova-case">
+          <span class="n">R$ 19,5 mil</span><span class="nm">Jonas · serviços</span>
+          <p>Um calote que sumiu por 60 dias. Ele seguiu o Roteiro de Negativação. Em 48 horas o cliente pagou com juros e ficou mais dois anos na carteira.</p>
+        </div>
+        <p class="prova-note">Casos ilustrativos do método. Nomes fictícios.</p>
+      </div>
+
+      <!-- BLOCO 6 · RECOMENDAÇÃO HONESTA (modulada pela banda no JS · inclui "talvez não seja a sua hora") -->
+      <div class="rblock">
+        <span class="rlabel">A minha leitura, com honestidade</span>
+        <p id="resRec"></p>
+      </div>
+
+      <!-- BLOCO 7 · OBJEÇÃO ← FAQ "R$ 97 num produto que não conheço" + garantia primeiro furo -->
+      <div class="rblock">
+        <span class="rlabel">Antes que você pense nisso</span>
+        <p class="obj-q">R$ 97 num produto que eu não conheço?</p>
+        <p>O risco de R$ 97 é conhecido. O de manter os furos abertos fica entre R$ 38 mil e R$ 94 mil por ano, e o seu número está aí em cima. Você tem <strong>7 dias para testar sem risco</strong>: acessa, aplica o primeiro furo e vê o vazamento que o Desafio aponta. Se não fizer sentido para a sua agência, o seu dinheiro volta. O risco é todo nosso.</p>
+      </div>
+
+      <!-- BLOCO 8 · ENTREGÁVEL + ANCORAGEM ← Blocos 07/09 (o preço aparece aqui) -->
+      <div class="rblock">
+        <span class="rlabel">O que você leva</span>
+        <p>O Desafio dos 7 Furos são 7 sessões curtas, uma por dia, com as 8 ferramentas prontas que fecham cada furo:</p>
+        <ul class="stack-mini">
+          <li>O <b>Mapa dos 7 Furos</b> para achar o seu número exato.</li>
+          <li>O <b>Template de Escopo</b> e o <b>Pedido de Extra</b>, para o só mais uma coisinha virar orçamento.</li>
+          <li>O <b>Acordo de Prazo</b>, para o projeto de 30 dias não virar 90.</li>
+          <li>A <b>Régua das 3 Ondas</b> e o <b>Roteiro de Negativação</b>, para tirar o seu dinheiro da rua.</li>
+          <li>O <b>Quadro Antes e Depois</b>, mais os bônus O Painel da Semana e O cliente que te dá prejuízo.</li>
+        </ul>
+        <div class="anchor">Valor total <b>R$ 248</b>. Hoje, à vista no PIX, <b>R$ 97</b>. Acesso em até 3 minutos.</div>
+      </div>
+
+      <!-- BLOCO 9 · QUICK-WIN ← Bloco 07 (o Mapa) -->
+      <div class="rblock">
+        <span class="rlabel">Comece hoje, de graça</span>
+        <div class="qwin">
+          <p>Pegue o cliente que mais te consome e escreva, em uma linha, o que estava combinado e o que você acabou entregando de verdade. A distância entre os dois é o seu primeiro furo. No Desafio, o Mapa transforma essa conta em número em poucos minutos.</p>
+        </div>
+      </div>
+
+      <!-- BLOCO 10 · CTA ÚNICO + PDF + compliance ← Bloco 15 (versão B → PÁGINA / ViewContent; NÃO dispara InitiateCheckout) -->
+      <div class="rblock">
+        <p class="msg">Cada furo tem nome, custo e conserto. Veja na página como o Desafio fecha os seus sete furos, uma ferramenta por furo.</p>
+        <div class="cta-area">
+          <a class="btn" id="ctaMain" href="https://ricardogsjr-claude.github.io/pagina-desafio-7-furos/">Ver como o Desafio fecha esses furos</a>
+          <button class="btn ghost pdf-btn" id="pdfBtn" type="button">Salvar o meu diagnóstico em PDF</button>
+        </div>
+      </div>
+
     </section>
   </div>
-  <div class="foot">Diagnóstico ilustrativo · números do universo de agências R$ 5–150 mil/mês · © Escritório de Contratos</div>
+  <div class="foot">Este diagnóstico é um espelho, não um laudo. Números ilustrativos, calculados a partir das suas respostas, sobre o universo de agências de R$ 5 a 150 mil por mês. Conteúdo educativo de gestão financeira. Não constitui consultoria jurídica nem recomendação de investimento. © Escritório de Contratos.</div>
 </div>
 
 <script>
+const WEBHOOK_URL="COLE_AQUI"; // [IMPLANTAÇÃO] cole a URL do webhook do CRM (Make/Zapier) — P-007
 (function(){
   var doc=document.documentElement, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var order=['intro','q0','q1','q2','q3','cap','calc','result'];
   var idx=0, answers={};
+  var ORIGEM="Quiz Rombo", DOR="rombo"; // origem = nome exato do quiz · dor = tema
+  function leadScore(){var s=0,n=0;for(var k in answers){s+=answers[k];n++;}var max=(n||1)*2;return Math.max(1,Math.min(5,Math.round(1+(s/max)*4)));}
   var pbar=document.getElementById('pbar'), pcount=document.getElementById('pcount');
   function key(s){return s.dataset.screen==='q'?'q'+s.dataset.q:s.dataset.screen;}
   function go(i){
@@ -188,9 +316,11 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
   });});
   // captura
   document.getElementById('capNext').addEventListener('click',function(){
-    var em=document.getElementById('email').value.trim();
+    var em=document.getElementById('email').value.trim().toLowerCase();
     if(em && em.indexOf('@')<1){ document.getElementById('email').style.borderColor='#c05a44'; return; }
-    /* [IMPLANTAÇÃO] enviar {email, answers} ao CRM/e-mail via webhook (P-007) */
+    /* [IMPLANTAÇÃO] POST padronizado ao CRM via webhook (P-007) — preencha WEBHOOK_URL no topo */
+    var _payload={ nome:"", email:em, origem:ORIGEM, score:leadScore(), dor:DOR };
+    try{ if(WEBHOOK_URL && WEBHOOK_URL!=="COLE_AQUI"){ fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(_payload),keepalive:true}).catch(function(){}); } }catch(e){}
     try{ if(window.fbq) fbq('track','Lead',{content_name:'quiz_rombo'}); }catch(e){}
     go(idx+1);
   });
@@ -206,12 +336,22 @@ em{font-style:italic;color:var(--gold-hi)}strong{color:#fff;font-weight:600}
     document.getElementById('resSub').innerHTML='cerca de <b>'+brl(Math.round(total/12/100)*100)+'</b> por mês · <b>'+brl(Math.round(total/252/10)*10)+'</b> a cada dia útil';
     var fl=document.getElementById('resFuros'); fl.innerHTML='';
     probs.forEach(function(p){var v=(+p.querySelector('input').value)*(+p.dataset.annual); if(v>0){var li=document.createElement('li');li.innerHTML='<span class="fn">'+p.querySelector('.pt').textContent+'</span><span class="fx">'+brl(Math.round(v/500)*500)+'</span>';fl.appendChild(li);}});
+    // BLOCO 6 · recomendação honesta modulada pela banda (leadScore 1-5; encurta/dosa, nunca remove)
+    var sc=leadScore(), band=sc<=2?'controle':(sc===3?'alerta':'vermelho');
+    var REC={
+      controle:"Pelas suas respostas, boa parte dos seus combinados já está de pé, e isso conta a seu favor. Se o número acima ainda te incomodou, o Desafio serve para blindar o que funciona antes que a conta cresça. Se hoje não for a sua prioridade, guarde o seu diagnóstico e volte quando fizer sentido.",
+      alerta:"Pelas suas respostas, o alerta acendeu. Alguns furos já drenam a sua margem todo mês, e o número acima tende a crescer enquanto o combinado ficar solto. É a hora de fechar os dois ou três que mais pesam.",
+      vermelho:"Pelas suas respostas, o seu vazamento está no vermelho. Você sustenta esse rombo há tempo demais, e cada mês aberto é mais dinheiro na rua. A boa notícia é que furo tem conserto, e você pode começar pelo que mais dói."
+    };
+    var recEl=document.getElementById('resRec'); if(recEl) recEl.textContent=REC[band];
+    var resSec=document.querySelector('.result'); if(resSec) resSec.setAttribute('data-band',band);
     go(idx+1);
     if(reduce){ totalEl.textContent=brl(total); return; }
     var from=0,t0=null,dur=900;(function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);totalEl.textContent=brl(from+(total-from)*e);if(k<1)requestAnimationFrame(step);})();setTimeout(function(){totalEl.textContent=brl(total);},1100);
     try{ if(window.fbq) fbq('track','ViewContent',{content_name:'quiz_rombo_resultado'}); }catch(e){}
   });
-  document.getElementById('ctaMain').addEventListener('click',function(){try{if(window.fbq)fbq('track','InitiateCheckout',{content_name:'quiz_rombo',value:97,currency:'BRL'});}catch(e){}});
+  /* versão B → PÁGINA: o CTA leva à página de vendas, que carrega o próprio Pixel. NÃO dispara InitiateCheckout aqui; o ViewContent do relatório já foi enviado no reveal (regra 'o quiz nunca é a página'). */
+  var _pdf=document.getElementById('pdfBtn'); if(_pdf) _pdf.addEventListener('click',function(){window.print();});
   go(0);
 })();
 </script>
