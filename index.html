@@ -27,8 +27,8 @@ p{margin:0 0 1.15em}p:last-child{margin-bottom:0}
 
 /* ===== superfície de cerâmica: a página que se repara em ouro ===== */
 .surf,.surf-gold,.veil{position:fixed;inset:0;z-index:0;pointer-events:none}
-.surf{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
-.surf-gold{background:#0b0a08 url('assets/textura_preta_ouro_wide.png') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
+.surf{background:#0b0a08 url('assets/textura_preta_ouro_wide.jpg') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
+.surf-gold{background:#0b0a08 url('assets/textura_preta_ouro_wide.jpg') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%));
           mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%))}
 .veil{background:radial-gradient(130% 100% at 50% 30%,rgba(11,10,8,0) 34%,rgba(11,10,8,.5) 100%)}
@@ -114,7 +114,7 @@ section{position:relative;padding:118px 28px}
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
 .hero .stage{position:absolute;inset:0;cursor:crosshair}
-.bowl-base{position:absolute;inset:0;background:url('assets/bowl_chawan_v3.png') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
+.bowl-base{position:absolute;inset:0;background:url('assets/bowl_chawan_v3.jpg') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
 #reveal{position:absolute;inset:0;width:100%;height:100%}
 .hero .hveil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,8,.4) 0%,rgba(11,10,8,.12) 30%,rgba(11,10,8,.55) 60%,var(--bg) 88%)}
 .hero .hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(28px,6vw,80px);pointer-events:none}
@@ -244,7 +244,7 @@ section{position:relative;padding:118px 28px}
       <p>O dinheiro não some na sua planilha nem no imposto. Some antes, na relação com o cliente, no espaço entre o que foi combinado e o que foi cumprido. O combinado no boca a boca funciona enquanto todo mundo está de bom humor. No primeiro atrito, a conta fica com você.</p>
       <p class="pull">Você sabe que perde dinheiro. <span class="hl">Só não sabe onde.</span></p>
     </div>
-    <figure class="shard s1"><img src="assets/caco_vazamento_v1.png" alt="O dinheiro vazando"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 0 L100 7 L95 100 L0 90 Z"/></svg><span class="cap">O vazamento</span></figure>
+    <figure class="shard s1"><img loading="lazy" src="assets/caco_vazamento_v1.jpg" alt="O dinheiro vazando"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 0 L100 7 L95 100 L0 90 Z"/></svg><span class="cap">O vazamento</span></figure>
   </div>
 </section>
 
@@ -302,17 +302,30 @@ section{position:relative;padding:118px 28px}
     <p class="reveal" style="max-width:60ch">São as peças que remendam a sua operação: cada furo do diagnóstico vem com uma ferramenta pronta na mão. Você preenche com os seus dados e aplica no mesmo dia — nenhuma delas leva mais que 6 minutos.</p>
     <p class="reveal" style="--d:.1s;margin-top:12px;font-size:15.5px;color:var(--gold)">Estas são o ouro em pó do desafio. Passe o mouse em cada uma (ou toque) e veja quanto ela vale.</p>
     <div class="tools-grid">
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption><span class="t-name">Mapa dos 7 Furos</span><span class="t-body"><span class="t-what">Onde você vaza dinheiro, em reais. O seu número de partida.</span><span class="t-gold">Ouro em pó: três minutos preenchendo revelam um rombo de dezenas de milhares.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption><span class="t-name">Template de Escopo</span><span class="t-body"><span class="t-what">O que está dentro e o que fica de fora, no papel. Fim do “só mais uma coisinha”.</span><span class="t-gold">Ouro em pó: uma página que impede meses de trabalho não pago.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption><span class="t-name">Pedido de Extra</span><span class="t-body"><span class="t-what">Cobra o extra que saía de graça, sem você bancar o vilão.</span><span class="t-gold">Ouro em pó: uma mensagem que transforma favor em faturamento.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-body"><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span><span class="t-gold">Ouro em pó: um combinado que devolve as suas noites e fins de semana.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-body"><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span><span class="t-gold">Ouro em pó: três textos que tiram o seu dinheiro da rua.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-body"><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span><span class="t-gold">Ouro em pó: um roteiro que traz de volta o que você já dava como perdido.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-body"><span class="t-what">O que você travou na semana, preto no branco.</span><span class="t-gold">Ouro em pó: uma folha que prova, em número, o quanto você fechou.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption><span class="t-name">Mapa dos 7 Furos</span><span class="t-body"><span class="t-what">Onde você vaza dinheiro, em reais. O seu número de partida.</span><span class="t-gold">Ouro em pó: três minutos preenchendo revelam um rombo de dezenas de milhares.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption><span class="t-name">Template de Escopo</span><span class="t-body"><span class="t-what">O que está dentro e o que fica de fora, no papel. Fim do “só mais uma coisinha”.</span><span class="t-gold">Ouro em pó: uma página que impede meses de trabalho não pago.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption><span class="t-name">Pedido de Extra</span><span class="t-body"><span class="t-what">Cobra o extra que saía de graça, sem você bancar o vilão.</span><span class="t-gold">Ouro em pó: uma mensagem que transforma favor em faturamento.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-body"><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span><span class="t-gold">Ouro em pó: um combinado que devolve as suas noites e fins de semana.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-body"><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span><span class="t-gold">Ouro em pó: três textos que tiram o seu dinheiro da rua.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-body"><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span><span class="t-gold">Ouro em pó: um roteiro que traz de volta o que você já dava como perdido.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-body"><span class="t-what">O que você travou na semana, preto no branco.</span><span class="t-gold">Ouro em pó: uma folha que prova, em número, o quanto você fechou.</span></span></figcaption></figure>
     </div>
     <p class="reveal" style="text-align:center;margin:30px auto 0;max-width:46ch;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,25px);color:var(--gold-hi)">São o ouro em pó do desafio: cabem na palma da mão e fecham um rombo de dezenas de milhares por ano.</p>
     <details class="whygold reveal"><summary>por que “ouro em pó”?</summary><p>Na Inconfidência, o ouro em pó valia mais que a barra: cabia escondido dentro das imagens de santo e passava por onde o ouro em barra não passava. Estas ferramentas são assim: pequenas o bastante para caber numa página, valiosas o bastante para fechar o rombo que a sua agência nem via.</p></details>
     <p class="note reveal" style="text-align:center;margin-top:16px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio — mais a Decisão de Adoção, a sua primeira micro-decisão em 2 minutos.</p>
+  </div>
+</section>
+
+<!-- RESPIRO OURO EM PÓ — clímax de valor, logo após as ferramentas (decisão do Conselho 07/07) -->
+<section class="dustbeat">
+  <div class="db-frame">
+    <div class="db-media"><img src="assets/ouro_em_po_v1.jpg" alt="Ouro em pó na palma da mão, sobre porcelana preta" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="db-veil"></div>
+    <div class="db-copy">
+      <div class="label reveal">O ouro em pó</div>
+      <h2 class="reveal" style="--d:.05s">O que cabe na palma da mão<br>vale o ano inteiro.</h2>
+      <p class="reveal" style="--d:.1s">Cada ferramenta é um punhado desse pó: pequena na mão, enorme no valor. Juntas, fecham o rombo que a sua agência perdia mês após mês.</p>
+    </div>
   </div>
 </section>
 
@@ -330,25 +343,12 @@ section{position:relative;padding:118px 28px}
 <!-- PROVA + caco resultado -->
 <section>
   <div class="duo">
-    <figure class="shard s3"><img src="assets/caco_reparo_v1.png" alt="A margem de volta"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M8 2 L100 0 L92 96 L0 100 Z"/></svg><span class="cap">O reparo</span></figure>
+    <figure class="shard s3"><img loading="lazy" src="assets/caco_reparo_v1.jpg" alt="A margem de volta"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M8 2 L100 0 L92 96 L0 100 Z"/></svg><span class="cap">O reparo</span></figure>
     <div class="reveal">
       <div class="label">Quem fechou os furos</div>
       <div class="case"><span class="n">R$ 82 mil</span><span class="nm">Rodrigo · tráfego</span><p>Fechou de boca R$ 8.500/mês. Em janeiro, R$ 51 mil não pagos + R$ 31 mil de mídia adiantada. Sem nada assinado, quase nada voltou. Hoje ele opera de outro jeito.</p></div>
       <div class="case"><span class="n">R$ 156 mil</span><span class="nm">Jonas · serviços</span><p>Um calote de R$ 19.500 que sumiu por 60 dias. Ele seguiu o roteiro de negativação. Em 48 horas o cliente pagou com juros e ficou mais dois anos na carteira.</p></div>
       <p class="note">Casos ilustrativos do método. Nomes fictícios.</p>
-    </div>
-  </div>
-</section>
-
-<!-- RESPIRO OURO EM PÓ — clímax de valor (imagem bespoke) -->
-<section class="dustbeat">
-  <div class="db-frame">
-    <div class="db-media"><img src="assets/ouro_em_po_v1.jpg" alt="Ouro em pó na palma da mão, sobre porcelana preta" loading="lazy" onerror="this.style.display='none'"></div>
-    <div class="db-veil"></div>
-    <div class="db-copy">
-      <div class="label reveal">O ouro em pó</div>
-      <h2 class="reveal" style="--d:.05s">O que cabe na palma da mão<br>vale o ano inteiro.</h2>
-      <p class="reveal" style="--d:.1s">Cada ferramenta é um punhado desse pó: pequena na mão, enorme no valor. Juntas, fecham o rombo que a sua agência perdia mês após mês.</p>
     </div>
   </div>
 </section>
@@ -392,7 +392,7 @@ section{position:relative;padding:118px 28px}
       <p style="margin-top:16px;color:var(--ink-2)"><span style="font-family:var(--serif);font-style:italic;font-size:24px;color:var(--gold-hi)">25–30% → 3–5%</span> · a inadimplência nas agências que ele blindou.</p>
     </div>
     
-    <figure class="shard s4"><img src="assets/ricardo.jpg" alt="Ricardo Gonçalves"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 0 L96 5 L100 100 L0 95 Z"/></svg></figure>
+    <figure class="shard s4"><img loading="lazy" src="assets/ricardo.jpg" alt="Ricardo Gonçalves"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 0 L96 5 L100 100 L0 95 Z"/></svg></figure>
   </div>
 </section>
 
@@ -492,7 +492,7 @@ section{position:relative;padding:118px 28px}
   var stage=document.getElementById('stage'),cv=document.getElementById('reveal');
   if(stage&&cv&&!reduce){
     var ctx=cv.getContext('2d'),mask=document.createElement('canvas'),mctx=mask.getContext('2d');
-    var gold=new Image();gold.src='assets/bowl_chawan_v3.png';
+    var gold=new Image();gold.src='assets/bowl_chawan_v3.jpg';
     var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),cover={x:0,y:0,w:0,h:0},ready=false;
     function cr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
     function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=cr(gold.naturalWidth,gold.naturalHeight,W,H);}
