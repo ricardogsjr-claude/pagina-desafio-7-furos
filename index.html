@@ -77,16 +77,21 @@ section{position:relative;padding:118px 28px}
 
 /* ===== galeria das ferramentas (os cacos-documento dourados) ===== */
 .tools-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:44px auto 0;max-width:940px}
-.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);transition:opacity .65s var(--ease),transform .7s var(--spring),box-shadow .5s var(--ease)}
-.tool:hover{transform:translateY(-10px) scale(1.035);box-shadow:0 28px 60px rgba(0,0,0,.62),0 0 32px rgba(242,210,122,.32);z-index:3}
+.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);cursor:pointer;outline:none;transition:opacity .5s var(--ease),transform .55s var(--spring),box-shadow .5s var(--ease),filter .4s var(--ease)}
 .tool img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;background:#f3ece0}
-.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:34px 11px 12px;text-align:center;background:linear-gradient(to top,rgba(9,8,6,.97),rgba(9,8,6,.82) 42%,rgba(9,8,6,.24) 80%,transparent);border-radius:0 0 2px 2px}
+.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:22px 12px 13px;text-align:center;background:linear-gradient(to top,rgba(9,8,6,.98),rgba(9,8,6,.86) 40%,rgba(9,8,6,.2) 82%,transparent);border-radius:0 0 2px 2px}
 .t-name{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
-.t-what{display:block;margin-top:6px;font-family:var(--sans);font-size:11px;line-height:1.34;letter-spacing:0;text-transform:none;color:#cabda4;transition:color .4s var(--ease)}
-.tool:hover .t-what{color:var(--gold-hi)}
-.js .tools-grid .tool{opacity:0;transform:translateY(38px) scale(.88) rotate(-3.5deg)}
-.js .tools-grid .tool:nth-child(even){transform:translateY(38px) scale(.88) rotate(3.5deg)}
-.js .tools-grid .tool.in{opacity:1;transform:none}
+.t-body{display:block}
+.t-what{display:block;font-family:var(--sans);font-size:11.5px;line-height:1.36;color:#eadfca}
+.t-gold{display:block;margin-top:7px;font-family:var(--serif);font-style:italic;font-size:12.5px;line-height:1.36;color:var(--gold-hi)}
+/* enlarge + reveal um-por-um: só com motion; sem JS/reduced-motion o texto fica sempre visível (PE) */
+.motion .tools-grid .tool{opacity:0;transform:translateY(38px) scale(.9) rotate(-3deg)}
+.motion .tools-grid .tool:nth-child(even){transform:translateY(38px) scale(.9) rotate(3deg)}
+.motion .tools-grid .tool.in{opacity:1;transform:none}
+.motion .tools-grid .tool .t-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .4s var(--ease),margin-top .5s var(--ease)}
+.motion .tools-grid .tool.in:hover,.motion .tools-grid .tool.in:focus,.motion .tools-grid .tool.in.open{transform:translateY(-14px) scale(1.14);z-index:6;box-shadow:0 34px 72px rgba(0,0,0,.66),0 0 44px rgba(242,210,122,.3)}
+.motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{max-height:220px;opacity:1;margin-top:8px}
+.motion .tools-grid:hover .tool.in:not(:hover),.motion .tools-grid.has-open .tool.in:not(.open){opacity:.5;filter:saturate(.72)}
 @media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
 .whygold{max-width:56ch;margin:16px auto 0;text-align:center}
 .whygold summary{display:inline-block;cursor:pointer;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:3px;list-style:none;transition:color .3s var(--ease)}
@@ -95,6 +100,16 @@ section{position:relative;padding:118px 28px}
 .whygold summary:hover{color:var(--gold-hi)}
 .whygold[open] summary{margin-bottom:14px}
 .whygold p{font-size:15px;line-height:1.64;color:var(--ink-3);max-width:54ch;margin:0 auto}
+/* respiro do ouro em pó — clímax de valor antes da oferta */
+.dustbeat{padding:0}
+.db-frame{position:relative;min-height:64vh;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.db-media{position:absolute;inset:0;background:#0b0a08 radial-gradient(130% 95% at 74% 46%,rgba(242,210,122,.26),rgba(198,154,62,.09) 34%,rgba(11,10,8,0) 62%)}
+.db-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.db-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,rgba(11,10,8,.8) 32%,rgba(11,10,8,.2) 60%,rgba(11,10,8,0) 86%)}
+.db-copy{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:64px clamp(28px,6vw,80px);width:100%}
+.db-copy h2{font-size:clamp(30px,4.8vw,54px);margin:14px 0 18px}
+.db-copy p{max-width:46ch;color:var(--ink-2)}
+@media(max-width:760px){.db-frame{min-height:0;flex-direction:column}.db-media{position:relative;width:100%;height:52vw;min-height:220px}.db-veil{background:linear-gradient(0deg,var(--bg) 4%,rgba(11,10,8,.5) 40%,transparent 80%)}.db-copy{padding:34px clamp(20px,6vw,40px)}}
 
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
@@ -285,14 +300,15 @@ section{position:relative;padding:118px 28px}
     <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Sete furos, sete ferramentas.<br>Mais o mapa do seu número.</h2>
     <div class="rule reveal"></div>
     <p class="reveal" style="max-width:60ch">São as peças que remendam a sua operação: cada furo do diagnóstico vem com uma ferramenta pronta na mão. Você preenche com os seus dados e aplica no mesmo dia — nenhuma delas leva mais que 6 minutos.</p>
+    <p class="reveal" style="--d:.1s;margin-top:12px;font-size:15.5px;color:var(--gold)">Estas são o ouro em pó do desafio. Passe o mouse em cada uma (ou toque) e veja quanto ela vale.</p>
     <div class="tools-grid">
-      <figure class="tool"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption><span class="t-name">Mapa dos 7 Furos</span><span class="t-what">Onde você vaza dinheiro, em reais. O seu número de partida.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption><span class="t-name">Template de Escopo</span><span class="t-what">O que está dentro e o que fica de fora, no papel. Fim do “só mais uma coisinha”.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption><span class="t-name">Pedido de Extra</span><span class="t-what">Cobra o extra que saía de graça, sem você bancar o vilão.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span></figcaption></figure>
-      <figure class="tool"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-what">O que você travou na semana, preto no branco.</span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption><span class="t-name">Mapa dos 7 Furos</span><span class="t-body"><span class="t-what">Onde você vaza dinheiro, em reais. O seu número de partida.</span><span class="t-gold">Ouro em pó: três minutos preenchendo revelam um rombo de dezenas de milhares.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption><span class="t-name">Template de Escopo</span><span class="t-body"><span class="t-what">O que está dentro e o que fica de fora, no papel. Fim do “só mais uma coisinha”.</span><span class="t-gold">Ouro em pó: uma página que impede meses de trabalho não pago.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption><span class="t-name">Pedido de Extra</span><span class="t-body"><span class="t-what">Cobra o extra que saía de graça, sem você bancar o vilão.</span><span class="t-gold">Ouro em pó: uma mensagem que transforma favor em faturamento.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-body"><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span><span class="t-gold">Ouro em pó: um combinado que devolve as suas noites e fins de semana.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-body"><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span><span class="t-gold">Ouro em pó: três textos que tiram o seu dinheiro da rua.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-body"><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span><span class="t-gold">Ouro em pó: um roteiro que traz de volta o que você já dava como perdido.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-body"><span class="t-what">O que você travou na semana, preto no branco.</span><span class="t-gold">Ouro em pó: uma folha que prova, em número, o quanto você fechou.</span></span></figcaption></figure>
     </div>
     <p class="reveal" style="text-align:center;margin:30px auto 0;max-width:46ch;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,25px);color:var(--gold-hi)">São o ouro em pó do desafio: cabem na palma da mão e fecham um rombo de dezenas de milhares por ano.</p>
     <details class="whygold reveal"><summary>por que “ouro em pó”?</summary><p>Na Inconfidência, o ouro em pó valia mais que a barra: cabia escondido dentro das imagens de santo e passava por onde o ouro em barra não passava. Estas ferramentas são assim: pequenas o bastante para caber numa página, valiosas o bastante para fechar o rombo que a sua agência nem via.</p></details>
@@ -320,6 +336,19 @@ section{position:relative;padding:118px 28px}
       <div class="case"><span class="n">R$ 82 mil</span><span class="nm">Rodrigo · tráfego</span><p>Fechou de boca R$ 8.500/mês. Em janeiro, R$ 51 mil não pagos + R$ 31 mil de mídia adiantada. Sem nada assinado, quase nada voltou. Hoje ele opera de outro jeito.</p></div>
       <div class="case"><span class="n">R$ 156 mil</span><span class="nm">Jonas · serviços</span><p>Um calote de R$ 19.500 que sumiu por 60 dias. Ele seguiu o roteiro de negativação. Em 48 horas o cliente pagou com juros e ficou mais dois anos na carteira.</p></div>
       <p class="note">Casos ilustrativos do método. Nomes fictícios.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESPIRO OURO EM PÓ — clímax de valor (imagem bespoke) -->
+<section class="dustbeat">
+  <div class="db-frame">
+    <div class="db-media"><img src="assets/ouro_em_po_v1.png" alt="Ouro em pó na palma da mão, sobre porcelana preta" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="db-veil"></div>
+    <div class="db-copy">
+      <div class="label reveal">O ouro em pó</div>
+      <h2 class="reveal" style="--d:.05s">O que cabe na palma da mão<br>vale o ano inteiro.</h2>
+      <p class="reveal" style="--d:.1s">Cada ferramenta é um punhado desse pó: pequena na mão, enorme no valor. Juntas, fecham o rombo que a sua agência perdia mês após mês.</p>
     </div>
   </div>
 </section>
@@ -396,6 +425,7 @@ section{position:relative;padding:118px 28px}
 (function(){
   var doc=document.documentElement; doc.classList.add('js');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce) doc.classList.add('motion');
   var els=[].slice.call(document.querySelectorAll('.reveal,.shard'));
   function show(el){el.classList.add('in');}
   if(reduce){els.forEach(show);}
@@ -406,10 +436,14 @@ section{position:relative;padding:118px 28px}
   /* entregáveis: os cacos se encaixam em cascata */
   var tg=document.querySelector('.tools-grid');
   if(tg){ var tools=[].slice.call(tg.querySelectorAll('.tool'));
-    function fitTool(t){ t.style.opacity='1'; t.style.transform='none'; }
+    function fitTool(t){ t.classList.add('in'); }
     if(reduce||!('IntersectionObserver' in window)){ tools.forEach(fitTool); }
     else{ var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ tools.forEach(function(t,i){ setTimeout(function(){fitTool(t);}, i*95); }); tio.disconnect(); }});},{threshold:0.2});
-      tio.observe(tg); setTimeout(function(){ if(tools[0]&&tools[0].style.opacity!=='1') tools.forEach(fitTool); },2400); }
+      tio.observe(tg); setTimeout(function(){ if(tools[0]&&!tools[0].classList.contains('in')) tools.forEach(fitTool); },2400); }
+    /* um por um: toque/clique abre o card (mobile + teclado); no desktop o hover já revela */
+    tools.forEach(function(t){ t.addEventListener('click',function(){ var op=t.classList.contains('open'); tools.forEach(function(o){o.classList.remove('open');}); if(!op)t.classList.add('open'); tg.classList.toggle('has-open',!op); });
+      t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t.click(); } }); });
+    tg.addEventListener('mouseleave',function(){ tools.forEach(function(o){o.classList.remove('open');}); tg.classList.remove('has-open'); });
     /* ouro em pó: solta do caco no hover (o ouro escondido que se revela) */
     var sec=tg.closest('section');
     if(sec&&!reduce){
