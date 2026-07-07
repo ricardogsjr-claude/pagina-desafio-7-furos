@@ -75,6 +75,15 @@ section{position:relative;padding:118px 28px}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:var(--maxw);margin:0 auto}
 .duo.rev{direction:rtl}.duo.rev>*{direction:ltr}
 
+/* ===== galeria das ferramentas (os cacos-documento dourados) ===== */
+.tools-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:44px auto 0;max-width:940px}
+.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.tool img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;background:#f3ece0}
+.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:24px 8px 10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-align:center;background:linear-gradient(to top,rgba(11,10,8,.95),rgba(11,10,8,.55) 55%,transparent);border-radius:0 0 2px 2px}
+.js .tool{opacity:0;transform:translateY(26px) scale(.95);transition:opacity .7s var(--ease),transform .8s var(--spring)}
+.js .tool.in{opacity:1;transform:none}
+@media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
+
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
 .hero .stage{position:absolute;inset:0;cursor:crosshair}
@@ -257,24 +266,23 @@ section{position:relative;padding:118px 28px}
   </div>
 </section>
 
-<!-- ENTREGÁVEIS + cacos das ferramentas -->
+<!-- ENTREGÁVEIS — as ferramentas reais, como cacos-documento dourados -->
 <section>
-  <div class="duo rev">
-    <div class="reveal">
-      <div class="label">O que você recebe</div>
-      <h2 style="font-size:clamp(30px,4.4vw,48px)">Sete furos, sete ferramentas. Mais o mapa do seu número.</h2>
-      <div class="rule"></div>
-      <ul class="deliv">
-        <li><b>Mapa dos 7 Furos.</b> O seu vazamento em reais na tela, em 30 minutos.</li>
-        <li><b>Template de Escopo (SOW).</b> O escopo fecha em 6 minutos.</li>
-        <li><b>Pedido de Extra.</b> Todo "só mais uma coisinha" vira orçamento aprovado.</li>
-        <li><b>Acordo de Prazo (SLA).</b> A aprovação que arrastava 90 dias volta ao combinado.</li>
-        <li><b>Régua das 3 Ondas.</b> A cobrança sai da sua cabeça e vira rotina.</li>
-        <li><b>Roteiro de Negativação</b> + <b>Decisão de Adoção</b> + <b>Quadro Antes/Depois.</b></li>
-      </ul>
-      <p class="note">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio.</p>
+  <div class="wrap" style="max-width:960px">
+    <div class="label reveal">O que você recebe</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Sete furos, sete ferramentas.<br>Mais o mapa do seu número.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal" style="max-width:60ch">São as peças que remendam a sua operação: cada furo do diagnóstico vem com uma ferramenta pronta na mão. Você preenche com os seus dados e aplica no mesmo dia — nenhuma delas leva mais que 6 minutos.</p>
+    <div class="tools-grid">
+      <figure class="tool"><img src="assets/tools/card_mapa_7_furos.jpg" alt="Mapa dos 7 Furos"><figcaption>Mapa dos 7 Furos</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_sow.jpg" alt="Template de Escopo (SOW)"><figcaption>Template de Escopo</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_change_order.jpg" alt="Pedido de Extra"><figcaption>Pedido de Extra</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption>Acordo de Prazo · SLA</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption>Régua das 3 Ondas</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption>Roteiro de Negativação</figcaption></figure>
+      <figure class="tool"><img src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption>Quadro Antes/Depois</figcaption></figure>
     </div>
-    <figure class="shard s2"><img src="assets/caco_ferramentas_v1.png" alt="As ferramentas prontas"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 6 L90 0 L100 84 L10 100 Z"/></svg><span class="cap">As 8 ferramentas</span></figure>
+    <p class="note reveal" style="text-align:center;margin-top:30px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio — mais a Decisão de Adoção, a sua primeira micro-decisão em 2 minutos.</p>
   </div>
 </section>
 
@@ -374,7 +382,7 @@ section{position:relative;padding:118px 28px}
 (function(){
   var doc=document.documentElement; doc.classList.add('js');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var els=[].slice.call(document.querySelectorAll('.reveal,.shard'));
+  var els=[].slice.call(document.querySelectorAll('.reveal,.shard,.tool'));
   function show(el){el.classList.add('in');}
   if(reduce){els.forEach(show);}
   else if('IntersectionObserver' in window){
