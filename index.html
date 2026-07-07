@@ -114,7 +114,7 @@ section{position:relative;padding:118px 28px}
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden}
 .hero .stage{position:absolute;inset:0;cursor:crosshair}
-.bowl-base{position:absolute;inset:0;background:url('assets/bowl_chawan_v3.jpg') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
+.bowl-base{position:absolute;inset:0;background:url('assets/heroi_reparo_v1.jpg') 22% center/cover no-repeat;filter:saturate(.28) brightness(.66) contrast(1.06)}
 #reveal{position:absolute;inset:0;width:100%;height:100%}
 .hero .hveil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,8,.4) 0%,rgba(11,10,8,.12) 30%,rgba(11,10,8,.55) 60%,var(--bg) 88%)}
 .hero .hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(28px,6vw,80px);pointer-events:none}
@@ -205,6 +205,8 @@ section{position:relative;padding:118px 28px}
   .cols{grid-template-columns:1fr;gap:28px}
 }
 @media(max-width:720px){section{padding:80px 22px}.hero{min-height:94vh}.bowl-base{background-position:center 34%}.hero .hveil{background:linear-gradient(180deg,rgba(11,10,8,.1),rgba(11,10,8,.6) 60%,var(--bg))}.hero .hc{margin:0}.dtm li{padding-left:62px}.btn{padding:18px 30px;font-size:13px}}
+.hero-cap{position:absolute;left:clamp(20px,4vw,54px);bottom:26px;z-index:3;font-family:var(--serif);font-style:italic;font-size:clamp(13px,1.4vw,16px);color:var(--gold-hi);text-shadow:0 2px 16px #000,0 0 4px #000;max-width:34ch;pointer-events:none}
+@media(max-width:820px){.hero-cap{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal,.js .shard{opacity:1;transform:none;transition:none}.js .shard .seam path{stroke-dashoffset:0}.bowl-base{filter:saturate(1) brightness(1)}#reveal{display:none}.surf-gold{-webkit-mask-image:none;mask-image:none}.hero .hint .dot{animation:none}}
 </style>
 </head>
@@ -231,6 +233,7 @@ section{position:relative;padding:118px 28px}
     <div class="cta-area reveal" style="--d:.28s"><a class="btn" href="#calculadora" data-cta="hero">Quero ver quanto vaza</a><div class="under">por <b>R$ 97</b> · 7 dias para testar sem risco</div></div>
     <div class="hint reveal" style="--d:.34s"><span class="dot"></span>passe o mouse na peça · e role para remendar a página</div>
   </div></div>
+  <div class="hero-cap reveal" style="--d:.42s">A caneta que repara é a mesma que assina.</div>
 </section>
 
 <!-- DOR + caco 1 (o problema) -->
@@ -492,7 +495,7 @@ section{position:relative;padding:118px 28px}
   var stage=document.getElementById('stage'),cv=document.getElementById('reveal');
   if(stage&&cv&&!reduce){
     var ctx=cv.getContext('2d'),mask=document.createElement('canvas'),mctx=mask.getContext('2d');
-    var gold=new Image();gold.src='assets/bowl_chawan_v3.jpg';
+    var gold=new Image();gold.src='assets/heroi_reparo_v1.jpg';
     var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),cover={x:0,y:0,w:0,h:0},ready=false;
     function cr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
     function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=cr(gold.naturalWidth,gold.naturalHeight,W,H);}
