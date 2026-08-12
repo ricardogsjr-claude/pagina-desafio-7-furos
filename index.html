@@ -103,13 +103,6 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{max-height:220px;opacity:1;margin-top:8px}
 .motion .tools-grid:hover .tool.in:not(:hover),.motion .tools-grid.has-open .tool.in:not(.open){opacity:.5;filter:saturate(.72)}
 @media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
-.whygold{max-width:56ch;margin:16px auto 0;text-align:center}
-.whygold summary{display:inline-block;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:3px;list-style:none;transition:color .3s var(--ease)}
-.whygold summary::-webkit-details-marker{display:none}
-.whygold summary::marker{content:''}
-.whygold summary:hover{color:var(--gold-hi)}
-.whygold[open] summary{margin-bottom:14px}
-.whygold p{font-size:15px;line-height:1.64;color:var(--ink-3);max-width:54ch;margin:0 auto}
 /* respiro do ouro em pó - clímax de valor antes da oferta */
 .dustbeat{padding:0}
 .db-frame{position:relative;min-height:64vh;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -215,13 +208,6 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
   .duo{grid-template-columns:1fr;gap:34px}.duo.rev{direction:ltr}
   .cols{grid-template-columns:1fr;gap:28px}
 }
-@media(min-width:721px) and (max-height:800px){
-  .hero{padding:clamp(72px,9vh,104px) 0 clamp(48px,6vh,72px)}
-  .hero h1{font-size:clamp(42px,5.6vw,68px)}
-  .hero .sub{margin-top:18px;font-size:clamp(16px,1.3vw,18px)}
-  .hbul{margin-top:18px;gap:8px}.hbul li{font-size:14.5px}
-  .hero .cta-area{margin-top:22px}.hero .hint{margin-top:16px}
-}
 @media(max-width:720px){section{padding:var(--sec-pad) 22px}.hero{min-height:94svh}.bowl-base{background-position:center 34%}.hero .hveil{background:linear-gradient(180deg,rgba(11,10,8,.1),rgba(11,10,8,.6) 60%,var(--bg))}.hero .hc{margin:0}.dtm li{padding-left:62px}.btn{padding:18px 30px;font-size:13px}}
 .hero-cap::before{content:'';position:absolute;inset:-14px -22px -18px -22px;z-index:-1;border-radius:4px;background:radial-gradient(120% 140% at 30% 60%,rgba(11,10,8,.92),rgba(11,10,8,.72) 55%,rgba(11,10,8,0) 100%)}
 .hero-cap{position:absolute;left:clamp(20px,4vw,54px);bottom:26px;z-index:3;isolation:isolate;font-family:var(--serif);font-style:italic;font-size:clamp(13px,1.4vw,16px);color:var(--gold-hi);text-shadow:0 1px 3px rgba(11,10,8,1),0 2px 18px rgba(11,10,8,.98),0 0 6px rgba(11,10,8,.95);max-width:34ch;pointer-events:none}
@@ -241,6 +227,22 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .finale2 .foot{pointer-events:auto;margin-top:22px;text-align:left;max-width:52ch}
 .finale2 .foot a{pointer-events:auto}
 @media(prefers-reduced-motion:reduce){.finale2 .bowl-base{filter:saturate(.8) brightness(.92)}#finaleReveal{display:none}}
+
+/* ===== telas baixas: precisa ficar no FIM da cascata. Mesma especificidade
+   perde para quem vem depois, e a regra base de .finale2 .fh mora adiante. ===== */
+@media(min-width:721px) and (max-height:800px){
+  .hero{padding:clamp(72px,9vh,104px) 0 clamp(48px,6vh,72px)}
+  .hero h1{font-size:clamp(42px,5.6vw,68px)}
+  .hero .sub{margin-top:18px;font-size:clamp(16px,1.3vw,18px)}
+  .hbul{margin-top:18px;gap:8px}.hbul li{font-size:14.5px}
+  .hero .cta-area{margin-top:22px}.hero .hint{margin-top:16px}
+  /* O FECHO tambem e .hero (section class="hero finale2"), entao o padding acima
+     ja o alcanca. A headline dele nao: e .fh, um h2, e ficava fora da regra que
+     mira .hero h1. Resultado medido: em 1366x768 a barra fixa cobria 48% dela. */
+  .finale2 .fh{font-size:clamp(34px,4.6vw,58px)}
+  .finale2 .recap2{margin-top:12px;font-size:11.5px}
+  .finale2 .foot{margin-top:16px;font-size:11.5px}
+}
 </style>
 </head>
 <body>
@@ -344,11 +346,10 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
       <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_template_sla.jpg" alt="Acordo de Prazo (SLA)"><figcaption><span class="t-name">Acordo de Prazo · SLA</span><span class="t-body"><span class="t-what">Prazo e limite de revisão no acordo. A pressa do cliente deixa de ser a sua.</span><span class="t-gold">Ouro em pó: um combinado que devolve as suas noites e fins de semana.</span></span></figcaption></figure>
       <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_regua_3_ondas.jpg" alt="Régua das 3 Ondas"><figcaption><span class="t-name">Régua das 3 Ondas</span><span class="t-body"><span class="t-what">Três mensagens prontas que trazem o atrasado de volta, sem brigar.</span><span class="t-gold">Ouro em pó: três textos que tiram o seu dinheiro da rua.</span></span></figcaption></figure>
       <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_roteiro_negativacao.jpg" alt="Roteiro de Negativação"><figcaption><span class="t-name">Roteiro de Negativação</span><span class="t-body"><span class="t-what">Quando o cliente some: o passo que recupera o que virou calote.</span><span class="t-gold">Ouro em pó: um roteiro que traz de volta o que você já dava como perdido.</span></span></figcaption></figure>
-      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-body"><span class="t-what">O que você travou na semana, preto no branco.</span><span class="t-gold">Ouro em pó: uma folha que prova, em número, o quanto você fechou.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_quadro_antes_depois.jpg" alt="Quadro Antes/Depois"><figcaption><span class="t-name">Quadro Antes/Depois</span><span class="t-body"><span class="t-what">O que você travou na semana, preto no branco.</span><span class="t-gold">Ouro em pó: uma folha que prova, em número, o quanto você fechou.</span></span></figcaption></figure><figure class="tool" tabindex="0"><img loading="lazy" src="assets/tools/card_decisao_adocao.jpg" alt="Decisão de Adoção"><figcaption><span class="t-name">Decisão de Adoção</span><span class="t-body"><span class="t-what">A primeira decisão concreta do desafio, em 2 minutos.</span><span class="t-gold">Ouro em pó: quem decide na sessão 1 chega na 7 com o furo já fechado.</span></span></figcaption></figure>
     </div>
     <p class="reveal" style="text-align:center;margin:30px auto 0;max-width:46ch;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,25px);color:var(--gold-hi)">São o ouro em pó do desafio: cabem na palma da mão e fecham um rombo de dezenas de milhares por ano.</p>
-    <details class="whygold reveal"><summary>por que “ouro em pó”?</summary><p>Na Inconfidência, o ouro em pó valia mais que a barra: cabia escondido dentro das imagens de santo e passava por onde o ouro em barra não passava. Estas ferramentas são assim: pequenas o bastante para caber numa página, valiosas o bastante para fechar o rombo que a sua agência nem via.</p></details>
-    <p class="note reveal" style="text-align:center;margin-top:16px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio, mais a Decisão de Adoção, a sua primeira micro-decisão em 2 minutos.</p>
+    <p class="note reveal" style="text-align:center;margin-top:16px">As 8 ferramentas, avaliadas em R$ 67, acompanham o desafio: o Mapa dos 7 Furos e uma peça por furo, da primeira decisão ao quadro do antes e depois.</p>
   </div>
 </section>
 
