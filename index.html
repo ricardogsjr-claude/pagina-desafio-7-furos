@@ -98,9 +98,10 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .motion .tools-grid .tool{opacity:0;transform:translateY(38px) scale(.9) rotate(-3deg)}
 .motion .tools-grid .tool:nth-child(even){transform:translateY(38px) scale(.9) rotate(3deg)}
 .motion .tools-grid .tool.in{opacity:1;transform:none}
-.motion .tools-grid .tool .t-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .4s var(--ease),margin-top .5s var(--ease)}
+.motion .tools-grid .tool .t-body{display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;transition:grid-template-rows .5s var(--ease),opacity .4s var(--ease)}
+.motion .tools-grid .tool .t-body>*{min-height:0}
 .motion .tools-grid .tool.in:hover,.motion .tools-grid .tool.in:focus,.motion .tools-grid .tool.in.open{transform:translateY(-14px) scale(1.14);z-index:6;box-shadow:0 34px 72px rgba(0,0,0,.66),0 0 44px rgba(242,210,122,.3)}
-.motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{max-height:220px;opacity:1;margin-top:8px}
+.motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{grid-template-rows:1fr;opacity:1}
 .motion .tools-grid:hover .tool.in:not(:hover),.motion .tools-grid.has-open .tool.in:not(.open){opacity:.5;filter:saturate(.72)}
 @media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
 /* respiro do ouro em pó - clímax de valor antes da oferta */
@@ -152,10 +153,11 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .prob input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d;box-shadow:0 2px 12px rgba(242,210,122,.55);cursor:grab;transition:transform .2s var(--spring)}
 .prob input[type=range]::-webkit-slider-thumb:active{transform:scale(1.18)}
 .prob input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold-hi);border:3px solid #14110d}
-.prob .fix{margin-top:11px;font-family:var(--mono);font-size:11.5px;color:var(--gold-hi);display:none}
+.prob .fix{margin-top:11px;font-family:var(--mono);font-size:12.5px;color:var(--gold-hi);display:none}
 .prob.on .fix{display:block;color:var(--gold-hi)}.prob.on .pt{color:var(--gold-hi)}
-.calc-out{position:sticky;top:90px}
-.calc-out .oe{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.calc-out{position:sticky;top:90px;isolation:isolate}
+.calc-out::before{content:'';position:absolute;inset:-22px -24px;z-index:-1;border-radius:8px;background:radial-gradient(120% 130% at 40% 40%,rgba(12,10,8,.92),rgba(12,10,8,.74) 58%,rgba(12,10,8,.42) 100%)}
+.calc-out .oe{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
 .calc-big{font-family:var(--serif);font-size:clamp(48px,7vw,72px);font-weight:600;color:var(--gold-hi);line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 40px rgba(242,210,122,.25)}
 .calc-sub{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}.calc-sub b{color:var(--gold-hi);font-weight:500}
 .calc-bar{margin:20px 0;height:8px;border-radius:8px;background:rgba(198,154,62,.14);overflow:hidden}
@@ -220,10 +222,15 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .finale2 .hveil{background:linear-gradient(90deg,rgba(11,10,8,0) 0%,rgba(11,10,8,0) 22%,rgba(11,10,8,.3) 38%,rgba(11,10,8,.66) 50%,rgba(11,10,8,.88) 64%,rgba(11,10,8,.96) 78%,var(--bg) 92%)}
 .finale2 .under{color:var(--ink-2)}
 .finale2 .hint{color:var(--ink)}
+.finale2 .foot{color:var(--ink)}
 .finale2 .foot{color:var(--ink-2);font-size:12.5px;margin-top:30px}
 .finale2 .fh{font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-.02em;color:#fbf5ea}
 .finale2 .fh em{font-style:italic;color:var(--gold-hi)}
-.finale2 .recap2{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);margin:16px 0 0;max-width:52ch}
+.finale2 .recap2{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink);margin:16px 0 0;max-width:52ch}
+/* scrim proprio: os tres blocos de texto do fecho ficam sobre a parte clara da
+   tigela reparada, onde so a cor nunca chega a 4.5:1. Mesmo padrao do .hero-cap. */
+.finale2 .hc,.finale2 .foot,.finale2 .hint{position:relative;isolation:isolate}
+.finale2 .hc::before,.finale2 .foot::before,.finale2 .hint::before{content:'';position:absolute;inset:-14px -22px -16px -22px;z-index:-1;border-radius:6px;background:radial-gradient(130% 150% at 22% 55%,rgba(11,10,8,.94),rgba(11,10,8,.8) 52%,rgba(11,10,8,0) 100%)}
 .finale2 .foot{pointer-events:auto;margin-top:22px;text-align:left;max-width:52ch}
 .finale2 .foot a{pointer-events:auto}
 @media(prefers-reduced-motion:reduce){.finale2 .bowl-base{filter:saturate(.8) brightness(.92)}#finaleReveal{display:none}}
@@ -240,8 +247,8 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
      ja o alcanca. A headline dele nao: e .fh, um h2, e ficava fora da regra que
      mira .hero h1. Resultado medido: em 1366x768 a barra fixa cobria 48% dela. */
   .finale2 .fh{font-size:clamp(34px,4.6vw,58px)}
-  .finale2 .recap2{margin-top:12px;font-size:11.5px}
-  .finale2 .foot{margin-top:16px;font-size:11.5px}
+  .finale2 .recap2{margin-top:12px;font-size:12.5px}
+  .finale2 .foot{margin-top:16px;font-size:12.5px}
 }
 </style>
 </head>
