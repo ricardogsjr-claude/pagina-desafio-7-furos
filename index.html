@@ -70,7 +70,7 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .shard img{width:100%;display:block;object-fit:cover;background:#14110d}
 .shard .seam{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .shard .seam path{fill:none;stroke:url(#goldSeam);stroke-width:4;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 5px rgba(242,210,122,.55))}
-.js .shard{opacity:0;transform:scale(.93) translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--spring)}
+.js .shard{opacity:0;transform:scale(.93) translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
 .js .shard.in{opacity:1;transform:none}
 .js .shard .seam path{stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1.3s var(--ease) .25s}
 .js .shard.in .seam path{stroke-dashoffset:0}
@@ -87,7 +87,7 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 
 /* ===== galeria das ferramentas (os cacos-documento dourados) ===== */
 .tools-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:44px auto 0;max-width:940px}
-.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);cursor:pointer;outline:none;transition:opacity .5s var(--ease),transform .55s var(--spring),box-shadow .5s var(--ease),filter .4s var(--ease)}
+.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);cursor:pointer;outline:none;transition:opacity .5s var(--ease),transform .55s var(--ease),box-shadow .5s var(--ease),filter .4s var(--ease)}
 .tool img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;background:#f3ece0}
 .tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:22px 12px 13px;text-align:center;background:linear-gradient(to top,rgba(9,8,6,.98),rgba(9,8,6,.86) 40%,rgba(9,8,6,.2) 82%,transparent);border-radius:0 0 2px 2px}
 .t-name{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fbf5ea}
@@ -100,7 +100,7 @@ section[id],.hero{scroll-margin-top:var(--bar-h)}
 .motion .tools-grid .tool.in{opacity:1;transform:none}
 .motion .tools-grid .tool .t-body{display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;transition:grid-template-rows .5s var(--ease),opacity .4s var(--ease)}
 .motion .tools-grid .tool .t-body>*{min-height:0}
-.motion .tools-grid .tool.in:hover,.motion .tools-grid .tool.in:focus,.motion .tools-grid .tool.in.open{transform:translateY(-14px) scale(1.14);z-index:6;box-shadow:0 34px 72px rgba(0,0,0,.66),0 0 44px rgba(242,210,122,.3)}
+.motion .tools-grid .tool.in:hover,.motion .tools-grid .tool.in:focus,.motion .tools-grid .tool.in.open{transition:transform .35s var(--spring),box-shadow .5s var(--ease);transform:translateY(-14px) scale(1.14);z-index:6;box-shadow:0 34px 72px rgba(0,0,0,.66),0 0 44px rgba(242,210,122,.3)}
 .motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{grid-template-rows:1fr;opacity:1}
 .motion .tools-grid:hover .tool.in:not(:hover),.motion .tools-grid.has-open .tool.in:not(.open){opacity:.5;filter:saturate(.72)}
 @media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
